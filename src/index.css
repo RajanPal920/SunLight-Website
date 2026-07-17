@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Brand Design System — Sunlight Forge & Fitting
+   ───────────────────────────────────────────── */
+
+@theme {
+  /* Brand Colors */
+  --color-brand-purple: #46127B;
+  --color-brand-purple-dark: #320D5A;
+  --color-brand-teal: #03A58D;
+  --color-brand-teal-dark: #028773;
+  --color-brand-mint: #DCEFE4;
+  --color-brand-charcoal: #1F2430;
+  --color-neutral-gray: #F5F6F8;
+
+  /* Font Families */
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+
+  /* Custom Shadows */
+  --shadow-card: 0 4px 24px rgba(70, 18, 123, 0.08);
+  --shadow-card-hover: 0 12px 40px rgba(70, 18, 123, 0.18);
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #1F2430;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #03A58D;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F6F8;
+}
+::-webkit-scrollbar-thumb {
+  background: #46127B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #320D5A;
+}
