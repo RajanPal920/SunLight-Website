@@ -2,22 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 
-/* ─── Brand Logo (compact version for footer) ─────────────────── */
+/* ─── Brand Logo (footer version — uses real logo image) ──────── */
 const FooterLogo = () => (
-  <div className="flex items-center gap-3">
-    <svg width="44" height="44" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <ellipse cx="26" cy="24" rx="23" ry="20" stroke="#46127B" strokeWidth="2" fill="none" />
-      <text x="26" y="30" textAnchor="middle" fontFamily="'Playfair Display', serif" fontStyle="italic" fontWeight="700" fontSize="22" fill="#46127B">S</text>
-      <path d="M 8 38 Q 26 48 44 38" stroke="#03A58D" strokeWidth="3" fill="none" strokeLinecap="round" />
-    </svg>
-    <div className="flex flex-col leading-tight">
-      <span className="text-white font-bold leading-none" style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '1.35rem' }}>
-        Sunlight
-      </span>
-      <span className="text-white/50 font-semibold uppercase leading-tight" style={{ fontFamily: "'Poppins', sans-serif", fontSize: '0.48rem', letterSpacing: '0.12em' }}>
-        Forge &amp; Fitting Pvt. Ltd.
-      </span>
-    </div>
+  <div className="flex items-center">
+    <img
+      src="/images/logo.webp"
+      alt="Sunlight Forge & Fitting Pvt. Ltd."
+      className="h-16 w-auto object-contain"
+    />
   </div>
 );
 

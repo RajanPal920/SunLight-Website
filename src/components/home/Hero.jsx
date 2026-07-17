@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
 
 /* ─── Abstract SVG Flange/Pipe Illustration ───────────────────── */
@@ -171,13 +171,7 @@ const Hero = () => {
 
           {/* Left: Text */}
           <div className="flex flex-col gap-6">
-            {/* Badge */}
-            <div className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-full border border-[#03A58D]/40 bg-[#03A58D]/10">
-              <span className="w-2 h-2 rounded-full bg-[#03A58D]" />
-              <span className="font-poppins font-semibold text-[#03A58D] text-xs tracking-widest uppercase">
-                ISO 9000:2015 Certified · Est. 2006
-              </span>
-            </div>
+
 
             {/* Main Headline */}
             <h1 className="font-poppins font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight text-white">
@@ -234,20 +228,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Trust stats row */}
-            <div className="flex flex-wrap gap-6 pt-2 border-t border-white/10 mt-2">
-              {[
-                { value: '2006', label: 'Established' },
-                { value: '6+', label: 'Product Categories' },
-                { value: '4', label: 'Branch Offices' },
-                { value: '100%', label: 'Quality Assured' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="font-poppins font-bold text-2xl text-white">{stat.value}</span>
-                  <span className="font-poppins text-xs text-white/50">{stat.label}</span>
-                </div>
-              ))}
-            </div>
+
           </div>
 
           {/* Right: SVG Illustration */}
@@ -294,11 +275,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50" aria-hidden="true">
-        <span className="text-white text-[10px] font-poppins uppercase tracking-widest">Scroll</span>
-        <ChevronDown size={16} className="text-white animate-bounce" />
-      </div>
+
     </section>
   );
 };

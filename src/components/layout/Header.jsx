@@ -3,68 +3,22 @@ import { NavLink, Link } from 'react-router-dom';
 import { Phone, Menu, X, ChevronRight } from 'lucide-react';
 import Button from '../ui/Button';
 
-/* ─── Brand SVG Logo ─────────────────────────────────────────── */
+/* ─── Brand Logo (uses real logo image) ─────────────────────── */
 const Logo = () => (
   <Link
     to="/"
     aria-label="Sunlight Forge & Fitting Pvt. Ltd. — Home"
-    className="flex items-center gap-3 group flex-shrink-0"
+    className="flex items-center flex-shrink-0"
   >
-    {/* Logo Mark */}
-    <svg
-      width="52"
-      height="52"
-      viewBox="0 0 52 52"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* Outer oval ring */}
-      <ellipse cx="26" cy="24" rx="23" ry="20" stroke="#46127B" strokeWidth="2" fill="none" />
-      {/* "S" letterform inside */}
-      <text
-        x="26"
-        y="30"
-        textAnchor="middle"
-        fontFamily="'Playfair Display', serif"
-        fontStyle="italic"
-        fontWeight="700"
-        fontSize="22"
-        fill="#46127B"
-      >
-        S
-      </text>
-      {/* Teal crescent swoosh at bottom */}
-      <path
-        d="M 8 38 Q 26 48 44 38"
-        stroke="#03A58D"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
-
-    {/* Wordmark */}
-    <div className="flex flex-col leading-tight">
-      <span
-        className="text-[#46127B] font-bold tracking-tight leading-none"
-        style={{
-          fontFamily: "'Playfair Display', serif",
-          fontStyle: 'italic',
-          fontSize: '1.45rem',
-        }}
-      >
-        Sunlight
-      </span>
-      <span
-        className="text-[#1F2430] font-semibold uppercase tracking-widest leading-tight"
-        style={{ fontFamily: "'Poppins', sans-serif", fontSize: '0.52rem', letterSpacing: '0.12em' }}
-      >
-        Forge &amp; Fitting Pvt. Ltd.
-      </span>
-    </div>
+    <img
+      src="/images/logo.webp"
+      alt="Sunlight Forge & Fitting Pvt. Ltd."
+      className="h-20 w-auto object-contain"
+      loading="eager"
+    />
   </Link>
 );
+
 
 /* ─── Nav Links Data ─────────────────────────────────────────── */
 const navLinks = [
