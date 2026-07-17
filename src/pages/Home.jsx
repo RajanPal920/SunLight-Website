@@ -780,12 +780,14 @@ const Home = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: index * 0.05 }}
-                className="group flex items-center justify-center p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-2xl hover:scale-1 transition-all duration-300 cursor-pointer"
+                className="group flex items-center justify-center p-4 bg-white rounded-xl border border-slate-200 shadow-sm
+      hover:shadow-2xl hover:scale-105 hover:-translate-y-1
+      transition-all duration-300 ease-out cursor-pointer"
               >
                 <img
                   src={item.logo}
                   alt={item.name}
-                  className="w-full h-12 object-contain opacity-30 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0"
+                  className="w-full h-12 object-contain opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300 grayscale"
                 />
               </motion.div>
             ))}

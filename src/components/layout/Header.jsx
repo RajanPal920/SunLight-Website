@@ -20,7 +20,7 @@ const Logo = () => (
     <img
       src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
-      className="h-24 lg:h-28 w-auto object-contain transition-all duration-300"
+      className="h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain transition-all duration-300"
     />
   </Link>
 );
@@ -55,7 +55,7 @@ const Header = () => {
   }, []);
 
   const desktopNavClass = ({ isActive }) =>
-    `relative font-semibold text-bold transition-all duration-300
+    `relative font-semibold text-sm lg:text-base transition-all duration-300
      after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#46127B]
      after:transition-all after:duration-300
      ${
@@ -74,7 +74,7 @@ const Header = () => {
     >
       {/* Top Bar - Social Media, Phone, Email */}
       <div className="border-b border-[#03A58D]/20 bg-gradient-to-r from-[#46127B] via-[#46127B]/90 to-[#03A58D]/80">
-        <div className="w-full mx-auto px-4 lg:px-8 h-14 flex items-center">
+        <div className="w-full px-3 sm:px-4 lg:px-8 h-10 sm:h-11 md:h-12 lg:h-14 flex items-center ">
           <div className="flex items-center justify-between w-full">
             {/* Left Side - Phone & Email */}
             <div className="flex items-center gap-4">
@@ -104,41 +104,41 @@ const Header = () => {
             </div>
 
             {/* Right Side - Social Media */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3">
               <a
                 href="https://www.facebook.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-br hover:from-[#1877F2] hover:via-[#166FE5] hover:to-[#0D5BD7]"
+                className="group flex h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-br hover:from-[#1877F2] hover:via-[#166FE5] hover:to-[#0D5BD7]"
                 aria-label="Facebook"
               >
                 <FaFacebook
-                  size={30}
-                  className="text-black group-hover:text-white transition-colors duration-300"
+                  size={18}
+                  className="sm:size-[22px] lg:size-[30px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
               <a
                 href="https://www.instagram.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
+                className="group flex h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
                 aria-label="Instagram"
               >
                 <RiInstagramFill
-                  size={30}
-                  className="text-black group-hover:text-white transition-colors duration-300"
+                  size={18}
+                  className="sm:size-[22px] lg:size-[30px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
               <a
                 href="https://www.youtube.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#f54646] hover:via-[#c81d1d]"
+                className="group flex h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#f54646] hover:via-[#c81d1d]"
                 aria-label="YouTube"
               >
                 <FaYoutube
-                  size={33}
-                  className="text-black group-hover:text-white transition-colors duration-300"
+                  size={20}
+                  className="sm:size-[24px] lg:size-[33px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
             </div>
@@ -147,23 +147,25 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className=" w-full mx-auto px-4 lg:px-8 ">
-        <div className="flex items-center justify-between py-1">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
+      <div className="w-full mx-auto px-3 sm:px-4 lg:px-8 py-2 sm:py-3 md:py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo & Company Name */}
+          <div className="flex items-center gap-3 lg:gap-4">
             <Logo />
-            <div className="hidden lg:block">
-              <p className="text-[#46127B] font-extrabold text-xl leading-tight tracking-wide">
+
+            <div className="flex flex-col items-center text-center">
+              <p className="text-[#46127B] font-extrabold text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight tracking-wide">
                 SUNLIGHT FORGE & FITTING PVT. LTD.
               </p>
-              <p className="text-[#03A58D] text-sm font-bold tracking-[3px] uppercase">
+
+              <p className="text-[#03A58D] text-[8px] sm:text-[10px] md:text-xs lg:text-sm font-bold tracking-[2px] sm:tracking-[3px] uppercase">
                 AN ISO 9000:2015 CERTIFIED CO.
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 ">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((item) => (
               <NavLink
                 key={item.to}
@@ -175,13 +177,14 @@ const Header = () => {
               </NavLink>
             ))}
           </nav>
+
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden p-2 rounded-md"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? (
-              <X className="text-[#46127B] " size={24} />
+              <X className="text-[#46127B]" size={24} />
             ) : (
               <Menu className="text-[#46127B]" size={24} />
             )}
@@ -235,6 +238,16 @@ const Header = () => {
               <Mail size={16} className="text-[#03A58D]" />
               sunlight.barmer@gmail.com
             </a>
+
+            <Button
+              as={Link}
+              to="/contact"
+              variant="primary"
+              size="sm"
+              className="w-full bg-[#46127B] hover:bg-[#32105d] text-white"
+            >
+              Get a Quote
+            </Button>
           </div>
         </nav>
       </div>

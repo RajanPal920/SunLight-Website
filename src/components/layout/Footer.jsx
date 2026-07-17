@@ -10,7 +10,7 @@ const FooterLogo = () => (
     <img
       src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
-      className="h-16 w-auto object-contain"
+      className="h-16 w-30 object-cover"
     />
   </div>
 );
