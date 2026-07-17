@@ -1,172 +1,244 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { Phone, Menu, X, ChevronRight } from 'lucide-react';
-import Button from '../ui/Button';
+// src/components/layout/Header.jsx
 
-/* ─── Brand Logo (uses real logo image) ─────────────────────── */
+import React, { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { FaFacebook } from "react-icons/fa6";
+import { RiInstagramFill } from "react-icons/ri";
+import { FaYoutube } from "react-icons/fa6";
+import { Phone, Menu, X, ChevronRight, Mail } from "lucide-react";
+import Button from "../ui/Button";
+
+import logo from "../../assets/logo/logo.webp";
+
+/* ───────────────── Logo ───────────────── */
 const Logo = () => (
   <Link
     to="/"
-    aria-label="Sunlight Forge & Fitting Pvt. Ltd. — Home"
     className="flex items-center flex-shrink-0"
+    aria-label="Sunlight Forge & Fitting Pvt. Ltd."
   >
     <img
-      src="/images/logo.webp"
+      src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
-      className="h-20 w-auto object-contain"
-      loading="eager"
+      className="h-24 lg:h-28 w-auto object-contain transition-all duration-300"
     />
   </Link>
 );
 
-
-/* ─── Nav Links Data ─────────────────────────────────────────── */
+/* ───────────────── Navigation ───────────────── */
 const navLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Products', to: '/products' },
-  { label: 'Quality & Certifications', to: '/quality' },
-  { label: 'Contact', to: '/contact' },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Products", to: "/products" },
+  { label: "Quality & Certifications", to: "/quality" },
+  { label: "Contact", to: "/contact" },
 ];
 
-/* ─── Header Component ───────────────────────────────────────── */
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 16);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinkClass = ({ isActive }) =>
-    `font-poppins font-medium text-sm transition-colors duration-200 relative
-     after:absolute after:bottom-0 after:left-0 after:h-0.5 after:rounded-full after:transition-all after:duration-200
-     ${isActive
-       ? 'text-[#46127B] after:w-full after:bg-[#46127B]'
-       : 'text-[#1F2430]/70 hover:text-[#46127B] after:w-0 hover:after:w-full after:bg-[#46127B]'
+  const desktopNavClass = ({ isActive }) =>
+    `relative font-semibold text-bold transition-all duration-300
+     after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#46127B]
+     after:transition-all after:duration-300
+     ${
+       isActive
+         ? "text-[#46127B] after:w-full"
+         : "text-gray-700 hover:text-[#46127B] after:w-0 hover:after:w-full"
      }`;
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white shadow-[0_2px_24px_rgba(70,18,123,0.10)] py-2'
-            : 'bg-white/95 backdrop-blur-sm py-3'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-6">
-            {/* Logo */}
-            <Logo />
-
-            {/* Desktop Nav */}
-            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-7">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  end={link.to === '/'}
-                  className={navLinkClass}
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-            </nav>
-
-            {/* Right: Phone + CTA */}
-            <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 h-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-white shadow-lg py-1"
+          : "bg-white/95 backdrop-blur-md py-1"
+      }`}
+    >
+      {/* Top Bar - Social Media, Phone, Email */}
+      <div className="border-b border-[#03A58D]/20 bg-gradient-to-r from-[#46127B] via-[#46127B]/90 to-[#03A58D]/80">
+        <div className="w-full mx-auto px-4 lg:px-8 h-14 flex items-center">
+          <div className="flex items-center justify-between w-full">
+            {/* Left Side - Phone & Email */}
+            <div className="flex items-center gap-4">
               <a
                 href="tel:+919636901159"
-                className="flex items-center gap-2 text-sm font-medium text-[#1F2430]/70 hover:text-[#46127B] transition-colors"
-                aria-label="Call us at +91 96369 01159"
+                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-sm font-medium"
               >
-                <Phone size={15} strokeWidth={2.2} className="text-[#03A58D]" />
-                <span className="font-poppins">+91 96369 01159</span>
+                <Phone size={18} className="text-[#03A58D]" />
+                <span>+91 96369 01159</span>
               </a>
-              <Button
-                as={Link}
-                href="/contact"
-                variant="primary"
-                size="sm"
+              <span className="text-white/30">|</span>
+              <a
+                href="tel:+919833286629"
+                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-sm font-medium"
               >
-                Get a Quote
-                <ChevronRight size={15} strokeWidth={2.5} />
-              </Button>
+                <Phone size={18} className="text-[#03A58D]" />
+                <span>+91 98332 86629</span>
+              </a>
+              <span className="text-white/30 hidden sm:inline">|</span>
+              <a
+                href="mailto:sunlight.barmer@gmail.com"
+                className="hidden sm:flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-sm font-medium"
+              >
+                <Mail size={18} className="text-[#03A58D]" />
+                <span>sunlight.barmer@gmail.com</span>
+              </a>
             </div>
 
-            {/* Mobile Hamburger */}
-            <button
-              id="mobile-menu-toggle"
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              className="lg:hidden p-2 rounded-md text-[#46127B] hover:bg-[#DCEFE4] transition-colors"
-            >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            {/* Right Side - Social Media */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/sunlightforge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-br hover:from-[#1877F2] hover:via-[#166FE5] hover:to-[#0D5BD7]"
+                aria-label="Facebook"
+              >
+                <FaFacebook
+                  size={30}
+                  className="text-black group-hover:text-white transition-colors duration-300"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/sunlightforge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
+                aria-label="Instagram"
+              >
+                <RiInstagramFill
+                  size={30}
+                  className="text-black group-hover:text-white transition-colors duration-300"
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/sunlightforge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#f54646] hover:via-[#c81d1d]"
+                aria-label="YouTube"
+              >
+                <FaYoutube
+                  size={33}
+                  className="text-black group-hover:text-white transition-colors duration-300"
+                />
+              </a>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <div
-          id="mobile-menu"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <nav
-            aria-label="Mobile navigation"
-            className="bg-white border-t border-[#DCEFE4] px-4 py-4 flex flex-col gap-1"
-          >
-            {navLinks.map((link) => (
+      {/* Main Header */}
+      <div className=" w-full mx-auto px-4 lg:px-8 ">
+        <div className="flex items-center justify-between py-1">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <Logo />
+            <div className="hidden lg:block">
+              <p className="text-[#46127B] font-extrabold text-xl leading-tight tracking-wide">
+                SUNLIGHT FORGE & FITTING PVT. LTD.
+              </p>
+              <p className="text-[#03A58D] text-sm font-bold tracking-[3px] uppercase">
+                AN ISO 9000:2015 CERTIFIED CO.
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8 ">
+            {navLinks.map((item) => (
               <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === '/'}
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `block px-4 py-3 rounded-lg font-poppins font-medium text-sm transition-colors ${
-                    isActive
-                      ? 'bg-[#46127B]/8 text-[#46127B] font-semibold'
-                      : 'text-[#1F2430]/70 hover:bg-[#DCEFE4] hover:text-[#46127B]'
-                  }`
-                }
+                key={item.to}
+                to={item.to}
+                end={item.to === "/"}
+                className={desktopNavClass}
               >
-                {link.label}
+                {item.label}
               </NavLink>
             ))}
-            <div className="mt-3 pt-3 border-t border-[#DCEFE4] flex flex-col gap-3">
-              <a
-                href="tel:+919636901159"
-                className="flex items-center gap-2 px-4 text-sm font-medium text-[#1F2430]/70"
-              >
-                <Phone size={15} className="text-[#03A58D]" />
-                +91 96369 01159
-              </a>
-              <Button
-                as={Link}
-                href="/contact"
-                variant="primary"
-                size="sm"
-                className="mx-4"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get a Quote
-              </Button>
-            </div>
           </nav>
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 rounded-md"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? (
+              <X className="text-[#46127B] " size={24} />
+            ) : (
+              <Menu className="text-[#46127B]" size={24} />
+            )}
+          </button>
         </div>
-      </header>
-    </>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          mobileOpen ? "max-h-screen" : "max-h-0"
+        }`}
+      >
+        <nav className="bg-white border-t px-5 py-5 flex flex-col gap-2">
+          {navLinks.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              className={({ isActive }) =>
+                `px-4 py-3 rounded-lg transition-all ${
+                  isActive
+                    ? "bg-[#46127B] text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+
+          <div className="border-t mt-3 pt-4">
+            <a
+              href="tel:+919636901159"
+              className="flex items-center gap-2 mb-2 text-gray-700"
+            >
+              <Phone size={16} className="text-[#03A58D]" />
+              +91 96369 01159
+            </a>
+            <a
+              href="tel:+919833286629"
+              className="flex items-center gap-2 mb-2 text-gray-700"
+            >
+              <Phone size={16} className="text-[#03A58D]" />
+              +91 98332 86629
+            </a>
+            <a
+              href="mailto:sunlight.barmer@gmail.com"
+              className="flex items-center gap-2 mb-4 text-gray-700 text-sm break-all"
+            >
+              <Mail size={16} className="text-[#03A58D]" />
+              sunlight.barmer@gmail.com
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
   );
 };
 

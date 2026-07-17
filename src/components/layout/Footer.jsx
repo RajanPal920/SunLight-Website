@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 
+import logo from "../../assets/logo/logo.webp"
+
 /* ─── Brand Logo (footer version — uses real logo image) ──────── */
 const FooterLogo = () => (
   <div className="flex items-center">
     <img
-      src="/images/logo.webp"
+      src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
       className="h-16 w-auto object-contain"
     />

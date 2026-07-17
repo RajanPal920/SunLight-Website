@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../components/layout/Layout';
+
 import { Package } from 'lucide-react';
 
 const Products = () => {
   return (
-    <Layout>
+
       <div className="min-h-[60vh] flex flex-col items-center justify-center py-32 px-4">
         <div className="max-w-2xl w-full text-center flex flex-col items-center gap-6">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#46127B]/8 border border-[#46127B]/15">
@@ -25,7 +25,7 @@ const Products = () => {
           </p>
         </div>
       </div>
-    </Layout>
+  
   );
 };
 
