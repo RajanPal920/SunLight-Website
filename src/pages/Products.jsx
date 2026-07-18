@@ -150,11 +150,12 @@ const Products = () => {
               {filteredProducts.map((product) => {
                 const Icon = product.icon;
                 return (
-                  <div
+                  <Link
                     key={product.id}
-                    className={`bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group ${
+                    to={`/products/${product.slug}`}
+                    className={`group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ${
                       viewMode === "list" ? "flex flex-col sm:flex-row" : ""
-                    }`}
+                    } hover:bg-[#46127B]`}
                   >
                     {/* Product Image */}
                     <div
@@ -162,7 +163,7 @@ const Products = () => {
                         viewMode === "list"
                           ? "sm:w-48 md:w-64 flex-shrink-0"
                           : "w-full"
-                      }`}
+                      } group-hover:bg-[#46127B]/20`}
                     >
                       <img
                         src={product.image}
@@ -172,7 +173,7 @@ const Products = () => {
                         }`}
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#46127B]/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#46127B]/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider group-hover:bg-white/20 group-hover:text-white">
                           {product.category}
                         </span>
                       </div>
@@ -181,34 +182,31 @@ const Products = () => {
 
                     {/* Product Content */}
                     <div
-                      className={`p-4 sm:p-5 flex-1 flex flex-col ${
+                      className={`p-4 sm:p-5 flex-1 flex flex-col transition-colors duration-300 ${
                         viewMode === "list" ? "justify-center" : ""
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <div className="p-1.5 rounded-lg bg-[#46127B]/10 text-[#46127B]">
+                          <div className="p-1.5 rounded-lg bg-[#46127B]/10 text-[#46127B] group-hover:bg-white/20 group-hover:text-white transition-colors duration-300">
                             <Icon className="w-4 h-4" />
                           </div>
-                          <h3 className="font-poppins font-bold text-base sm:text-lg text-[#46127B] leading-tight">
+                          <h3 className="font-poppins font-bold text-base sm:text-lg text-[#46127B] group-hover:text-white transition-colors duration-300 leading-tight">
                             {product.name}
                           </h3>
                         </div>
                       </div>
 
-                      <p className="font-poppins text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed flex-1">
+                      <p className="font-poppins text-xs sm:text-sm text-slate-600 group-hover:text-white/90 transition-colors duration-300 mt-2 leading-relaxed flex-1">
                         {product.shortDescription}
                       </p>
 
-                      <Link
-                        to={`/products/${product.slug}`}
-                        className="inline-flex items-center gap-2 mt-4 text-[#46127B] font-semibold text-sm hover:text-[#03A58D] transition-colors group-hover:translate-x-1 duration-300"
-                      >
+                      <span className="inline-flex items-center gap-2 mt-4 text-[#46127B] font-semibold text-sm group-hover:text-white transition-colors duration-300 group-hover:translate-x-1">
                         View Details
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
