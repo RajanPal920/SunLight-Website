@@ -198,7 +198,7 @@ const Header = () => {
       {/* MAIN HEADER */}
       {/* =============================== */}
       <div className="w-full mx-auto px-3 xs:px-4 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-15">
           {/* ─── MOBILE: Logo with Company Name ─── */}
           <div className="flex lg:hidden items-center gap-2 flex-1 min-w-0">
             <Logo />
