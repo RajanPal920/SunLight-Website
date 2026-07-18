@@ -129,6 +129,18 @@ const countryCodes = {
   Myanmar: "mm",
 };
 
+// Color mapping for third-party logos (mobile colorful)
+const logoColors = {
+  ABS: "hover:bg-blue-100 border-blue-200",
+  "Bureau Veritas": "hover:bg-green-100 border-green-200",
+  DNV: "hover:bg-red-100 border-red-200",
+  "IR Class": "hover:bg-purple-100 border-purple-200",
+  "Lloyd's": "hover:bg-yellow-100 border-yellow-200",
+  SGS: "hover:bg-emerald-100 border-emerald-200",
+  TUV: "hover:bg-orange-100 border-orange-200",
+  UHDE: "hover:bg-cyan-100 border-cyan-200",
+};
+
 const Home = () => {
   // Hero images array for slideshow
   const heroImages = [hero, hero2, hero3, hero4, hero5];
@@ -408,7 +420,7 @@ const Home = () => {
       {/* HERO SECTION WITH SLIDESHOW */}
       {/* =============================== */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden"
         style={{
           backgroundImage: `url(${heroImages[currentImageIndex]})`,
           backgroundSize: "cover",
@@ -421,16 +433,16 @@ const Home = () => {
 
         {/* Animated Gradient Overlay */}
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#03A58D]/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#46127B]/30 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[600px] md:h-[800px] bg-[#03A58D]/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] bg-[#46127B]/30 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         {/* Premium Decorative Elements */}
-        <div className="absolute top-10 right-10 w-32 h-32 border border-[#03A58D]/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-10 left-10 w-24 h-24 border border-white/10 rounded-full blur-2xl" />
+        <div className="absolute top-10 right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border border-[#03A58D]/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-10 left-10 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 border border-white/10 rounded-full blur-2xl" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex items-center min-h-[80vh]">
+          <div className="flex items-center min-h-[70vh] sm:min-h-[80vh] py-8 sm:py-12">
             {/* Premium Text Content */}
             <motion.div
               initial="hidden"
@@ -441,17 +453,17 @@ const Home = () => {
               {/* Premium Badge */}
               <motion.div
                 variants={fadeUp}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6"
               >
-                <span className="w-2 h-2 bg-[#03A58D] rounded-full animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/90">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#03A58D] rounded-full animate-pulse" />
+                <span className="text-[8px] sm:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/90">
                   Premium Quality
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={fadeUp}
-                className="font-extrabold text-4xl uppercase sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] text-white font-sans [text-shadow:0_4px_40px_rgba(0,0,0,0.3)]"
+                className="font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.1] text-white font-sans [text-shadow:0_4px_40px_rgba(0,0,0,0.3)]"
               >
                 Engineered for
                 <br />
@@ -462,7 +474,7 @@ const Home = () => {
 
               <motion.p
                 variants={fadeUp}
-                className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl mt-6 font-medium [text-shadow:0_2px_20px_rgba(0,0,0,0.2)]"
+                className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mt-3 sm:mt-4 md:mt-6 font-medium [text-shadow:0_2px_20px_rgba(0,0,0,0.2)]"
               >
                 Our heavy-duty steel pipes and industrial tubing anchor critical
                 energy, processing, and infrastructure frameworks globally.
@@ -470,37 +482,37 @@ const Home = () => {
 
               <motion.div
                 variants={fadeUp}
-                className="flex flex-wrap items-center gap-4 pt-2 mt-2 font-bold"
+                className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 pt-2 mt-1 sm:mt-2 font-bold"
               >
-                <div className="flex items-center gap-2 text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <ShieldCheck className="w-4 h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
+                  <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
                   <span>ISO Certified</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <Globe2 className="w-4 h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
+                  <Globe2 className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
                   <span>Global Reach</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
-                  <Clock3 className="w-4 h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
+                  <Clock3 className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
                   <span>24/7 Support</span>
                 </div>
               </motion.div>
 
               <motion.div
                 variants={fadeUp}
-                className="flex flex-wrap items-center gap-4 pt-4"
+                className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3 sm:pt-4"
               >
                 <Link
                   to="/products"
-                  className="group inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#03A58D]/30 font-sans relative overflow-hidden"
+                  className="group inline-flex items-center gap-1.5 sm:gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#03A58D]/30 font-sans relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                   Explore Products
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 font-sans backdrop-blur-sm"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 border-2 border-white/30 hover:border-white text-white font-semibold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 font-sans backdrop-blur-sm"
                 >
                   Request a Quote
                 </Link>
@@ -508,7 +520,7 @@ const Home = () => {
 
               <motion.div
                 variants={fadeUp}
-                className="grid grid-cols-3 gap-4 pt-6 max-w-md"
+                className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 pt-4 sm:pt-6 max-w-md"
               >
                 {[
                   { value: "100%", label: "Ultrasonic Tested" },
@@ -517,12 +529,12 @@ const Home = () => {
                 ].map((stat, index) => (
                   <div
                     key={index}
-                    className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-3 border border-white/10"
+                    className="text-center bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 border border-white/10"
                   >
-                    <p className="text-2xl font-black text-[#03A58D] font-sans [text-shadow:0_0_30px_rgba(3,165,141,0.2)]">
+                    <p className="text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans [text-shadow:0_0_30px_rgba(3,165,141,0.2)]">
                       {stat.value}
                     </p>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-white/80 font-sans">
+                    <p className="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-white/80 font-sans">
                       {stat.label}
                     </p>
                   </div>
@@ -533,15 +545,15 @@ const Home = () => {
         </div>
 
         {/* Premium Navigation Dots */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-3">
+        <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2 sm:gap-3">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
               className={`transition-all duration-500 rounded-full ${
                 currentImageIndex === index
-                  ? "bg-[#03A58D] w-10 h-3 shadow-lg shadow-[#03A58D]/50"
-                  : "bg-white/30 hover:bg-white/50 w-3 h-3"
+                  ? "bg-[#03A58D] w-6 sm:w-8 md:w-10 h-1.5 sm:h-2 md:h-3 shadow-lg shadow-[#03A58D]/50"
+                  : "bg-white/30 hover:bg-white/50 w-2 sm:w-2.5 md:w-3 h-1.5 sm:h-2 md:h-3"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -554,7 +566,7 @@ const Home = () => {
             viewBox="0 0 1440 80"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
-            className="w-full h-16 sm:h-20"
+            className="w-full h-10 sm:h-14 md:h-16 lg:h-20"
           >
             <defs>
               <linearGradient
@@ -595,12 +607,12 @@ const Home = () => {
       {/* =============================== */}
       {/* TICKER TAPE */}
       {/* =============================== */}
-      <section className="w-full h-20 bg-[#46127B] py-3 overflow-hidden flex items-center border-y border-[#03A58D]/20 mt-10">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-12">
+      <section className="w-full h-14 sm:h-16 md:h-20 bg-[#46127B] py-2 sm:py-3 overflow-hidden flex items-center border-y border-[#03A58D]/20 mt-8 sm:mt-10">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 sm:gap-12">
           {[...Array(8)].map((_, i) => (
             <span
               key={i}
-              className="text-[20px] font-bold uppercase tracking-[0.25em] text-[#feffff] font-sans"
+              className="text-xs sm:text-sm md:text-base lg:text-xl font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#feffff] font-sans"
             >
               ◆ FORGING INDUSTRIAL RESILIENCE WORLDWIDE ◆
             </span>
@@ -611,30 +623,30 @@ const Home = () => {
       {/* =============================== */}
       {/* FORGING STRUCTURAL ABSOLUTE INTEGRITY */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeLeft}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
               <div className="flex items-center gap-3">
-                <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-                <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+                <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+                <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                   Operational Class: Heavy Infrastructure
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-black uppercase text-[#46127B] leading-tight font-sans">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-[#46127B] leading-tight font-sans">
                 Forging Structural
                 <br />
                 <span className="text-[#03A58D]">Absolute Integrity.</span>
               </h2>
 
-              <p className="text-slate-600 leading-relaxed text-lg font-sans">
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed font-sans">
                 Sunlight Forge & Fitting constructs high-yield component
                 architectures engineered exclusively for high-pressure,
                 severe-temperature environments. We cross-verify metallurgical
@@ -642,28 +654,28 @@ const Home = () => {
                 distribution networks.
               </p>
 
-              <div className="grid grid-cols-3 gap-4 pt-4">
-                <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <p className="text-2xl font-black text-[#03A58D] font-sans">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-4">
+                <div className="text-center p-2 sm:p-3 md:p-4 bg-slate-50 rounded-lg sm:rounded-xl border border-slate-100">
+                  <p className="text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans">
                     100%
                   </p>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
                     Ultrasonic Tested
                   </p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <p className="text-2xl font-black text-[#03A58D] font-sans">
+                <div className="text-center p-2 sm:p-3 md:p-4 bg-slate-50 rounded-lg sm:rounded-xl border border-slate-100">
+                  <p className="text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans">
                     9001
                   </p>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
                     ISO Certified
                   </p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <p className="text-2xl font-black text-[#03A58D] font-sans">
+                <div className="text-center p-2 sm:p-3 md:p-4 bg-slate-50 rounded-lg sm:rounded-xl border border-slate-100">
+                  <p className="text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans">
                     Zero
                   </p>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-500 font-sans">
                     Delamination Rate
                   </p>
                 </div>
@@ -675,7 +687,7 @@ const Home = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeRight}
-              className="bg-gradient-to-br from-[#46127B] to-[#320D5A] rounded-2xl p-8 text-white relative overflow-hidden"
+              className="bg-gradient-to-br from-[#46127B] to-[#320D5A] rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden"
             >
               <div
                 className="absolute inset-0 opacity-5 pointer-events-none"
@@ -688,51 +700,44 @@ const Home = () => {
                 }}
               />
 
-              <div className="relative z-10 space-y-6">
+              <div className="relative z-10 space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-0.5 bg-[#03A58D]"></span>
-                  <span className="text-[10px] font-bold tracking-[0.2em] text-[#03A58D] uppercase font-sans">
+                  <span className="w-6 sm:w-8 h-0.5 bg-[#03A58D]"></span>
+                  <span className="text-[8px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] text-[#03A58D] uppercase font-sans">
                     Quality Management System
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black uppercase tracking-tight font-sans">
+                <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight font-sans">
                   ISO 9001:2015 Certificate
                 </h3>
 
-                <p className="text-slate-300 text-sm leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
                   Verifies our strict international compliance with
                   high-integrity quality control, advanced manufacturing
                   assessments, product reliability tracking, and raw material
                   validation standards.
                 </p>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   <a
                     href="#"
-                    className="inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-all duration-300 hover:-translate-y-0.5 font-sans"
+                    className="inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-xs sm:text-sm px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 font-sans"
                   >
-                    <FileText size={16} />
+                    <FileText size={20} className="sm:size-[20px]" />
                     View Certificate
-                    <span className="text-[9px] opacity-70">PDF</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-all duration-300 hover:bg-white/10 font-sans"
-                  >
-                    <Download size={16} />
-                    Download PDF
+                    <span className="text-[10px] opacity-70">PDF</span>
                   </a>
                 </div>
 
-                <div className="flex items-center gap-4 pt-2">
-                  <span className="flex items-center gap-1.5 text-xs text-[#03A58D] font-bold uppercase tracking-wider font-sans">
-                    <CheckCircle size={14} />
+                <div className="flex items-center gap-3 sm:gap-4 pt-2">
+                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-[#03A58D] font-bold uppercase tracking-wider font-sans">
+                    <CheckCircle size={12} className="sm:size-[14px]" />
                     ISO Certified
                   </span>
-                  <span className="w-px h-4 bg-white/20"></span>
-                  <span className="flex items-center gap-1.5 text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">
-                    <ShieldCheck size={14} />
+                  <span className="w-px h-3 sm:h-4 bg-white/20"></span>
+                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider font-sans">
+                    <ShieldCheck size={12} className="sm:size-[14px]" />
                     Quality Assured
                   </span>
                 </div>
@@ -748,30 +753,30 @@ const Home = () => {
       <Cards />
 
       {/* =============================== */}
-      {/* THIRD-PARTY INSPECTION AGENCIES */}
+      {/* THIRD-PARTY INSPECTION AGENCIES - COLORFUL ON MOBILE */}
       {/* =============================== */}
-      <section className="w-full py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full py-12 sm:py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Quality Assurance Framework
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Approved Third-Party
               <br />
               <span className="text-[#03A58D]">Inspection Agencies</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               Our engineering components are universally verified and certified
               by global metallurgical authorities.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-4 mt-8 sm:mt-10 md:mt-12 max-w-6xl mx-auto">
             {thirdPartyLogos.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -780,14 +785,12 @@ const Home = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: index * 0.05 }}
-                className="group flex items-center justify-center p-4 bg-white rounded-xl border border-slate-200 shadow-sm
-      hover:shadow-2xl hover:scale-105 hover:-translate-y-1
-      transition-all duration-300 ease-out cursor-pointer"
+                className="group flex items-center justify-center p-3 sm:p-4 bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer hover:bg-white"
               >
                 <img
                   src={item.logo}
                   alt={item.name}
-                  className="w-full h-12 object-contain opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300 grayscale"
+                  className="w-full h-8 sm:h-10 md:h-12 object-contain opacity-100 group-hover:opacity-100 transition-all duration-300"
                 />
               </motion.div>
             ))}
@@ -798,22 +801,22 @@ const Home = () => {
       {/* =============================== */}
       {/* GLOBAL INDUSTRIAL CERTIFICATIONS */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Quality Assurance Protocol
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Global Industrial
               <br />
               <span className="text-[#03A58D]">Certifications</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               Our commitment to zero-failure performance is backed by globally
               recognized triple-standard certifications, ensuring absolute
               compliance for high-integrity industrial environments.
@@ -825,7 +828,7 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12"
           >
             {[
               {
@@ -850,15 +853,15 @@ const Home = () => {
               <motion.div
                 key={index}
                 variants={fadeUp}
-                className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-[#03A58D]/40 transition-all duration-300 hover:shadow-lg group"
+                className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-slate-200 hover:border-[#03A58D]/40 transition-all duration-300 hover:shadow-lg group"
               >
-                <div className="w-14 h-14 rounded-xl bg-[#03A58D]/10 group-hover:bg-[#03A58D] transition-all duration-300 flex items-center justify-center mb-4">
-                  <cert.icon className="w-7 h-7 text-[#03A58D] group-hover:text-white transition-all duration-300" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-[#03A58D]/10 group-hover:bg-[#03A58D] transition-all duration-300 flex items-center justify-center mb-3 sm:mb-4">
+                  <cert.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#03A58D] group-hover:text-white transition-all duration-300" />
                 </div>
-                <h3 className="text-lg font-black text-[#46127B] uppercase font-sans">
+                <h3 className="text-base sm:text-lg font-black text-[#46127B] uppercase font-sans">
                   {cert.title}
                 </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-sans">
                   {cert.description}
                 </p>
               </motion.div>
@@ -870,7 +873,7 @@ const Home = () => {
       {/* =============================== */}
       {/* STRATEGIC MANUFACTURER */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -882,24 +885,24 @@ const Home = () => {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#03A58D] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#03A58D] uppercase font-sans">
                 Global Metallurgy Standards
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black uppercase text-white leading-tight font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase text-white leading-tight font-sans">
               Strategic Manufacturer of
               <br />
               <span className="text-[#03A58D]">High-Yield</span>
             </h2>
-            <h3 className="text-2xl md:text-3xl font-bold uppercase text-slate-300 mt-2 font-sans">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold uppercase text-slate-300 mt-2 font-sans">
               Industrial Infrastructure Components
             </h3>
-            <p className="mt-4 text-slate-300 max-w-3xl mx-auto text-sm leading-relaxed font-sans">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-300 max-w-3xl mx-auto leading-relaxed font-sans">
               Sunlight Forge & Fitting commands systemic quality control over a
               diverse inventory of critical pipeline configurations, forged
               steel assemblies, structural fasteners, and heavy-duty plates.
@@ -908,7 +911,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mt-8 sm:mt-10 md:mt-12 max-w-5xl mx-auto">
             {[
               { label: "Quality Assurance", sub: "Global Quality Standards" },
               { label: "Global Export", sub: "Worldwide Documentation" },
@@ -923,13 +926,13 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:border-[#03A58D]/40 transition-all duration-300 hover:bg-white/10"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center hover:border-[#03A58D]/40 transition-all duration-300 hover:bg-white/10"
               >
-                <CheckCircle className="w-5 h-5 text-[#03A58D] mx-auto mb-2" />
-                <p className="text-xs font-bold text-white uppercase font-sans">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+                <p className="text-[10px] sm:text-xs font-bold text-white uppercase font-sans">
                   {item.label}
                 </p>
-                <p className="text-[9px] text-slate-400 mt-0.5 font-sans">
+                <p className="text-[8px] sm:text-[9px] text-slate-400 mt-0.5 font-sans">
                   {item.sub}
                 </p>
               </motion.div>
@@ -941,22 +944,22 @@ const Home = () => {
       {/* =============================== */}
       {/* INDUSTRIES WE ANCHOR - WITH IMAGES */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Global Operational Footprint
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Industries We
               <br />
               <span className="text-[#03A58D]">Anchor</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               Delivering certified industrial components to mission-critical
               sectors worldwide.
             </p>
@@ -967,30 +970,30 @@ const Home = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12"
           >
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
                 variants={fadeUp}
                 transition={{ delay: index * 0.08 }}
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-[#03A58D] hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 hover:border-[#03A58D] hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               >
-                <div className="relative w-full h-40 overflow-hidden">
+                <div className="relative w-full h-32 sm:h-45 overflow-hidden">
                   <img
                     src={industry.image}
                     alt={industry.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#46127B]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 " />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100 ">
-                    <p className="text-xs font-bold uppercase tracking-wider font-sans ">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#46127B]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider font-sans">
                       Industry Sector
                     </p>
                   </div>
                 </div>
-                <div className="p-5 group-hover:bg-[#46127B]">
-                  <h3 className="text-sm font-bold text-[#46127B] uppercase group-hover:text-[#03A58D]  transition-colors font-sans">
+                <div className="px-2 py-2 sm:p-5 flex  group-hover:bg-[#46127B]">
+                  <h3 className="sm:text-sm font-bold text-[#46127B] uppercase group-hover:text-[#03A58D] transition-colors font-sans">
                     {industry.name}
                   </h3>
                 </div>
@@ -1003,20 +1006,20 @@ const Home = () => {
       {/* =============================== */}
       {/* PARTNERS MARQUEE */}
       {/* =============================== */}
-      <section className="w-full py-16 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+      <section className="w-full py-12 sm:py-16 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Trusted Partners
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Our <span className="text-[#03A58D]">Partners</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               We collaborate with industry leaders to deliver exceptional value
               to our clients.
             </p>
@@ -1024,12 +1027,12 @@ const Home = () => {
 
           {/* Infinite Moving Partners */}
           <div className="relative overflow-hidden">
-            <div className="animate-partners-marquee flex items-center gap-12 w-max">
+            <div className="animate-partners-marquee flex items-center gap-6 sm:gap-8 md:gap-12 w-max">
               {/* First set of partners */}
               {partners.map((partner, index) => (
                 <div
                   key={`first-${index}`}
-                  className="flex-shrink-0 w-48 h-24 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-center p-4 hover:border-[#03A58D] transition-all duration-300 hover:shadow-md"
+                  className="flex-shrink-0 w-32 sm:w-40 md:w-48 h-16 sm:h-20 md:h-24 bg-slate-50 rounded-lg sm:rounded-xl border border-slate-200 flex items-center justify-center p-2 sm:p-3 md:p-4 hover:border-[#03A58D] transition-all duration-300 hover:shadow-md"
                 >
                   <img
                     src={partner}
@@ -1042,7 +1045,7 @@ const Home = () => {
               {partners.map((partner, index) => (
                 <div
                   key={`second-${index}`}
-                  className="flex-shrink-0 w-48 h-24 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-center p-4 hover:border-[#03A58D] transition-all duration-300 hover:shadow-md"
+                  className="flex-shrink-0 w-32 sm:w-40 md:w-48 h-16 sm:h-20 md:h-24 bg-slate-50 rounded-lg sm:rounded-xl border border-slate-200 flex items-center justify-center p-2 sm:p-3 md:p-4 hover:border-[#03A58D] transition-all duration-300 hover:shadow-md"
                 >
                   <img
                     src={partner}
@@ -1059,28 +1062,28 @@ const Home = () => {
       {/* =============================== */}
       {/* SERVICES */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Our Services
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Engineering
               <br />
               <span className="text-[#03A58D]">Excellence</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               Precision manufacturing backed by technical expertise, rigorous
               inspection, and complete supply-chain transparency.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -1090,22 +1093,22 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-[#03A58D]/40 transition-all duration-300 hover:shadow-lg group"
+                  className="bg-slate-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-slate-200 hover:border-[#03A58D]/40 transition-all duration-300 hover:shadow-lg group"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <div className="flex-shrink-0">
-                      <div className="w-14 h-14 rounded-xl bg-[#46127B] flex items-center justify-center group-hover:bg-[#03A58D] transition-all duration-300">
-                        <span className="text-lg font-black text-white group-hover:text-white transition-all duration-300 font-sans">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-[#46127B] flex items-center justify-center group-hover:bg-[#03A58D] transition-all duration-300">
+                        <span className="text-base sm:text-lg font-black text-white group-hover:text-white transition-all duration-300 font-sans">
                           {service.number}
                         </span>
                       </div>
-                      <Icon className="w-6 h-6 text-[#03A58D] mt-2 mx-auto" />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#03A58D] mt-2 mx-auto" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-black text-[#46127B] uppercase font-sans">
+                      <h3 className="text-base sm:text-lg font-black text-[#46127B] uppercase font-sans">
                         {service.title}
                       </h3>
-                      <p className="text-sm text-slate-600 mt-2 leading-relaxed font-sans">
+                      <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-sans">
                         {service.description}
                       </p>
                     </div>
@@ -1120,7 +1123,7 @@ const Home = () => {
       {/* =============================== */}
       {/* GLOBAL FOOTPRINT & DOMESTIC REACH */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -1132,21 +1135,21 @@ const Home = () => {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#03A58D] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#03A58D] uppercase font-sans">
                 Supply Chain Excellence
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-white leading-tight font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-white leading-tight font-sans">
               Global Footprint
               <br />
               <span className="text-[#03A58D]">& Domestic Reach</span>
             </h2>
-            <p className="mt-4 text-slate-300 max-w-3xl mx-auto text-sm leading-relaxed font-sans">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-300 max-w-3xl mx-auto leading-relaxed font-sans">
               Sunlight Forge & Fitting operates a sophisticated industrial
               supply chain, serving as a critical material partner for
               refineries, petrochemical plants, and power stations across 50+
@@ -1154,17 +1157,19 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
             >
-              <Globe2 className="w-8 h-8 text-[#03A58D] mx-auto mb-2" />
-              <p className="text-3xl font-black text-white font-sans">50+</p>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              <Globe2 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+                50+
+              </p>
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
                 Export Countries
               </p>
             </motion.div>
@@ -1174,11 +1179,13 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
             >
-              <MapPin className="w-8 h-8 text-[#03A58D] mx-auto mb-2" />
-              <p className="text-3xl font-black text-white font-sans">100+</p>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+                100+
+              </p>
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
                 Domestic Hubs
               </p>
             </motion.div>
@@ -1188,11 +1195,13 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
             >
-              <Clock3 className="w-8 h-8 text-[#03A58D] mx-auto mb-2" />
-              <p className="text-3xl font-black text-white font-sans">12</p>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              <Clock3 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+                12
+              </p>
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
                 Hours Response
               </p>
             </motion.div>
@@ -1202,11 +1211,13 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
             >
-              <ShieldCheck className="w-8 h-8 text-[#03A58D] mx-auto mb-2" />
-              <p className="text-3xl font-black text-white font-sans">100%</p>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+                100%
+              </p>
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
                 Quality Assured
               </p>
             </motion.div>
@@ -1215,31 +1226,31 @@ const Home = () => {
       </section>
 
       {/* =============================== */}
-      {/* NATIONAL INFRASTRUCTURE SUPPORT - Box Style Cities */}
+      {/* NATIONAL INFRASTRUCTURE SUPPORT */}
       {/* =============================== */}
-      <section className="w-full py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+      <section className="w-full py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 National Infrastructure Support
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Strategic Domestic
               <br />
               <span className="text-[#03A58D]">Supply</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               Sunlight Forge & Fitting serves as a critical material partner for
               India's premier industrial hubs, delivering high-integrity alloys
               for zero-failure performance.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto">
             {domesticCities.map((city, index) => (
               <motion.div
                 key={city}
@@ -1250,16 +1261,16 @@ const Home = () => {
                   delay: (index % 10) * 0.04,
                 }}
                 viewport={{ once: true }}
-                className="group flex items-center gap-3 rounded-full bg-white border border-slate-200 px-4 py-3 shadow-sm hover:shadow-lg hover:border-[#03A58D] hover:bg-[#03A58D]/5 transition-all duration-300 cursor-pointer"
+                className="group flex items-center gap-2 sm:gap-3 rounded-full bg-white border border-slate-200 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 shadow-sm hover:shadow-lg hover:border-[#03A58D] hover:bg-[#03A58D]/5 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-9 h-9 rounded-full bg-[#46127B]/10 flex items-center justify-center group-hover:bg-[#03A58D]/15 transition-all">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-[#46127B]/10 flex items-center justify-center group-hover:bg-[#03A58D]/15 transition-all">
                   <MapPin
-                    size={16}
-                    className="text-[#46127B] group-hover:text-[#03A58D]"
+                    size={12}
+                    className="sm:size-[14px] md:size-[16px] text-[#46127B] group-hover:text-[#03A58D]"
                   />
                 </div>
 
-                <span className="text-sm font-medium text-slate-700 group-hover:text-[#46127B] font-sans">
+                <span className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-700 group-hover:text-[#46127B] font-sans">
                   {city}
                 </span>
               </motion.div>
@@ -1269,24 +1280,24 @@ const Home = () => {
       </section>
 
       {/* =============================== */}
-      {/* INTERNATIONAL EXPORT NETWORK - 5 Columns with Flags */}
+      {/* INTERNATIONAL EXPORT NETWORK */}
       {/* =============================== */}
-      <section className="w-full py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+      <section className="w-full py-12 sm:py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Global Trade Authority
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               International
               <br />
               <span className="text-[#03A58D]">Export Network</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-500 max-w-2xl mx-auto font-sans">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto font-sans">
               As a premier ISO Certified manufacturer, Sunlight Forge & Fitting
               maintains a high-velocity export corridor, delivering
               precision-engineered piping solutions to over 50 countries
@@ -1294,7 +1305,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto">
             {Object.keys(countryCodes).map((country, index) => (
               <motion.div
                 key={country}
@@ -1302,20 +1313,20 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: (index % 10) * 0.04 }}
                 viewport={{ once: true }}
-                className="group flex items-center gap-3 bg-white rounded-xl border border-slate-200 px-3 py-3 shadow-sm hover:shadow-lg hover:border-[#03A58D] transition-all duration-300"
+                className="group flex items-center gap-2 sm:gap-3 bg-white rounded-lg sm:rounded-xl border border-slate-200 px-2 sm:px-3 py-2 sm:py-3 shadow-sm hover:shadow-lg hover:border-[#03A58D] transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg bg-slate-100 flex items-center justify-center">
                   <span
-                    className={`fi fi-${countryCodes[country]} text-2xl`}
+                    className={`fi fi-${countryCodes[country]} text-xl sm:text-2xl`}
                   ></span>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-[#46127B] leading-tight font-sans">
+                  <h3 className="text-[10px] sm:text-xs md:text-sm font-semibold text-[#46127B] leading-tight font-sans">
                     {country}
                   </h3>
 
-                  <p className="text-[10px] uppercase tracking-wider text-slate-500 font-sans">
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-wider text-slate-500 font-sans">
                     Export
                   </p>
                 </div>
@@ -1328,24 +1339,24 @@ const Home = () => {
       {/* =============================== */}
       {/* TESTIMONIALS */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-xs font-bold tracking-[0.25em] text-[#46127B] uppercase font-sans">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#46127B] uppercase font-sans">
                 Market Trust
               </span>
-              <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-[#46127B] font-sans">
               Industrial
               <br />
               <span className="text-[#03A58D]">Impact</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -1353,29 +1364,29 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+                className="bg-slate-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-[#46127B] flex items-center justify-center text-white font-black text-xl font-sans">
+                <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-[#46127B] flex items-center justify-center text-white font-black text-base sm:text-lg md:text-xl font-sans">
                     {testimonial.initials}
                   </div>
                   <div>
-                    <p className="font-bold text-[#46127B] text-sm font-sans">
+                    <p className="font-bold text-[#46127B] text-xs sm:text-sm font-sans">
                       {testimonial.author}
                     </p>
-                    <p className="text-xs text-[#03A58D] font-medium font-sans">
+                    <p className="text-[10px] sm:text-xs text-[#03A58D] font-medium font-sans">
                       {testimonial.role}
                     </p>
                   </div>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed italic font-sans">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic font-sans">
                   "{testimonial.quote}"
                 </p>
-                <div className="mt-4 flex items-center gap-1">
+                <div className="mt-3 sm:mt-4 flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-4 h-4 text-[#03A58D] fill-current"
+                      className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D] fill-current"
                       viewBox="0 0 20 20"
                     >
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -1391,7 +1402,7 @@ const Home = () => {
       {/* =============================== */}
       {/* CTA SECTION */}
       {/* =============================== */}
-      <section className="w-full py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
+      <section className="w-full py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#46127B] to-[#320D5A] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{
@@ -1403,37 +1414,37 @@ const Home = () => {
           }}
         />
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="w-10 h-0.5 bg-[#03A58D]"></span>
-            <span className="text-xs font-bold tracking-[0.25em] text-[#03A58D] uppercase font-sans">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#03A58D] uppercase font-sans">
               Get In Touch
             </span>
-            <span className="w-10 h-0.5 bg-[#03A58D]"></span>
+            <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-black uppercase text-white leading-tight font-sans">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase text-white leading-tight font-sans">
             Ready to Build Your
             <br />
             <span className="text-[#03A58D]">Industrial Infrastructure?</span>
           </h2>
 
-          <p className="mt-4 text-slate-300 max-w-2xl mx-auto font-sans">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto font-sans">
             Connect with our team of metallurgical experts for certified
             components, technical support, and global supply chain solutions.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#03A58D]/25 font-sans"
+              className="inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#03A58D]/25 font-sans"
             >
               Request a Quote
-              <ArrowRight size={18} />
+              <ArrowRight size={16} className="sm:size-[18px]" />
             </Link>
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 font-sans"
+              className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 font-sans"
             >
               Explore Products
             </Link>
@@ -1444,25 +1455,25 @@ const Home = () => {
       {/* =============================== */}
       {/* FLOATING WHATSAPP & CALL BUTTONS */}
       {/* =============================== */}
-      <div className="fixed bottom-8 right-6 z-50 flex flex-col gap-4">
+      <div className="fixed bottom-4 sm:bottom-6 md:bottom-8 right-3 sm:right-4 md:right-6 z-50 flex flex-col gap-2 sm:gap-3 md:gap-4">
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/919636901159"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 shadow-green-500/40"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-green-500 shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 shadow-green-500/40"
           aria-label="Contact us on WhatsApp"
         >
-          <IoLogoWhatsapp className="h-7 w-7 text-white" />
+          <IoLogoWhatsapp className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
         </a>
 
         {/* Call Button */}
         <a
           href="tel:+919636901159"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-500 shadow-lg hover:bg-[#053769] hover:scale-110 transition-all duration-300 shadow-[#46127B]/40"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-blue-500 shadow-lg hover:bg-[#053769] hover:scale-110 transition-all duration-300 shadow-[#46127B]/40"
           aria-label="Call us"
         >
-          <IoIosCall className="h-7 w-7 text-white" />
+          <IoIosCall className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
         </a>
       </div>
 
