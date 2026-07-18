@@ -20,7 +20,7 @@ const Logo = () => (
     <img
       src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
-      className="h-14 xs:h-16 sm:h-18 md:h-20 lg:h-20 xl:h-24 w-auto object-contain transition-all duration-300"
+      className="h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-24 w-auto object-contain transition-all duration-300"
     />
   </Link>
 );
@@ -70,112 +70,123 @@ const Header = () => {
       }`}
     >
       {/* =============================== */}
-      {/* TOP BAR - Mobile Optimized */}
+      {/* TOP BAR - Fully Responsive */}
       {/* =============================== */}
       <div className="border-b border-[#03A58D]/20 bg-gradient-to-r from-[#46127B] via-[#46127B]/90 to-[#03A58D]/80">
-        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 flex flex-col items-center">
-          {/* Mobile View - Phone numbers in a row, email below */}
-          <div className="flex flex-col items-center w-full md:hidden">
-            <div className="flex items-center justify-center gap-3">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4">
+          {/* ─── MOBILE TOP BAR ─── */}
+          <div className="flex md:hidden flex-col items-center gap-0.5">
+            {/* Row 1: Phone numbers */}
+            <div className="flex items-center justify-center gap-2 xs:gap-3">
               <a
                 href="tel:+919636901159"
-                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs font-medium"
+                className="flex items-center gap-1 xs:gap-1.5 text-white/90 hover:text-white transition-colors text-[9px] xs:text-[10px] font-medium whitespace-nowrap"
               >
-                <Phone size={15} className="text-[#03A58D]" />
-                <span>+91 96369 01159</span>
+                <Phone
+                  size={15}
+                  className="xs:size-[12px] text-[#03A58D] flex-shrink-0"
+                />
+                <span className="text-xm">+91 96369 01159</span>
               </a>
-              <span className="text-white/30">|</span>
+              <span className="text-white/30 text-[10px]">|</span>
               <a
                 href="tel:+919833286629"
-                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs font-medium"
+                className="flex items-center gap-1 xs:gap-1.5 text-white/90 hover:text-white transition-colors text-[9px] xs:text-[10px] font-medium whitespace-nowrap"
               >
-                <Phone size={15} className="text-[#03A58D]" />
-                <span>+91 98332 86629</span>
+                <Phone
+                  size={15}
+                  className="xs:size-[12px] text-[#03A58D] flex-shrink-0"
+                />
+                <span className="text-xm">+91 98332 86629</span>
               </a>
             </div>
+            {/* Row 2: Email */}
             <a
               href="mailto:sunlight.barmer@gmail.com"
-              className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors text-[10px] font-medium mt-0.5"
+              className="flex items-center gap-1 xs:gap-1.5 text-white/80 hover:text-white transition-colors text-[8px] xs:text-[9px] font-medium"
             >
-              <Mail size={18} className="text-[#03A58D]" />
+              <Mail
+                size={18}
+                className="xs:size-[10px] text-[#03A58D] flex-shrink-0"
+              />
               <span className="text-sm">sunlight.barmer@gmail.com</span>
             </a>
           </div>
 
-          {/* Tablet & Desktop View */}
+          {/* ─── TABLET & DESKTOP TOP BAR ─── */}
           <div className="hidden md:flex items-center justify-between w-full">
-            {/* Left Side - Phone & Email */}
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+            {/* Left Side */}
+            <div className="flex items-center gap-3 lg:gap-4">
               <a
                 href="tel:+919636901159"
-                className="flex items-center gap-1 xs:gap-1.5 text-white/90 hover:text-white transition-colors text-[10px] xs:text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap"
+                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs lg:text-sm font-medium whitespace-nowrap"
               >
                 <Phone
-                  size={13}
-                  className="xs:size-[13px] sm:size-[14px] md:size-[15px] lg:size-[16px] text-[#03A58D] flex-shrink-0"
+                  size={16}
+                  className="lg:size-[15px] text-[#03A58D] flex-shrink-0"
                 />
-                <span>+91 96369 01159</span>
+                +91 96369 01159
               </a>
               <span className="text-white/30">|</span>
               <a
                 href="tel:+919833286629"
-                className="flex items-center gap-1 xs:gap-1.5 text-white/90 hover:text-white transition-colors text-[10px] xs:text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap"
+                className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs lg:text-sm font-medium whitespace-nowrap"
               >
                 <Phone
-                  size={13}
-                  className="xs:size-[13px] sm:size-[14px] md:size-[15px] lg:size-[16px] text-[#03A58D] flex-shrink-0"
+                  size={16}
+                  className="lg:size-[15px] text-[#03A58D] flex-shrink-0"
                 />
-                <span>+91 98332 86629</span>
+                +91 98332 86629
               </a>
-              <span className="text-white/30 hidden sm:inline">|</span>
+              <span className="text-white/30 hidden xl:inline">|</span>
               <a
                 href="mailto:sunlight.barmer@gmail.com"
-                className="hidden sm:flex items-center gap-1 xs:gap-1.5 text-white/90 hover:text-white transition-colors text-[10px] xs:text-[10px] sm:text-xs md:text-sm font-medium"
+                className="hidden xl:flex items-center gap-1.5 text-white/90 hover:text-white transition-colors text-xs lg:text-sm font-medium"
               >
                 <Mail
-                  size={13}
-                  className="xs:size-[13px] sm:size-[14px] md:size-[15px] lg:size-[16px] text-[#03A58D] flex-shrink-0"
+                  size={18}
+                  className="lg:size-[15px] text-[#03A58D] flex-shrink-0"
                 />
-                <span>sunlight.barmer@gmail.com</span>
+                sunlight.barmer@gmail.com
               </a>
             </div>
 
-            {/* Right Side - Social Media (Hidden on Mobile) */}
-            <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3">
+            {/* Right Side - Social Media */}
+            <div className="flex items-center gap-2 lg:gap-3">
               <a
                 href="https://www.facebook.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-br hover:from-[#1877F2] hover:via-[#166FE5] hover:to-[#0D5BD7]"
+                className="group flex h-7 w-7 lg:h-8 lg:w-8 xl:h-9 xl:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-br hover:from-[#1877F2] hover:via-[#166FE5] hover:to-[#0D5BD7]"
                 aria-label="Facebook"
               >
                 <FaFacebook
-                  size={14}
-                  className="xs:size-[15px] sm:size-[17px] md:size-[19px] lg:size-[22px] text-white/80 group-hover:text-white transition-colors duration-300"
+                  size={15}
+                  className="lg:size-[18px] xl:size-[22px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
               <a
                 href="https://www.instagram.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
+                className="group flex h-7 w-7 lg:h-8 lg:w-8 xl:h-9 xl:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]"
                 aria-label="Instagram"
               >
                 <RiInstagramFill
-                  size={14}
-                  className="xs:size-[15px] sm:size-[17px] md:size-[19px] lg:size-[22px] text-white/80 group-hover:text-white transition-colors duration-300"
+                  size={15}
+                  className="lg:size-[18px] xl:size-[22px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
               <a
                 href="https://www.youtube.com/sunlightforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#f54646] hover:via-[#c81d1d]"
+                className="group flex h-7 w-7 lg:h-8 lg:w-8 xl:h-9 xl:w-9 items-center justify-center rounded-full transition-all duration-300 hover:scale-125 hover:bg-gradient-to-tr hover:from-[#f54646] hover:via-[#c81d1d]"
                 aria-label="YouTube"
               >
                 <FaYoutube
-                  size={15}
-                  className="xs:size-[16px] sm:size-[18px] md:size-[20px] lg:size-[24px] text-white/80 group-hover:text-white transition-colors duration-300"
+                  size={16}
+                  className="lg:size-[20px] xl:size-[24px] text-white/80 group-hover:text-white transition-colors duration-300"
                 />
               </a>
             </div>
@@ -184,36 +195,34 @@ const Header = () => {
       </div>
 
       {/* =============================== */}
-      {/* MAIN HEADER - Mobile Optimized */}
+      {/* MAIN HEADER */}
       {/* =============================== */}
       <div className="w-full mx-auto px-3 xs:px-4 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-4">
-        <div className="flex items-center justify-between h-15">
-          {/* Logo & Company Name - Mobile (Logo on top, Name below) */}
-          <div className="flex lg:hidden items-center flex-1 min-w-0">
+        <div className="flex items-center justify-between">
+          {/* ─── MOBILE: Logo with Company Name ─── */}
+          <div className="flex lg:hidden items-center gap-2 flex-1 min-w-0">
             <Logo />
-
-            <div className="flex flex-col ml-2 min-w-0">
-              <span className="font-extrabold text-[#46127B] text-[10px] leading-tight truncate">
-                SUNLIGHT FORGE & FITTING PVT. LTD
+            <div className="flex flex-col min-w-0">
+              <span className="font-extrabold text-[#46127B] text-[10px] xs:text-xs leading-tight truncate">
+                SUNLIGHT FORGE & FITTING PVT LTD.
               </span>
 
-              <span className="text-[#03A58D] text-[8px] font-bold uppercase truncate">
+              <span className="text-[#03A58D] text-[7px] xs:text-[8px] font-bold tracking-[1px] xs:tracking-[1.5px] uppercase truncate">
                 ISO 9001:2015 CERTIFIED
               </span>
             </div>
           </div>
 
-          {/* Logo & Company Name - Desktop */}
-          <div className="hidden lg:flex items-center gap-4 min-w-[360px]">
+          {/* ─── DESKTOP: Logo with Company Name ─── */}
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
             <Logo />
-
-            <div>
-              <h2 className="text-[#46127B] font-black text-xl xl:text-2xl leading-tight">
-                SUNLIGHT FORGE & FITTING PVT. LTD
-              </h2>
-              <p className="text-[#03A58D] text-sm tracking-[3px] uppercase font-semibold mt-1">
-                ISO 9001 : 2015 Certified Company
-              </p>
+            <div className="flex flex-col">
+              <span className="font-black text-[#46127B] text-base lg:text-lg xl:text-2xl leading-tight">
+                SUNLIGHT FORGE & FITTING PVT LTD.
+              </span>
+              <span className="text-[#03A58D] text-[10px] lg:text-xs xl:text-sm font-bold tracking-[2px] lg:tracking-[2.5px] xl:tracking-[3px] uppercase">
+                ISO 9001:2015 CERTIFIED COMPANY
+              </span>
             </div>
           </div>
 
@@ -233,7 +242,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-1.5 xs:p-2 rounded-md hover:bg-[#46127B]/10 transition-colors"
+            className="lg:hidden p-1.5 xs:p-2 rounded-md hover:bg-[#46127B]/10 transition-colors flex-shrink-0"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >

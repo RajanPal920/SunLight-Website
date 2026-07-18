@@ -415,12 +415,11 @@ const Home = () => {
           content="Premium quality stainless steel flanges, forged pipe fittings, and ferrous & non-ferrous metals for oil & gas, chemical, power, and marine industries."
         />
       </Helmet>
-
       {/* =============================== */}
-      {/* HERO SECTION WITH SLIDESHOW */}
+      {/* HERO SECTION WITH SLIDESHOW - IMPROVED */}
       {/* =============================== */}
       <section
-        className="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-screen flex items-center overflow-hidden w-full"
         style={{
           backgroundImage: `url(${heroImages[currentImageIndex]})`,
           backgroundSize: "cover",
@@ -429,38 +428,39 @@ const Home = () => {
         }}
       >
         {/* Premium Dark Overlay with Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#46127B]/80 via-[#46127B]/10 to-transparent border-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#46127B]/80 via-[#46127B]/40 to-[#46127B]/10 border-none"></div>
 
         {/* Animated Gradient Overlay */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[600px] md:h-[800px] bg-[#03A58D]/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] bg-[#46127B]/30 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 opacity-20 sm:opacity-30">
+          <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] md:w-[800px] h-[300px] sm:h-[500px] md:h-[800px] bg-[#03A58D]/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[200px] sm:w-[400px] md:w-[600px] h-[200px] sm:h-[400px] md:h-[600px] bg-[#46127B]/30 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
-        {/* Premium Decorative Elements */}
-        <div className="absolute top-10 right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border border-[#03A58D]/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-10 left-10 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 border border-white/10 rounded-full blur-2xl" />
+        {/* Premium Decorative Elements - Hidden on mobile */}
+        <div className="absolute top-10 right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border border-[#03A58D]/20 rounded-full blur-2xl hidden sm:block" />
+        <div className="absolute bottom-10 left-10 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 border border-white/10 rounded-full blur-2xl hidden sm:block" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex items-center min-h-[70vh] sm:min-h-[80vh] py-8 sm:py-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] py-8 sm:py-12">
             {/* Premium Text Content */}
             <motion.div
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
-              className="w-full max-w-4xl"
+              className="w-full max-w-4xl mx-auto sm:mx-0"
             >
-              {/* Premium Badge */}
+              {/* Premium Badge - Responsive */}
               <motion.div
                 variants={fadeUp}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 md:mb-6"
               >
                 <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#03A58D] rounded-full animate-pulse" />
-                <span className="text-[8px] sm:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/90">
+                <span className="text-[8px] xs:text-[10px] sm:text-xs font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] text-white/90">
                   Premium Quality
                 </span>
               </motion.div>
 
+              {/* Heading - Responsive */}
               <motion.h1
                 variants={fadeUp}
                 className="font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[1.1] text-white font-sans [text-shadow:0_4px_40px_rgba(0,0,0,0.3)]"
@@ -472,55 +472,59 @@ const Home = () => {
                 </span>
               </motion.h1>
 
+              {/* Subtitle - Responsive */}
               <motion.p
                 variants={fadeUp}
-                className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mt-3 sm:mt-4 md:mt-6 font-medium [text-shadow:0_2px_20px_rgba(0,0,0,0.2)]"
+                className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mt-2 sm:mt-3 md:mt-4 lg:mt-6 font-medium [text-shadow:0_2px_20px_rgba(0,0,0,0.2)]"
               >
                 Our heavy-duty steel pipes and industrial tubing anchor critical
                 energy, processing, and infrastructure frameworks globally.
               </motion.p>
 
+              {/* Trust Badges - Responsive */}
               <motion.div
                 variants={fadeUp}
-                className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 pt-2 mt-1 sm:mt-2 font-bold"
+                className="flex flex-wrap items-center gap-1.5 sm:gap-2 md:gap-3 pt-1 sm:pt-2 mt-1 sm:mt-2 font-bold"
               >
-                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                  <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 text-[8px] xs:text-[9px] sm:text-xs md:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 md:py-1.5 rounded-full border border-white/10">
+                  <ShieldCheck className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 text-[#03A58D]" />
                   <span>ISO Certified</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                  <Globe2 className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 text-[8px] xs:text-[9px] sm:text-xs md:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 md:py-1.5 rounded-full border border-white/10">
+                  <Globe2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 text-[#03A58D]" />
                   <span>Global Reach</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
-                  <Clock3 className="w-3 h-3 sm:w-4 sm:h-4 text-[#03A58D]" />
+                <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 text-[8px] xs:text-[9px] sm:text-xs md:text-sm text-white/90 font-sans bg-white/5 backdrop-blur-sm px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 md:py-1.5 rounded-full border border-white/10">
+                  <Clock3 className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 text-[#03A58D]" />
                   <span>24/7 Support</span>
                 </div>
               </motion.div>
 
+              {/* CTA Buttons - Responsive */}
               <motion.div
                 variants={fadeUp}
-                className="flex flex-wrap items-center gap-3 sm:gap-4 pt-3 sm:pt-4"
+                className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-3 md:pt-4"
               >
                 <Link
                   to="/products"
-                  className="group inline-flex items-center gap-1.5 sm:gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#03A58D]/30 font-sans relative overflow-hidden"
+                  className="group inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-[10px] xs:text-xs sm:text-sm md:text-base px-3 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3.5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#03A58D]/30 font-sans relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                   Explore Products
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-1.5 sm:gap-2 border-2 border-white/30 hover:border-white text-white font-semibold text-xs sm:text-sm md:text-base px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 font-sans backdrop-blur-sm"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 border-2 border-white/30 hover:border-white text-white font-semibold text-[10px] xs:text-xs sm:text-sm md:text-base px-3 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3.5 rounded-xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 font-sans backdrop-blur-sm"
                 >
                   Request a Quote
                 </Link>
               </motion.div>
 
+              {/* Stats - Responsive */}
               <motion.div
                 variants={fadeUp}
-                className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 pt-4 sm:pt-6 max-w-md"
+                className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 pt-3 sm:pt-4 md:pt-5 lg:pt-6 max-w-md"
               >
                 {[
                   { value: "100%", label: "Ultrasonic Tested" },
@@ -529,12 +533,12 @@ const Home = () => {
                 ].map((stat, index) => (
                   <div
                     key={index}
-                    className="text-center bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 border border-white/10"
+                    className="text-center bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-1.5 sm:p-2 md:p-3 border border-white/10"
                   >
-                    <p className="text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans [text-shadow:0_0_30px_rgba(3,165,141,0.2)]">
+                    <p className="text-base xs:text-lg sm:text-xl md:text-2xl font-black text-[#03A58D] font-sans [text-shadow:0_0_30px_rgba(3,165,141,0.2)]">
                       {stat.value}
                     </p>
-                    <p className="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-white/80 font-sans">
+                    <p className="text-[6px] xs:text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-white/80 font-sans">
                       {stat.label}
                     </p>
                   </div>
@@ -544,29 +548,29 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Premium Navigation Dots */}
-        <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2 sm:gap-3">
+        {/* Premium Navigation Dots - Responsive */}
+        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 sm:gap-2 md:gap-3">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
               className={`transition-all duration-500 rounded-full ${
                 currentImageIndex === index
-                  ? "bg-[#03A58D] w-6 sm:w-8 md:w-10 h-1.5 sm:h-2 md:h-3 shadow-lg shadow-[#03A58D]/50"
-                  : "bg-white/30 hover:bg-white/50 w-2 sm:w-2.5 md:w-3 h-1.5 sm:h-2 md:h-3"
+                  ? "bg-[#03A58D] w-4 sm:w-6 md:w-8 lg:w-10 h-1.5 sm:h-2 md:h-2.5 lg:h-3 shadow-lg shadow-[#03A58D]/50"
+                  : "bg-white/30 hover:bg-white/50 w-1.5 sm:w-2 md:w-2.5 lg:w-3 h-1.5 sm:h-2 md:h-2.5 lg:h-3"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
 
-        {/* Premium Bottom Wave Divider */}
+        {/* Premium Bottom Wave Divider - Responsive */}
         <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
           <svg
             viewBox="0 0 1440 80"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
-            className="w-full h-10 sm:h-14 md:h-16 lg:h-20"
+            className="w-full h-8 xs:h-10 sm:h-12 md:h-16 lg:h-20"
           >
             <defs>
               <linearGradient
@@ -603,7 +607,6 @@ const Home = () => {
           </svg>
         </div>
       </section>
-
       {/* =============================== */}
       {/* TICKER TAPE */}
       {/* =============================== */}
@@ -619,7 +622,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-
       {/* =============================== */}
       {/* FORGING STRUCTURAL ABSOLUTE INTEGRITY */}
       {/* =============================== */}
@@ -746,12 +748,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* PRODUCT CARDS SECTION */}
       {/* =============================== */}
       <Cards />
-
       {/* =============================== */}
       {/* THIRD-PARTY INSPECTION AGENCIES - COLORFUL ON MOBILE */}
       {/* =============================== */}
@@ -797,7 +797,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* GLOBAL INDUSTRIAL CERTIFICATIONS */}
       {/* =============================== */}
@@ -869,7 +868,6 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* STRATEGIC MANUFACTURER */}
       {/* =============================== */}
@@ -940,7 +938,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* INDUSTRIES WE ANCHOR - WITH IMAGES */}
       {/* =============================== */}
@@ -1002,7 +999,6 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* PARTNERS MARQUEE */}
       {/* =============================== */}
@@ -1058,7 +1054,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* SERVICES */}
       {/* =============================== */}
@@ -1119,7 +1114,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* GLOBAL FOOTPRINT & DOMESTIC REACH */}
       {/* =============================== */}
@@ -1224,7 +1218,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* NATIONAL INFRASTRUCTURE SUPPORT */}
       {/* =============================== */}
@@ -1278,7 +1271,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* INTERNATIONAL EXPORT NETWORK */}
       {/* =============================== */}
@@ -1335,7 +1327,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* TESTIMONIALS */}
       {/* =============================== */}
@@ -1398,7 +1389,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* CTA SECTION */}
       {/* =============================== */}
@@ -1451,7 +1441,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* =============================== */}
       {/* FLOATING WHATSAPP & CALL BUTTONS */}
       {/* =============================== */}
@@ -1476,7 +1465,6 @@ const Home = () => {
           <IoIosCall className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
         </a>
       </div>
-
       {/* =============================== */}
       {/* MARQUEE ANIMATION STYLES */}
       {/* =============================== */}
