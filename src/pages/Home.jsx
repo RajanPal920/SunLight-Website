@@ -416,15 +416,16 @@ const Home = () => {
         />
       </Helmet>
 
-      {/* =============================== */}
-      {/* HERO SECTION WITH SLIDESHOW */}
+  
+      {/* HERO SECTION WITH SLIDESHOW - FIXED FOR MOBILE */}
       {/* =============================== */}
       <section
-        className="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-screen w-full pt-[110px] xs:pt-[115px] sm:pt-[120px] md:pt-[130px] lg:pt-0 flex items-center overflow-hidden"
         style={{
           backgroundImage: `url(${heroImages[currentImageIndex]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           transition: "background-image 1s ease-in-out",
         }}
       >
@@ -438,11 +439,11 @@ const Home = () => {
         </div>
 
         {/* Premium Decorative Elements */}
-        <div className="absolute top-10 right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border border-[#03A58D]/20 rounded-full blur-2xl" />
-        <div className="absolute bottom-10 left-10 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 border border-white/10 rounded-full blur-2xl" />
+        <div className="absolute top-10 right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border border-[#03A58D]/20 rounded-full blur-2xl hidden sm:block" />
+        <div className="absolute bottom-10 left-10 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 border border-white/10 rounded-full blur-2xl hidden sm:block" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex items-center min-h-[70vh] sm:min-h-[80vh] py-8 sm:py-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center min-h-[calc(100vh-180px)] sm:min-h-[calc(100vh-200px)] lg:min-h-[90vh] py-6 sm:py-8 md:py-12">
             {/* Premium Text Content */}
             <motion.div
               initial="hidden"
@@ -545,7 +546,7 @@ const Home = () => {
         </div>
 
         {/* Premium Navigation Dots */}
-        <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2 sm:gap-3">
+        <div className="absolute bottom-10 sm:bottom-14 md:bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2 sm:gap-3">
           {heroImages.map((_, index) => (
             <button
               key={index}

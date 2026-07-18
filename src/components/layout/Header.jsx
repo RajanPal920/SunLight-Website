@@ -20,7 +20,7 @@ const Logo = () => (
     <img
       src={logo}
       alt="Sunlight Forge & Fitting Pvt. Ltd."
-      className="h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-24 w-auto object-contain transition-all duration-300"
+      className="h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-24"
     />
   </Link>
 );
@@ -197,18 +197,18 @@ const Header = () => {
       {/* =============================== */}
       {/* MAIN HEADER */}
       {/* =============================== */}
-      <div className="w-full px-4 sm:px-5 lg:px-8 py-2 md:py-3 ">
+      <div className="w-full px-4 sm:px-5 lg:px-8 py-2 md:py-3">
         <div className="flex items-center justify-between">
           {/* ================= Mobile / Tablet ================= */}
-          <div className="flex lg:hidden items-center flex-1 min-w-0 gap-2">
+          <div className="flex lg:hidden items-center justify-start w-[75%] gap-2">
             <div className="flex-shrink-0">
               <Logo />
             </div>
 
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 pr-2">
               <h2
                 className="text-[#46127B] font-extrabold leading-tight
-                       text-[11px] xs:text-xs sm:text-sm"
+                       text-[10px] xs:text-xs sm:text-sm"
               >
                 SUNLIGHT FORGE & FITTING PVT. LTD.
               </h2>
@@ -224,7 +224,7 @@ const Header = () => {
           </div>
 
           {/* ================= Desktop ================= */}
-          <div className="hidden lg:flex items-center gap-4 h-20 ">
+          <div className="hidden lg:flex items-center gap-4 h-20">
             <Logo />
 
             <div>
@@ -262,18 +262,16 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* ================= Mobile Menu ================= */}
+          {/* ================= Mobile Menu Button ================= */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex items-center justify-center
-                 w-11 h-11 rounded-lg
-                 hover:bg-[#46127B]/10
-                 flex-shrink-0"
+            className="lg:hidden flex items-center justify-start w-11 h-11 rounded-lg hover:bg-[#46127B]/10 transition-colors duration-300 flex-shrink-0"
+            aria-label="Toggle Menu"
           >
             {mobileOpen ? (
-              <X className="text-[#46127B]" size={26} />
+              <X className="w-6 h-6 text-[#46127B]" />
             ) : (
-              <Menu className="text-[#46127B]" size={26} />
+              <Menu className="w-6 h-6 text-[#46127B]" />
             )}
           </button>
         </div>
