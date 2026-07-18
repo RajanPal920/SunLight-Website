@@ -197,37 +197,59 @@ const Header = () => {
       {/* =============================== */}
       {/* MAIN HEADER */}
       {/* =============================== */}
-      <div className="w-full mx-auto px-3 xs:px-4 sm:px-4 md:px-6 lg:px-8 py-2 xs:py-2 sm:py-2.5 md:py-3 lg:py-3 xl:py-4">
-        <div className="flex items-center justify-between h-15">
-          {/* ─── MOBILE: Logo with Company Name ─── */}
-          <div className="flex lg:hidden items-center gap-2 flex-1 min-w-0">
-            <Logo />
-            <div className="flex flex-col min-w-0">
-              <span className="font-extrabold text-[#46127B] text-[10px] xs:text-xs leading-tight truncate">
-                SUNLIGHT FORGE & FITTING PVT LTD.
-              </span>
+      <div className="w-full px-4 sm:px-5 lg:px-8 py-2 md:py-3 ">
+        <div className="flex items-center justify-between">
+          {/* ================= Mobile / Tablet ================= */}
+          <div className="flex lg:hidden items-center flex-1 min-w-0 gap-2">
+            <div className="flex-shrink-0">
+              <Logo />
+            </div>
 
-              <span className="text-[#03A58D] text-[7px] xs:text-[8px] font-bold tracking-[1px] xs:tracking-[1.5px] uppercase truncate">
-                ISO 9001:2015 CERTIFIED
-              </span>
+            <div className="flex-1 min-w-0">
+              <h2
+                className="text-[#46127B] font-extrabold leading-tight
+                       text-[11px] xs:text-xs sm:text-sm"
+              >
+                SUNLIGHT FORGE & FITTING PVT. LTD.
+              </h2>
+
+              <p
+                className="text-[#03A58D] uppercase font-semibold
+                      text-[7px] xs:text-[8px] sm:text-[10px]
+                      tracking-[1px] sm:tracking-[2px]"
+              >
+                ISO 9001:2015 Certified Company
+              </p>
             </div>
           </div>
 
-          {/* ─── DESKTOP: Logo with Company Name ─── */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+          {/* ================= Desktop ================= */}
+          <div className="hidden lg:flex items-center gap-4 h-20 ">
             <Logo />
-            <div className="flex flex-col">
-              <span className="font-black text-[#46127B] text-base lg:text-lg xl:text-2xl leading-tight">
-                SUNLIGHT FORGE & FITTING PVT LTD.
-              </span>
-              <span className="text-[#03A58D] text-[10px] lg:text-xs xl:text-sm font-bold tracking-[2px] lg:tracking-[2.5px] xl:tracking-[3px] uppercase">
-                ISO 9001:2015 CERTIFIED COMPANY
-              </span>
+
+            <div>
+              <h2
+                className="text-[#46127B] font-black
+                       text-xl xl:text-2xl 2xl:text-3xl
+                       leading-tight"
+              >
+                SUNLIGHT FORGE & FITTING PVT. LTD.
+              </h2>
+
+              <p
+                className="text-[#03A58D]
+                      text-xs xl:text-sm
+                      uppercase
+                      font-semibold
+                      tracking-[3px]"
+              >
+                ISO 9001:2015 Certified Company
+              </p>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8">
+          {/* ================= Desktop Navigation ================= */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((item) => (
               <NavLink
                 key={item.to}
@@ -240,16 +262,18 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* ================= Mobile Menu ================= */}
           <button
-            className="lg:hidden p-1.5 xs:p-2 rounded-md hover:bg-[#46127B]/10 transition-colors flex-shrink-0"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            className="lg:hidden flex items-center justify-center
+                 w-11 h-11 rounded-lg
+                 hover:bg-[#46127B]/10
+                 flex-shrink-0"
           >
             {mobileOpen ? (
-              <X className="text-[#46127B]" size={24} />
+              <X className="text-[#46127B]" size={26} />
             ) : (
-              <Menu className="text-[#46127B]" size={24} />
+              <Menu className="text-[#46127B]" size={26} />
             )}
           </button>
         </div>
