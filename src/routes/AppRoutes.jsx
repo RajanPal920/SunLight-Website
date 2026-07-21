@@ -1,17 +1,16 @@
 // src/routes/AppRoutes.jsx
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Layout from "../components/layout/Layout";
-
 import Home from "../pages/Home";
 import About from "../pages/About";
-import Products from "../pages/Products";
-import Quality from "../pages/Quality";
 import Contact from "../pages/Contact";
-import ProductDetails from "../pages/ProductDetails";
-import ProductCategory from "../pages/ProductCategory";
+import Quality from "../pages/Quality";
+
+// Import products pages from the products folder
+import Products from "../pages/products/Products";
+import ProductCategory from "../pages/products/ProductCategory";
+import ProductDetails from "../pages/products/ProductDetails";
 
 const AppRoutes = () => {
   return (
@@ -19,12 +18,22 @@ const AppRoutes = () => {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        {/* The :category parameter will match the slug from your category data */}
-        <Route path="/products/:category" element={<ProductCategory />} />
-        <Route path="/products/:category/:slug" element={<ProductDetails />} />
-        <Route path="/quality" element={<Quality />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/quality" element={<Quality />} />
+
+        {/* Products Routes */}
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:category" element={<ProductCategory />} />
+
+        {/* For products with 2 segments (pipes-tubes, sheets-plates, etc.) */}
+        <Route path="/products/:category/:slug" element={<ProductDetails />} />
+
+        {/* For products with 3 segments (round-bars/high-nickel-alloy-roundbars, etc.) */}
+        <Route
+          path="/products/:category/:subCategory/:slug"
+          element={<ProductDetails />}
+        />
+
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>

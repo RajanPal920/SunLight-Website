@@ -22,14 +22,14 @@ const Cards = () => {
       image: pipes,
       description:
         "Premium quality pipes and tubes for industrial applications",
-      link: "/products/pipes",
+      link: "/products/pipes-tubes",
     },
     {
       id: 2,
       title: "SHEETS & PLATES",
       image: sheets,
       description: "High-grade sheets and plates for heavy engineering",
-      link: "/products/sheets",
+      link: "/products/sheets-plates",
     },
     {
       id: 3,
@@ -65,7 +65,7 @@ const Cards = () => {
       title: "BUTTWELD FITTINGS",
       image: buttweld,
       description: "Precision buttweld fittings for piping systems",
-      link: "/products/buttweld-fittings",
+      link: "/products/socketweld-fittings",
     },
     {
       id: 8,

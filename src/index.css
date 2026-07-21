@@ -1,13 +1,9 @@
 @import "tailwindcss";
 
-/* Ensure header stays on top */
-header {
-  z-index: 50;
-}
-
-/* Ensure hero content doesn't overlap header */
-.hero-section {
-  z-index: 1;
+html,
+body {
+  overflow-x: hidden;
+  
 }
 
 /* Add to index.css */

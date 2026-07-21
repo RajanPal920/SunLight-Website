@@ -599,30 +599,30 @@ const About = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12"
           >
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
                 variants={fadeUp}
                 transition={{ delay: index * 0.08 }}
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-[#03A58D] hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 hover:border-[#03A58D] hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               >
-                <div className="relative w-full h-40 overflow-hidden">
+                <div className="relative w-full h-30 sm:h-45 overflow-hidden">
                   <img
                     src={industry.image}
                     alt={industry.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#46127B]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <p className="text-xs font-bold uppercase tracking-wider">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider font-sans">
                       Industry Sector
                     </p>
                   </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-sm font-bold text-[#46127B] uppercase group-hover:text-[#03A58D] transition-colors">
+                <div className="p-1 sm:p-5 flex items-center justify-center group-hover:bg-[#46127B]">
+                  <h3 className="sm:text-sm font-bold text-[#46127B] uppercase group-hover:text-[#03A58D] transition-colors font-sans">
                     {industry.name}
                   </h3>
                 </div>
