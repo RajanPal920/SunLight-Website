@@ -7,32 +7,53 @@ import fasteners from "./fasteners";
 import flanges from "./flanges";
 import roundbars from "./round-bars";
 import socketweldfittings from "./socketweld-fittings";
-
+import refractoryAnchors from "./refractory-fittings";
+import angleChannels from "./angles-channels";
+import tubeSheets from "./tube-sheets";
+import ferruleFittings from "./ferrule-fittings";
+import claddedPlates from "./cladded-plates";
+import olets from "./olets";
+import valves from "./valves";
+import graphiteFilledBronzeBush from "./graphite-filled-bronze-bush";
 
 // Map for quick lookup by slug (using object, not array)
 export const categoryDataMap = {
   "pipes-tubes": pipesTubes,
-  "sheets-plates": sheetsPlates, // Simple array data
-  "billets": billets,
-  "flanges": flanges,
-  "fasteners": fasteners,
+  "sheets-plates": sheetsPlates,
+  billets: billets,
+  flanges: flanges,
+  fasteners: fasteners,
   "round-bars": roundbars,
   "buttweld-fittings": buttweldfittings,
   "socketweld-fittings": socketweldfittings,
-  // Add more as you create them
+  "refractory-fixings-anchors": refractoryAnchors,
+  "angles-channels": angleChannels,
+  "tube-sheets": tubeSheets,
+  "ferrule-fittings": ferruleFittings,
+  "cladded-plates": claddedPlates,
+  olets: olets,
+  valves: valves,
+  "graphite-filled-bronze-bush": graphiteFilledBronzeBush,
 };
 
 // Export all individual category data
 export {
   pipesTubes,
-  sheetsPlates, // Simple array export
+  sheetsPlates,
   billets,
   flanges,
   fasteners,
   roundbars,
   buttweldfittings,
   socketweldfittings,
-  // Add more exports
+  refractoryAnchors,
+  angleChannels,
+  tubeSheets,
+  ferruleFittings,
+  claddedPlates,
+  olets,
+  valves,
+  graphiteFilledBronzeBush,
 };
 
 // Get all categories as an array
@@ -83,6 +104,7 @@ export default {
   pipesTubes,
   sheetsPlates,
   billets,
+  socketweldfittings,
   categoryDataMap,
   getAllCategories,
   getCategoryBySlug,

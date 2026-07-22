@@ -1,12 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
-import { Phone, Mail, Menu, Globe, PhoneCall, ArrowLeft } from "lucide-react";
-import sheetsplates from "../../data/productCategories/sheets-plates";
-import csSheetImage from "../../assets/productsImage/sheets.jpg";
+import claddedPlates from "../../data/productCategories/cladded-plates";
+import claddedImage from "../../assets/productsImage/cladded-plates.jpg";
 
-const CarbonSteelSheetsPlatesCoilsPage = () => {
+const CladdedPlatesPage = () => {
   const navigate = useNavigate();
 
   // YOUR EXACT CONTACT DETAILS
@@ -21,142 +21,141 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
 
   const { categorySlug } = useParams();
 
-  // Get all sheet products from the structured data
-  const allSheetProducts = sheetsplates.categories?.[0]?.types || [];
+  // Get all cladded plate products from the structured data
+  const allCladdedProducts = claddedPlates.categories?.[0]?.types || [];
 
   // Find the current product by slug
-  const currentProduct = allSheetProducts.find(
-    (item) => item.slug === "carbon-steel-sheetsplates",
+  const currentProduct = allCladdedProducts.find(
+    (item) => item.slug === "cladded-plates",
   );
 
-  // All sheet products for the sidebar
-  const sheetProducts = allSheetProducts;
+  // All cladded products for the sidebar
+  const claddedProducts = allCladdedProducts;
 
   const allDestinations = [
-    "Bahrain",
-    "Australia",
-    "Saudi Arabia",
-    "Chine",
-    "Colombia",
-    "Dubai",
-    "Iraq",
-    "Ethiopa",
-    "Russia",
-    "Sudan",
-    "Democratic Republic of the Congo",
-    "United States",
-    "Kazakhstan",
-    "Algeria",
-    "Mozambique",
-    "Africa",
-    "Malaysia",
-    "Brazil",
-    "Angola",
     "Houston",
     "Israel",
-    "London",
-    "Jordan",
-    "Ghana",
-    "Kuwait",
-    "Azerbaijan",
-    "Vietnam",
-    "Cameroon",
-    "Tunisia",
+    "Dubai",
+    "Russia",
+    "Australia",
+    "Thailand (Bangkok)",
     "South Africa",
-    "Mexico",
-    "Morocco",
-    "Indonesia",
-    "Uganda",
+    "Ghana",
+    "London",
+    "Malaysia",
+    "Tunisia",
+    "Mozambique",
     "Sri Lanka",
-    "Germany",
+    "United States",
     "UK",
-    "Iran",
-    "Argentina",
+    "Jordan",
+    "Egypt",
+    "Indonesia",
+    "Chine",
     "Trinidad and Tobago",
-    "Peru",
+    "Democratic Republic of the Congo",
+    "Germany",
+    "Iran",
+    "Angola",
+    "Bahrain",
+    "New Zealand",
+    "Saudi Arabia",
+    "Brazil",
+    "Cameroon",
+    "Iraq",
+    "Italy",
+    "Kazakhstan",
     "UAE",
     "Turkey",
-    "Egypt",
-    "Thailand (Bangkok)",
-    "Venezuela",
-    "Italy",
-    "New Zealand",
-    "Nigeria",
+    "Vietnam",
+    "Kuwait",
+    "Azerbaijan",
+    "Argentina",
+    "Algeria",
+    "Mexico",
     "Canada",
-    "Cairo",
-    "Freetown",
-    "Douala",
-    "Colombo",
-    "Nairobi",
-    "Mogadishu",
-    "Port Harcourt",
-    "Accra",
-    "Harare",
-    "Brazzaville",
-    "Singapore",
-    "Istanbul",
-    "Rabat",
-    "Kampala",
+    "Morocco",
+    "Nigeria",
+    "Sudan",
+    "Ethiopa",
+    "Colombia",
+  ];
+
+  const allCities = [
     "Kaduna",
-    "Giza",
-    "Kolwezi",
-    "Abidjan",
-    "Maputo",
-    "Benin",
-    "Aqaba",
-    "Pretoria",
-    "Jeddah",
-    "Algiers",
+    "Beirut",
+    "Mogadishu",
+    "Muscat",
     "Sharm el-Sheikh",
-    "Soweto",
+    "Yaoundé",
+    "Nairobi",
+    "Aqaba",
+    "Manama",
+    "Dar es Salaam",
+    "Jerusalem",
+    "Douala",
+    "Tripoli",
+    "Dubai",
+    "Brazzaville",
+    "Khartoum",
+    "Tehran",
+    "Fez",
+    "Kampala",
+    "Luanda",
+    "Algiers",
+    "Ouagadougou",
+    "Accra",
+    "Tel Aviv",
+    "Riyadh",
+    "Port Harcourt",
+    "Doha",
+    "Lusaka",
+    "Maiduguri",
+    "Kinshasa",
+    "Cairo",
     "Abu Dhabi",
-    "Dammam",
-    "Zaria",
-    "Conakry",
-    "Durban",
+    "Mecca",
+    "Bethlehem",
+    "Lubumbashi",
+    "Omdurman",
     "Alexandria",
-    "Bulawayo",
+    "Benin",
     "Byblos",
     "Lagos",
+    "Giza",
+    "Durban",
+    "Pretoria",
+    "Conakry",
+    "Singapore",
+    "Colombo",
     "Dakar",
-    "Omdurman",
-    "Kano",
-    "Khartoum",
-    "Beirut",
-    "Tripoli",
-    "Ouagadougou",
-    "Mecca",
-    "Dar es Salaam",
-    "Cairo",
-    "Tehran",
-    "Tel Aviv",
-    "Manama",
-    "Jerusalem",
-    "Casablanca",
-    "Fez",
-    "Subra al-Haymah",
-    "Lusaka",
-    "Antananarivo",
-    "Luanda",
-    "Kinshasa",
-    "Riyadh",
-    "Lubumbashi",
-    "Amman",
-    "Bethlehem",
-    "Johannesburg",
-    "Ibadan",
-    "Yaoundé",
-    "Maiduguri",
-    "Dubai",
-    "Port Elizabeth",
-    "Addis Ababa",
-    "New York",
-    "Muscat",
     "Mbuji-Mayi",
+    "Johannesburg",
+    "Bulawayo",
+    "Maputo",
+    "Freetown",
+    "Subra al-Haymah",
+    "Antananarivo",
+    "Casablanca",
+    "Istanbul",
     "Cape Town",
     "Hong Kong",
+    "Amman",
+    "Ibadan",
+    "Kolwezi",
     "Bamako",
-    "Doha",
+    "Addis Ababa",
+    "Dammam",
+    "Kano",
+    "Cairo",
+    "Rabat",
+    "Abidjan",
+    "Port Elizabeth",
+    "Jeddah",
+    "Soweto",
+    "New York",
+    "Zaria",
+    "Harare",
   ];
 
   const productRange = [
@@ -183,100 +182,6 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
     },
     { name: "Billets", slug: "billets" },
   ];
-
-  // Product data
-  const productData = {
-    title: "Carbon Steel Sheets, Plates & Coils / CS Flat Products",
-    subtitle:
-      "Carbon Steel Sheets, Plates & Coils Manufacturer, ASTM A36/A516 Gr.70 Plates & Coils, ASTM A283/A285 Sheets, Carbon Steel Hot & Cold Rolled Plates Exporter in India.",
-    description1:
-      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Carbon Steel Sheets, Plates & Coils, which are manufactured from premium carbon steel grades including ASTM A36, A516 Grade 70, A283, A285, and A106. These flat products offer excellent strength, durability, and cost-effectiveness for demanding industrial applications.",
-    description2:
-      "Carbon Steel Sheets, Plates & Coils are specifically designed for applications requiring high strength, excellent weldability, and reliable performance. These products are available in various forms including sheets, plates, coils, flats, strips, and rings to meet diverse industrial requirements.",
-    description3:
-      "Our carbon steel flat products are manufactured as per ASTM A36 / ASME SA36 standards and are available in various grades including A36, A516 Grade 70, A283, A285, and A106, each offering unique properties for specific applications.",
-    description4:
-      "Our Carbon Steel sheets, plates, and coils are available in sizes ranging from 0.5mm to 50mm thickness with widths up to 2000mm. We manufacture and stock even odd sizes which is hard to find.",
-    grades: [
-      "ASTM A36 / ASME SA36 (Carbon Steel)",
-      "ASTM A516 Grade 70 / ASME SA516 Gr.70 (Pressure Vessel)",
-      "ASTM A283 / ASME SA283 (Low to Intermediate Tensile)",
-      "ASTM A285 / ASME SA285 (Low Carbon Pressure Vessel)",
-      "ASTM A106 / ASME SA106 (Seamless Carbon Steel)",
-    ],
-    specifications: {
-      standard: "ASTM A36 / ASME SA36",
-      grades: "A36, A516 Gr.70, A283, A285, A106",
-      form: "Sheets, Plates, Coils, Flats, Strips, Rings, Circles",
-      thickness: "0.5mm to 50mm",
-      width: "Up to 2000mm",
-      finish: "Hot Rolled (HR), Cold Rolled (CR), Pickled & Oiled",
-    },
-    standardsTable: [
-      {
-        standard: "A36",
-        werkstoff: "1.0038",
-        uns: "K02600",
-        jis: "SS400",
-        afnor: "E24-2",
-        bs: "BS 4360",
-        gost: "Ст3сп",
-        en: "S235JR",
-      },
-      {
-        standard: "A516 Gr.70",
-        werkstoff: "1.0473",
-        uns: "K02700",
-        jis: "SPV 450",
-        afnor: "A48 AP",
-        bs: "BS 1503",
-        gost: "16ГС",
-        en: "P355GH",
-      },
-      {
-        standard: "A283",
-        werkstoff: "1.0035",
-        uns: "K03000",
-        jis: "SS330",
-        afnor: "E24-1",
-        bs: "BS 4360",
-        gost: "Ст2сп",
-        en: "S185",
-      },
-      {
-        standard: "A285",
-        werkstoff: "1.0044",
-        uns: "K02800",
-        jis: "SS400",
-        afnor: "E24-2",
-        bs: "BS 4360",
-        gost: "Ст3сп",
-        en: "S275JR",
-      },
-      {
-        standard: "A106",
-        werkstoff: "1.0402",
-        uns: "K03006",
-        jis: "STPG 370",
-        afnor: "A42CP",
-        bs: "BS 1503",
-        gost: "20",
-        en: "P265GH",
-      },
-    ],
-    types: [
-      "Carbon Steel A36 Sheets & Plates",
-      "A516 Gr.70 Plates & Coils",
-      "Carbon Steel A283 Sheets & Coils",
-      "A285 Hot Rolled Plates",
-      "Carbon Steel A106 Cold Rolled Sheets",
-      "CS Coils & Strips",
-      "Carbon Steel Circle & Rings",
-      "CS Flats",
-      "Carbon Steel Hot Rolled Plates",
-      "CS Pickled & Oiled Coils",
-    ],
-  };
 
   // Floating button styles
   const floatingStyles = {
@@ -306,23 +211,19 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
     },
     call: {
       backgroundColor: "blue",
-      hover: "#2E0A5E",
     },
     whatsapp: {
       backgroundColor: "#25D366",
-      hover: "#128C7E",
     },
   };
 
   return (
     <>
       <Helmet>
-        <title>
-          Carbon Steel Sheets, Plates & Coils | Sunlight Forge & Fitting
-        </title>
+        <title>Cladded Plates | Clad Steel Plates | Sunlight Forge</title>
         <meta
           name="description"
-          content="Carbon Steel Sheets, Plates & Coils Manufacturer. ASTM A36, A516 Gr.70, A283, A285, A106. Export quality, best prices."
+          content="Cladded Plates Manufacturer. Stainless Steel Clad Plates, Nickel Alloy Clad Plate, Roll Bonded Clad Plates, Explosive Bonding Clad Plates, Titanium Clad Plates. Export quality, best prices."
         />
       </Helmet>
 
@@ -331,7 +232,7 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               <div className="inline-block text-[#66BB6A] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#66BB6A] uppercase">
-                {sheetsplates.badge ||
+                {claddedPlates.badge ||
                   "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
               </div>
             </div>
@@ -351,18 +252,18 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* ===== SHEETS, PLATES & COILS SECTION ===== */}
+                  {/* ===== CLADDED PLATES SECTION ===== */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
-                      SHEETS, PLATES & COILS
+                      CLADDED PLATES
                     </h4>
                     <ul className="space-y-0.5">
-                      {sheetProducts.map((item) => (
+                      {claddedProducts.map((item) => (
                         <li key={item.slug}>
                           <Link
-                            to={`/products/sheets-plates/${item.slug}`}
+                            to={`/products/cladded-plates/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "carbon-steel-sheetsplates"
+                              item.slug === "cladded-plates"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -385,7 +286,7 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
                           <Link
                             to={`/products/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "sheets-plates"
+                              item.slug === "cladded-plates"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -404,11 +305,11 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
               {/* Back Button */}
               <div className="mb-4">
                 <button
-                  onClick={() => navigate("/products/sheets-plates")}
+                  onClick={() => navigate("/products/cladded-plates")}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
                   <ArrowLeft size={18} />
-                  Back to Sheets & Plates
+                  Back to Cladded Plates
                 </button>
               </div>
 
@@ -418,17 +319,19 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: `url(${csSheetImage})`,
+                      backgroundImage: `url(${claddedImage})`,
                     }}
                   ></div>
                 </div>
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {productData.title}
+                      Cladded Plates
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
-                      {productData.subtitle}
+                      Stainless Steel Clad Plates, Nickel Alloy Clad Plate, Roll
+                      Bonded Clad Plates, Explosive Bonding Clad Plates,
+                      Titanium Clad Plates Supplier & Exporter in India.
                     </p>
                     <div className="flex flex-wrap gap-3 mt-5">
                       <a
@@ -454,167 +357,148 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
               <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
                 <div className="flex justify-center">
                   <img
-                    src={csSheetImage}
-                    alt="Carbon Steel Sheets, Plates & Coils"
+                    src={claddedImage}
+                    alt="Cladded Plates"
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
               </div>
 
-              {/* Product Description */}
+              {/* Description Section */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  Carbon Steel Sheets, Plates & Coils – ASTM A36
+                  Cladded Plates
                 </p>
                 <p>
-                  <span className="font-semibold text-[#4A148C]">
-                    {contactDetails.company}
-                  </span>{" "}
-                  {productData.description1}
+                  We provide a gamut of superlative clad metal plates that is
+                  made into various shapes and products for many industries.
                 </p>
-                <p>{productData.description2}</p>
-                <p>{productData.description3}</p>
-                <p>{productData.description4}</p>
               </div>
 
-              {/* Grades List */}
+              {/* Explosion Cladding Process */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Carbon Steel Sheets, Plates & Coils Grades &{" "}
-                  <span className="text-[#66BB6A]">Materials</span>
+                  Explosion Cladding Process
                 </h2>
-
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
-                  <ul className="space-y-2 text-sm text-slate-700">
-                    {productData.grades.map((grade, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-[#66BB6A] font-bold">•</span>
-                        {grade}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                    Explosion cladding is a process wherein a cladding plate is
+                    positioned over the backer plate with a small gap. Specially
+                    made explosives are spread on top of the cladding plate. On
+                    detonation the cladding plate is accelerated towards the
+                    backer plate and collides with it at a high velocity. This
+                    collision takes place progressively from one end of the
+                    plate to the other in micro seconds.
+                  </p>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    This acceleration causes a unique phenomenon of progressive
+                    turbulence at the interface and removes the contaminating
+                    surface films like oxides and gases, creating a strong
+                    metallurgical bond at the collision point of the two
+                    surfaces.
+                  </p>
+                  <p className="text-sm text-slate-700 leading-relaxed mt-4">
+                    The thickness of explosive layer, its propagation
+                    characteristics as well as stand off distance and the
+                    collision angles are carefully controlled to produce uniform
+                    and strong metallurgical bonding all over the plate. It is
+                    basically a solid-state pressure bonding process.
+                  </p>
                 </div>
               </div>
 
-              {/* Specifications */}
+              {/* Materials Table */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Carbon Steel Sheets, Plates & Coils{" "}
-                  <span className="text-[#66BB6A]">Specification</span>
+                  Clad Layer & Base Material
                 </h2>
-
-                <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <p>
-                        <strong className="text-[#4A148C]">
-                          Specification:
-                        </strong>{" "}
-                        {productData.specifications.standard}
-                      </p>
-                      <p>
-                        <strong className="text-[#4A148C]">Grades:</strong>{" "}
-                        {productData.specifications.grades}
-                      </p>
-                      <p>
-                        <strong className="text-[#4A148C]">Form:</strong>{" "}
-                        {productData.specifications.form}
-                      </p>
-                      <p>
-                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
-                        {productData.specifications.finish}
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        {productData.specifications.thickness}
-                      </p>
-                      <p>
-                        <strong className="text-[#4A148C]">Width:</strong>{" "}
-                        {productData.specifications.width}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Standards Table */}
-              <div className="mt-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Standards <span className="text-[#66BB6A]">Equivalents</span>
-                </h2>
-
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
                     <thead>
                       <tr className="bg-[#4A148C] text-white">
                         <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          STANDARD
+                          Clad Layer
                         </th>
                         <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          WERKSTOFF NR.
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          UNS
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          JIS
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          AFNOR
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          BS
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          GOST
-                        </th>
-                        <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                          EN
+                          Base Material
                         </th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {productData.standardsTable.map((row, index) => (
-                        <tr key={index}>
-                          <td className="px-4 py-2.5 text-sm font-bold text-[#4A148C]">
-                            {row.standard}
-                          </td>
-                          <td className="px-4 py-2.5 text-sm">
-                            {row.werkstoff}
-                          </td>
-                          <td className="px-4 py-2.5 text-sm">{row.uns}</td>
-                          <td className="px-4 py-2.5 text-sm">{row.jis}</td>
-                          <td className="px-4 py-2.5 text-sm">{row.afnor}</td>
-                          <td className="px-4 py-2.5 text-sm">{row.bs}</td>
-                          <td className="px-4 py-2.5 text-sm">{row.gost}</td>
-                          <td className="px-4 py-2.5 text-sm">{row.en}</td>
-                        </tr>
-                      ))}
+                      <tr>
+                        <td className="px-4 py-2.5 text-sm text-slate-700">
+                          Stainless Steel, Duplex, Titanium, Zirconium,
+                          Tantalum, AI-Bronze, Nickel, Nickel Alloys, Aluminium,
+                          Copper, Copper Alloys
+                        </td>
+                        <td className="px-4 py-2.5 text-sm text-slate-700">
+                          Carbon Steel, Stainless Steel, Alloy Steel, Copper,
+                          Aluminium
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
+                <p className="text-sm text-slate-600 mt-4">
+                  Cladding on both sides of a backer metal with the
+                  same/different cladding metal is possible. Even multilayered
+                  clad composites are possible.
+                </p>
+                <p className="text-sm text-slate-600 mt-2">
+                  Certain NEON ALLOYS clad products can be further
+                  rolled/extruded into thinner gauges and can be considered when
+                  technically feasible and quantities are adequate.
+                </p>
               </div>
 
-              {/* Types of Carbon Steel Flat Products - Grid */}
+              {/* Advantages */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of Carbon Steel Sheets, Plates &{" "}
-                  <span className="text-[#66BB6A]">Coils</span>
+                  ADVANTAGES OF CLAD PRODUCTS
                 </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {productData.types.map((type, index) => (
-                    <div
-                      key={index}
-                      className="bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] transition-colors"
-                    >
-                      <p className="text-sm font-semibold text-[#4A148C]">
-                        {type}
-                      </p>
-                    </div>
-                  ))}
+                <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Guaranteed strong Metallurgical bonds
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Wide range of metal combinations
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Economic use of scarce and dearer metals
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Wide range of sizes and composite thickness
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Custom made products
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Adoption of conventional fabrication procedures
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Extremely low electrical metal properties
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Retention of individual metal properties
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Good heat transfer
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#66BB6A] font-bold">✔</span>
+                      Short processing times
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -640,17 +524,28 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
               {/* Export Destinations */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR CARBON STEEL SHEETS, PLATES & COILS
+                  EXPORT DESTINATIONS FOR CLADDED PLATES, STEEL CLADDED PLATES,
+                  CLAD STEEL PLATES, CLAD PLATES SUPPLIER
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {allDestinations.map((country, index) => (
+                  <div className="flex flex-wrap gap-2 justify-center mb-3">
+                    {allDestinations.map((country, idx) => (
                       <span
-                        key={index}
+                        key={idx}
                         className="inline-block bg-white text-slate-700 text-xs px-3 py-1.5 rounded-full border border-green-200 hover:bg-[#66BB6A] hover:text-white hover:border-[#66BB6A] transition-all duration-200 cursor-default shadow-sm"
                       >
                         {country}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {allCities.map((city, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-block bg-white text-slate-700 text-xs px-3 py-1.5 rounded-full border border-green-200 hover:bg-[#66BB6A] hover:text-white hover:border-[#66BB6A] transition-all duration-200 cursor-default shadow-sm"
+                      >
+                        {city}
                       </span>
                     ))}
                   </div>
@@ -699,4 +594,4 @@ const CarbonSteelSheetsPlatesCoilsPage = () => {
   );
 };
 
-export default CarbonSteelSheetsPlatesCoilsPage;
+export default CladdedPlatesPage;

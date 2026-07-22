@@ -67,7 +67,7 @@ const ProductCategory = () => {
       <div className="bg-gradient-to-br from-gray-50 via-white to-gray-50 min-h-screen py-8">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm mb-6 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-sm border border-gray-100/50 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm mb-6 mt-10 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-sm border border-gray-100/50 flex-wrap">
             <Link
               to="/"
               className="text-gray-500 hover:text-[#46127B] transition-colors"

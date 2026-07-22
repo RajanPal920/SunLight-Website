@@ -137,6 +137,61 @@ import CarbonSteelASTMA105FlangesPage from "./CarbonSteelASTMA105FlangesPage";
 import CarbonSteelASTMA694FlangesPage from "./CarbonSteelASTMA694FlangesPage";
 import ASTMA350LF2LF3FlangesPage from "./ASTMA350F2LF3FlangesPage";
 import AlloySteelFlangesPage from "./AlloySteelFlangesPage";
+import NickelAlloy200ButtweldFittingsPage from "./NickelAlloy200ButtweldFittingsPage";
+import NickelAlloy201ButtweldFittingsPage from "./NickelAlloy201ButtweldFittingsPage";
+import Monel400ButtweldFittingsPage from "./Monel400ButtweldFittingsPage";
+import MonelK500ButtweldFittingsPage from "./MonelK500ButtweldFittingsPage";
+import Inconel600ButtweldFittingsPage from "./Inconel600ButtweldFittingsPage";
+import Inconel601ButtweldFittingsPage from "./Inconel601ButtweldFittingsPage";
+import Inconel625ButtweldFittingsPage from "./Inconel625ButtweldFittingsPage";
+import Inconel800ButtweldFittingsPage from "./Inconel800ButtweldFittingsPage";
+import Inconel825ButtweldFittingsPage from "./Inconel825ButtweldFittingsPage";
+import Alloy20ButtweldFittingsPage from "./Alloy20ButtweldFittingsPage";
+import HastelloyButtweldFittingsPage from "./HastelloyButtweldFittingsPage";
+import TitaniumButtweldFittingsPage from "./TitaniumButtweldFittingsPage";
+import AluminiumButtweldFittingsPage from "./AluminiumButtweldFittingsPage";
+import CopperNickelButtweldFittingsPage from "./CopperNickelButtweldFittingsPage";
+import BrassBronzeButtweldFittingsPage from "./BrassBronzeButtweldFittingsPage";
+import SS304ButtweldFittingsPage from "./SS304ButtweldFittingsPage";
+import SS304LButtweldFittingsPage from "./SS304LButtweldFittingsPage";
+import SS304HButtweldFittingsPage from "./SS304HButtweldFittingsPage";
+import SS310ButtweldFittingsPage from "./SS310ButtweldFittingsPage";
+import SS316ButtweldFittingsPage from "./SS316ButtweldFittingsPage";
+import SS316LButtweldFittingsPage from "./SS316LButtweldFittingsPage";
+import SS317ButtweldFittingsPage from "./SS317ButtweldFittingsPage";
+import SS317LButtweldFittingsPage from "./SS317LButtweldFittingsPage";
+import SS321ButtweldFittingsPage from "./SS321ButtweldFittingsPage";
+import SS347ButtweldFittingsPage from "./SS347ButtweldFittingsPage";
+import SS904LButtweldFittingsPage from "./SS904LButtweldFittingsPage";
+import CarbonSteelButtweldFittingsPage from "./CarbonSteelButtweldFittingsPage";
+import AlloySteelWP5ButtweldFittingsPage from "./AlloySteelWP5ButtweldFittingsPage";
+import AlloySteelWP11ButtweldFittingsPage from "./AlloySteelWP11ButtweldFittingsPage";
+import AlloySteelWP9ButtweldFittingsPage from "./AlloySteelWP9ButtweldFittingsPage";
+import AlloySteelWP12ButtweldFittingsPage from "./AlloySteelWP12ButtweldFittingsPage";
+import AlloySteelWP22ButtweldFittingsPage from "./AlloySteelWP22ButtweldFittingsPage";
+import AlloySteelWP91ButtweldFittingsPage from "./AlloySteelWP91ButtweldFittingsPage";
+import HighNickelAlloySocketweldFittingsPage from "./HighNickelAlloySocketweldFittingsPage";
+import StainlessSteelSocketweldFittingsPage from "./StainlessSteelSocketweldFittingsPage";
+import CarbonSteelSocketweldFittingsPage from "./CarbonSteelSocketweldFittingsPage";
+import AlloySteelSocketweldFittingsPage from "./AlloySteelSocketweldFittingsPage";
+import HighNickelAlloyFastenersPage from "./HighNickelAlloyFastenersPage";
+import StainlessSteelFastenersPage from "./StainlessSteelFastenersPage";
+import CarbonSteelFastenersPage from "./CarbonSteelFastenersPage";
+import AlloySteelFastenersPage from "./AlloySteelFastenersPage";
+import NonFerrousMetalFastenersPage from "./NonFerrousMetalFastenersPage";
+import RefractoryFixingsAnchorsPage from "./RefractoryFixingsAnchorsPage";
+import AnglesChannelsPage from "./AnglesChannelsPage";
+import TubeSheetsPage from "./TubeSheetsPage";
+import FerruleFittingsPage from "./FerruleFittingsPage";
+import CladdedPlatesPage from "./CladdedPlatesPage";
+import OletsPage from "./OletsPage";
+import ValvesPage from "./ValvesPage";
+
+import LCCLCBBilletsPage from "./LCCLCBBilletsPage";
+import FourAFiveASixABilletsPage from "./FourAFiveASixABilletsPage";
+import C12ABilletsPage from "./C12ABilletsPage";
+import Grade900BilletsPage from "./Grade900BilletsPage";
+import BronzeBushesPage from "./BronzeBushesPage";
 
 // Map product slugs to their respective components
 const productDetailsMap = {
@@ -308,7 +363,85 @@ const productDetailsMap = {
   "a105-carbon-steel-flanges": CarbonSteelASTMA105FlangesPage,
   "a694-carbon-steel-flanges": CarbonSteelASTMA694FlangesPage,
   "a350-carbon-steel-flanges": ASTMA350LF2LF3FlangesPage,
-  "alloy-steel-flanges":AlloySteelFlangesPage
+  "alloy-steel-flanges": AlloySteelFlangesPage,
+
+  // buttweld-fittings
+  "alloy-200-buttweld-pipe-fittings": NickelAlloy200ButtweldFittingsPage,
+  "alloy-201-buttweld-pipe-fittings": NickelAlloy201ButtweldFittingsPage,
+  "monel-400-buttweld-pipe-fittings": Monel400ButtweldFittingsPage,
+  "monel-k500-buttweld-pipe-fittings": MonelK500ButtweldFittingsPage,
+  "inconel-600-buttweld-pipe-fitings": Inconel600ButtweldFittingsPage,
+  "inconel-601-buttweld-pipe-fitings": Inconel601ButtweldFittingsPage,
+  "inconel-625-buttweld-pipe-fitings": Inconel625ButtweldFittingsPage,
+  "inconel-800-buttweld-pipe-fitings": Inconel800ButtweldFittingsPage,
+  "inconel-825-buttweld-pipe-fitings": Inconel825ButtweldFittingsPage,
+  "alloy-20-buttweld-pipe-fittings": Alloy20ButtweldFittingsPage,
+  "hastelloy-buttweld-pipe-fittings": HastelloyButtweldFittingsPage,
+  "titanium-buttweld-pipe-fittings": TitaniumButtweldFittingsPage,
+  "aluminium-buttweld-pipe-fittings": AluminiumButtweldFittingsPage,
+  "copper-nickel-buttweld-pipe-fittings": CopperNickelButtweldFittingsPage,
+  "brass-bronze-buttweld-fittings": BrassBronzeButtweldFittingsPage,
+  "304-stainless-steel-buttweld-fittings": SS304ButtweldFittingsPage,
+  "304l-stainless-steel-buttweld-fittings": SS304LButtweldFittingsPage,
+  "304h-stainless-steel-buttweld-fittings": SS304HButtweldFittingsPage,
+  "310-stainless-steel-buttweld-fittings": SS310ButtweldFittingsPage,
+  "316-stainless-steel-buttweld-fittings": SS316ButtweldFittingsPage,
+  "316l-stainless-steel-buttweld-fittings": SS316LButtweldFittingsPage,
+  "317-stainless-steel-buttweld-fittings": SS317ButtweldFittingsPage,
+  "317l-stainless-steel-buttweld-fittings": SS317LButtweldFittingsPage,
+  "321-stainless-steel-buttweld-fittings": SS321ButtweldFittingsPage,
+  "347-stainless-steel-buttweld-fittings": SS347ButtweldFittingsPage,
+  "904l-stainless-steel-buttweld-fittings": SS904LButtweldFittingsPage,
+  "carbon-steel-buttweld-fittings": CarbonSteelButtweldFittingsPage,
+  "wp5-buttweld-fittings": AlloySteelWP5ButtweldFittingsPage,
+  "wp11-buttweld-fittings": AlloySteelWP11ButtweldFittingsPage,
+  "wp9-buttweld-fittings": AlloySteelWP9ButtweldFittingsPage,
+  "wp12-buttweld-fittings": AlloySteelWP12ButtweldFittingsPage,
+  "wp22-buttweld-fittings": AlloySteelWP22ButtweldFittingsPage,
+  "wp91-buttweld-fittings": AlloySteelWP91ButtweldFittingsPage,
+
+  // socket-fittings
+  "high-nickel-alloy-socketweld-fittings":
+    HighNickelAlloySocketweldFittingsPage,
+  "stainless-steel-socketweld-fittings": StainlessSteelSocketweldFittingsPage,
+  "carbon-steel-socketweld-fittings": CarbonSteelSocketweldFittingsPage,
+  "alloy-steel-socketweld-fittings": AlloySteelSocketweldFittingsPage,
+
+  // fasteners
+  "high-nickel-alloy-fasteners": HighNickelAlloyFastenersPage,
+  "stainless-steel-fasteners": StainlessSteelFastenersPage,
+  "carbon-steel-fasteners": CarbonSteelFastenersPage,
+  "alloy-steel-fasteners": AlloySteelFastenersPage,
+  "non-ferrous-metal-fasteners": NonFerrousMetalFastenersPage,
+
+  // refactory-anchors
+  "refractory-fixings-anchors": RefractoryFixingsAnchorsPage,
+
+  // angle-channels
+  "angles-channels": AnglesChannelsPage,
+
+  // tube-sheets
+  "tube-sheets": TubeSheetsPage,
+  // ferrule-fittings
+  "ferrule-fittings": FerruleFittingsPage,
+
+  // cladded-plates
+  "cladded-plates": CladdedPlatesPage,
+
+  // olets
+  olets: OletsPage,
+
+  // valves
+  valves: ValvesPage,
+
+  // graphite-filled-bronze-bush
+  "graphite-filled-bronze-bush": BronzeBushesPage,
+
+  //billets
+  "lcc-lcb-billets": LCCLCBBilletsPage,
+  "4-5-6-billets": FourAFiveASixABilletsPage,
+  "c12a-billets": C12ABilletsPage,
+  "gr900-billets": Grade900BilletsPage,
 };
 
 export default productDetailsMap;

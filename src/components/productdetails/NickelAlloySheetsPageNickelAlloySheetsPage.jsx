@@ -1,22 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Factory,
-  ExternalLink,
-  Menu,
-  Globe,
-  ChevronRight,
-  ArrowLeft,
-} from "lucide-react";
-import sheetsPlates from "../../data/productCategories/sheets-plates";
+import { Phone, Mail, Menu, PhoneCall, Globe, ArrowLeft } from "lucide-react";
+import { MdOutlineWhatsapp} from "react-icons/md";
+import sheetsplates from "../../data/productCategories/sheets-plates";
 import nickelSheetImage from "../../assets/productsImage/sheets.jpg";
 
 const NickelAlloySheetsPage = () => {
   const navigate = useNavigate();
+
+  // YOUR EXACT CONTACT DETAILS
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -28,49 +21,16 @@ const NickelAlloySheetsPage = () => {
 
   const { categorySlug } = useParams();
 
-  const currentCategory = sheetsPlates.categories?.find(
-    (cat) => cat.slug === categorySlug,
-  );
+  // Get all sheet products from the structured data
+  const allSheetProducts = sheetsplates.categories?.[0]?.types || [];
 
-  const activeCategory =
-    currentCategory || sheetsPlates.categories?.[0] || sheetsPlates;
-
-  // Get the current product from the sheets array
-  const currentProduct = sheetsPlates.find(
+  // Find the current product by slug
+  const currentProduct = allSheetProducts.find(
     (item) => item.slug === "nickel-alloy-sheetsplates",
   );
 
-  // All sheet products for the "Other Types" section
-  const sheetProducts = [
-    {
-      id: 1,
-      slug: "nickel-alloy-sheetsplates",
-      title: "Nickel Alloy Sheets, Plates & Coils",
-      description:
-        "Premium nickel alloy sheets, plates, and coils offering exceptional strength, superior corrosion resistance, and excellent performance in extreme temperatures.",
-    },
-    {
-      id: 2,
-      slug: "stainless-steel-sheetsplates",
-      title: "Stainless Steel Sheets, Plates & Coils",
-      description:
-        "High-quality stainless steel sheets, plates, and coils providing excellent corrosion resistance, durability, and aesthetic appeal.",
-    },
-    {
-      id: 3,
-      slug: "carbon-steel-sheetsplates",
-      title: "Carbon Steel Sheets, Plates & Coils",
-      description:
-        "Premium carbon steel sheets, plates, and coils offering outstanding strength, excellent weldability, and cost-effectiveness.",
-    },
-    {
-      id: 4,
-      slug: "alloy-steel-sheetsplates",
-      title: "Alloy Steel Sheets, Plates & Coils",
-      description:
-        "High-performance alloy steel sheets, plates, and coils delivering exceptional strength, hardness, and wear resistance.",
-    },
-  ];
+  // All sheet products for the sidebar
+  const sheetProducts = allSheetProducts;
 
   const allDestinations = [
     "Bahrain",
@@ -224,6 +184,159 @@ const NickelAlloySheetsPage = () => {
     { name: "Billets", slug: "billets" },
   ];
 
+  // Product data
+  const productData = {
+    title: "Nickel Alloy Sheets, Plates & Coils / Nickel Alloy Flat Products",
+    subtitle:
+      "Nickel Alloy Sheets, Plates & Coils Manufacturer, Nickel Alloy 200/201 Plates & Coils, Inconel 600/625 Sheets, Monel 400/K500 Plates, Hastelloy B2/C22/C276 Coils, Incoloy 800/825 Flats, Alloy 20 Hot & Cold Rolled Plates Exporter in India.",
+    description1:
+      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Nickel Alloy Sheets, Plates & Coils, which are manufactured from premium nickel-based alloys including Nickel 200/201, Inconel, Monel, Hastelloy, Incoloy, and Alloy 20. These flat products offer exceptional corrosion resistance, high-temperature strength, and excellent mechanical properties for demanding applications.",
+    description2:
+      "Nickel Alloy Sheets, Plates & Coils are specifically designed for applications requiring superior resistance to corrosion, oxidation, and high-temperature environments. These products are available in various forms including sheets, plates, coils, flats, strips, and rings to meet diverse industrial requirements.",
+    description3:
+      "Our nickel alloy flat products are manufactured as per ASTM B162 / ASME SB162 standards and are available in various grades including Nickel 200/201, Inconel 600/625, Monel 400/K500, Hastelloy B2/C22/C276, Incoloy 800/825, and Alloy 20, each offering unique properties for specific applications.",
+    description4:
+      "Our Nickel Alloy sheets, plates, and coils are available in sizes ranging from 0.5mm to 50mm thickness with widths up to 2000mm. We manufacture and stock even odd sizes which is hard to find.",
+    grades: [
+      "ASTM / ASME SB 162 UNS 2200 (NICKEL 200)",
+      "ASTM / ASME SB 162 UNS 2201 (NICKEL 201)",
+      "ASTM / ASME SB 168 UNS 6600 (INCONEL 600)",
+      "ASTM / ASME SB 168 UNS 6601 (INCONEL 601)",
+      "ASTM / ASME SB 168 UNS 6625 (INCONEL 625)",
+      "ASTM / ASME SB 127 UNS 4400 (MONEL 400)",
+      "ASTM / ASME SB 127 UNS 5500 (MONEL K500)",
+      "ASTM / ASME SB 575 UNS 10276 (HASTELLOY C276)",
+      "ASTM / ASME SB 575 UNS 10675 (HASTELLOY B2)",
+      "ASTM / ASME SB 409 UNS 8800 (INCOLOY 800)",
+      "ASTM / ASME SB 409 UNS 8825 (INCOLOY 825)",
+      "ASTM / ASME SB 463 UNS 8020 (ALLOY 20)",
+    ],
+    specifications: {
+      standard: "ASTM B162 / ASME SB162",
+      grades:
+        "Nickel 200/201, Inconel 600/625, Monel 400/K500, Hastelloy C276, Incoloy 800/825, Alloy 20",
+      form: "Sheets, Plates, Coils, Flats, Strips, Rings, Circles",
+      thickness: "0.5mm to 50mm",
+      width: "Up to 2000mm",
+      finish: "Hot Rolled (HR), Cold Rolled (CR), 2B, 2D, BA, SATIN",
+    },
+    standardsTable: [
+      {
+        standard: "Nickel 200",
+        werkstoff: "2.4066",
+        uns: "N02200",
+        jis: "NW 2200",
+        afnor: "N-100M",
+        bs: "NA 11",
+        gost: "НП-2",
+        en: "Ni 99.2",
+      },
+      {
+        standard: "Nickel 201",
+        werkstoff: "2.4068",
+        uns: "N02201",
+        jis: "NW 2201",
+        afnor: "-",
+        bs: "NA 12",
+        gost: "НП-2",
+        en: "LC-Ni 99",
+      },
+      {
+        standard: "Monel 400",
+        werkstoff: "2.4360",
+        uns: "N04400",
+        jis: "NW 4400",
+        afnor: "-",
+        bs: "NA 13",
+        gost: "НП-2",
+        en: "NiCu30Fe",
+      },
+      {
+        standard: "Inconel 600",
+        werkstoff: "2.4816",
+        uns: "N06600",
+        jis: "NW 6600",
+        afnor: "-",
+        bs: "NA 14",
+        gost: "ХН45Ю",
+        en: "NiCr15Fe",
+      },
+      {
+        standard: "Inconel 625",
+        werkstoff: "2.4856",
+        uns: "N06625",
+        jis: "NW 6625",
+        afnor: "-",
+        bs: "NA 21",
+        gost: "-",
+        en: "NiCr22Mo9Nb",
+      },
+      {
+        standard: "Hastelloy C276",
+        werkstoff: "2.4819",
+        uns: "N10276",
+        jis: "NW 0276",
+        afnor: "-",
+        bs: "-",
+        gost: "-",
+        en: "NiMo16Cr15W",
+      },
+    ],
+    types: [
+      "Nickel Alloy 200 Sheets",
+      "Nickel 201 Plates",
+      "Nickel 200 Coils",
+      "Nickel 200 Flats",
+      "Monel 400/K500 Rings",
+      "Inconel 600/625 Strip",
+      "Inconel 800/825 Sheets",
+      "Hastelloy B2/C22/C276 Plates",
+      "Hastelloy C276 Circle",
+      "Alloy 20 Sheets & Plates",
+      "Inconel 600 Hot Rolled Plates",
+      "Monel 400 Cold Rolled Sheets",
+      "Nickel 201 Coils",
+      "Incoloy 825 Flats",
+      "Hastelloy C276 Strips",
+    ],
+  };
+
+ // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+      hover: "#2E0A5E",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+      hover: "#128C7E",
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -232,7 +345,7 @@ const NickelAlloySheetsPage = () => {
         </title>
         <meta
           name="description"
-          content="High Nickel Alloy Sheets, Plates & Coils Manufacturer. Nickel Alloy 200/201, Inconel, Monel, Hastelloy Sheets & Plates. Export quality, best prices."
+          content="Nickel Alloy Sheets, Plates & Coils Manufacturer. Nickel 200/201, Inconel 600/625, Monel 400, Hastelloy C276, Incoloy 800/825. Export quality, best prices."
         />
       </Helmet>
 
@@ -241,7 +354,7 @@ const NickelAlloySheetsPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               <div className="inline-block text-[#66BB6A] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#66BB6A] uppercase">
-                {sheetsPlates.badge ||
+                {sheetsplates.badge ||
                   "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
               </div>
             </div>
@@ -250,6 +363,7 @@ const NickelAlloySheetsPage = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8">
+            {/* Sidebar */}
             <aside className="lg:w-80 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-4">
                 <div className="bg-[#4A148C] px-5 py-4">
@@ -260,7 +374,7 @@ const NickelAlloySheetsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* ===== SHEETS, PLATES & COILS SECTION - ABOVE PRODUCT RANGE ===== */}
+                  {/* ===== SHEETS, PLATES & COILS SECTION ===== */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
                       SHEETS, PLATES & COILS
@@ -310,7 +424,7 @@ const NickelAlloySheetsPage = () => {
             </aside>
 
             <div className="flex-1 min-w-0 pt-4">
-              {/* ===== BACK BUTTON - Navigate to Parent Route ===== */}
+              {/* Back Button */}
               <div className="mb-4">
                 <button
                   onClick={() => navigate("/products/sheets-plates")}
@@ -321,25 +435,23 @@ const NickelAlloySheetsPage = () => {
                 </button>
               </div>
 
-              {/* ===== HERO IMAGE & HEADING ===== */}
+              {/* Hero Section */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: `url(${activeCategory.image})`,
+                      backgroundImage: `url(${nickelSheetImage})`,
                     }}
                   ></div>
                 </div>
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {currentProduct?.title ||
-                        "Nickel Alloy Sheets, Plates & Coils"}
+                      {productData.title}
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
-                      {currentProduct?.shortDescription ||
-                        "We manufacture & Export wide range of steel Sheets, Plates & Coils for quality end results."}
+                      {productData.subtitle}
                     </p>
                     <div className="flex flex-wrap gap-3 mt-5">
                       <a
@@ -361,7 +473,7 @@ const NickelAlloySheetsPage = () => {
                 </div>
               </div>
 
-              {/* ===== PRODUCT IMAGE ===== */}
+              {/* Product Image */}
               <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
                 <div className="flex justify-center">
                   <img
@@ -372,120 +484,45 @@ const NickelAlloySheetsPage = () => {
                 </div>
               </div>
 
-              {/* ===== PRODUCT DESCRIPTION ===== */}
+              {/* Product Description */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  {currentProduct?.title ||
-                    "Nickel Alloy Sheets, Plates & Coils"}
-                </p>
-                <p>
-                  Nickel Alloy Sheets, Nickel Alloy 200 / 201 Plates & Coils,
-                  Nickel 200 Strip, Nickel Alloy 201 Flats Manufacturer &
-                  Exporters from India.
+                  Nickel Alloy Sheets, Plates & Coils – ASTM B162
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
                     {contactDetails.company}
                   </span>{" "}
-                  is a Leading Manufacturer and Exporter of Nickel Alloy Sheets
-                  & Plates from Mumbai.
+                  {productData.description1}
                 </p>
-                <p>
-                  The Sheets made from specially selected Nickel Alloy that we
-                  bring forth are sourced from the prominent manufacturers.
-                  Also, the entire wide range of our offerings complies with the
-                  highest quality standards. Thus, while Buying Nickel Alloy
-                  fabricated Sheets from us, buyers need not worry. We have
-                  always been delivering and continue to deliver the best that
-                  absolutely meets the requirements of the buyers as well as is
-                  within their budget too.
-                </p>
-                <p>
-                  Nickel Alloy Plates, Nickel sheets, Nickel alloy coils are
-                  manufactured with the use of quality tested material available
-                  in various grades. Nickel Alloy sheets are used for making
-                  flanges, pipes and rods for chemical industries, civil
-                  engineering and water treatment plants.
-                </p>
-                <p>
-                  Nickel, long used as an alloying element in thousands of
-                  alloys, is produced by an extensive range of companies
-                  worldwide. Neon Alloys wide-ranging inventory of nickel alloy
-                  sheets, plates, coils is available to meet applications that
-                  entail excellent strength, even at soaring temperature, and
-                  exceptional resistance to sternly corrosive environments.
-                </p>
-                <p>
-                  Heat exchangers, Vessels, pipes, pumps, scrubbers, valves and
-                  other equipment components used in the chemical,
-                  petrochemical, marine engineering, hydrocarbon, oil and gas
-                  extraction, thermal and food processing, pollution control and
-                  power generation industries are some of the major applications
-                  for these high-performance alloys.
-                </p>
-                <p>
-                  Monel 400/K500 Plate, Inconel 600/625 Sheets, Incoloy 800/825
-                  Sheets & Plates, Hastelloy B2/C22/C276 Coils, Flats & Rings,
-                  Alloy 20 Hot & Cold Rolled Plates Supplier & Exporter in
-                  India.
-                </p>
+                <p>{productData.description2}</p>
+                <p>{productData.description3}</p>
+                <p>{productData.description4}</p>
               </div>
 
-              {/* ===== GRADES LIST ===== */}
+              {/* Grades List */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  High Nickel Alloy Sheets, Nickel Alloy Plates &{" "}
-                  <span className="text-[#66BB6A]">
-                    Nickel Alloy Coils/Flats/Rings
-                  </span>
+                  Nickel Alloy Sheets, Plates & Coils Grades &{" "}
+                  <span className="text-[#66BB6A]">Materials</span>
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
                   <ul className="space-y-2 text-sm text-slate-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 163 UNS 2200 (NICKEL 200)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 163 UNS 2201 (NICKEL 201)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 163 / 165 UNS 4400 (MONEL 400)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 464 UNS 8020 (ALLOY 20 / 20 CB 3)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 704/705 UNS 8825 INCONEL (825)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 167 / 517 UNS 6600 (INCONEL 600)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 167 UNS 6601 (INCONEL 601)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 704 /705 UNS 6625 (INCONEL 625)
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#66BB6A] font-bold">•</span>
-                      ASTM / ASME SB 619/622/626 UNS 10276 (HASTELLOY C 276)
-                    </li>
+                    {productData.grades.map((grade, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span className="text-[#66BB6A] font-bold">•</span>
+                        {grade}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
-              {/* ===== SPECIFICATIONS ===== */}
+              {/* Specifications */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  High Nickel Alloy Sheets, Plates & Coils{" "}
+                  Nickel Alloy Sheets, Plates & Coils{" "}
                   <span className="text-[#66BB6A]">Specification</span>
                 </h2>
 
@@ -493,32 +530,39 @@ const NickelAlloySheetsPage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Size:</strong> 15NB
-                        to 150NB In
+                        <strong className="text-[#4A148C]">
+                          Specification:
+                        </strong>{" "}
+                        {productData.specifications.standard}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Type:</strong> Sheet,
-                        Plates, Coils, Flat, Strips, Profile, Blank, Circle,
-                        Ring etc.
+                        <strong className="text-[#4A148C]">Grades:</strong>{" "}
+                        {productData.specifications.grades}
+                      </p>
+                      <p>
+                        <strong className="text-[#4A148C]">Form:</strong>{" "}
+                        {productData.specifications.form}
+                      </p>
+                      <p>
+                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
+                        {productData.specifications.finish}
                       </p>
                     </div>
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Finish:</strong> Hot
-                        rolled plate (HR), Cold rolled sheet (CR), 2B, 2D, BA
-                        NO(8), SATIN (Met with Plastic Coated)
+                        <strong className="text-[#4A148C]">Thickness:</strong>{" "}
+                        {productData.specifications.thickness}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Form:</strong> Coils,
-                        Foils, Rolls, Plain Sheet, Strip, Flats, Blank (Circle),
-                        Ring (Flange) etc.
+                        <strong className="text-[#4A148C]">Width:</strong>{" "}
+                        {productData.specifications.width}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* ===== STANDARDS TABLE ===== */}
+              {/* Standards Table */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Standards <span className="text-[#66BB6A]">Equivalents</span>
@@ -555,132 +599,49 @@ const NickelAlloySheetsPage = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      <tr>
-                        <td className="px-4 py-2.5 text-sm font-bold text-[#4A148C]">
-                          Nickel 200
-                        </td>
-                        <td className="px-4 py-2.5 text-sm">2.4066</td>
-                        <td className="px-4 py-2.5 text-sm">N02200</td>
-                        <td className="px-4 py-2.5 text-sm">NW 2200</td>
-                        <td className="px-4 py-2.5 text-sm">N-100M</td>
-                        <td className="px-4 py-2.5 text-sm">NA 11</td>
-                        <td className="px-4 py-2.5 text-sm">НП-2</td>
-                        <td className="px-4 py-2.5 text-sm">Ni 99.2</td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2.5 text-sm font-bold text-[#4A148C]">
-                          Nickel 201
-                        </td>
-                        <td className="px-4 py-2.5 text-sm">2.4068</td>
-                        <td className="px-4 py-2.5 text-sm">N02201</td>
-                        <td className="px-4 py-2.5 text-sm">NW 2201</td>
-                        <td className="px-4 py-2.5 text-sm">-</td>
-                        <td className="px-4 py-2.5 text-sm">NA 12</td>
-                        <td className="px-4 py-2.5 text-sm">НП-2</td>
-                        <td className="px-4 py-2.5 text-sm">LC-Ni 99</td>
-                      </tr>
+                      {productData.standardsTable.map((row, index) => (
+                        <tr key={index}>
+                          <td className="px-4 py-2.5 text-sm font-bold text-[#4A148C]">
+                            {row.standard}
+                          </td>
+                          <td className="px-4 py-2.5 text-sm">
+                            {row.werkstoff}
+                          </td>
+                          <td className="px-4 py-2.5 text-sm">{row.uns}</td>
+                          <td className="px-4 py-2.5 text-sm">{row.jis}</td>
+                          <td className="px-4 py-2.5 text-sm">{row.afnor}</td>
+                          <td className="px-4 py-2.5 text-sm">{row.bs}</td>
+                          <td className="px-4 py-2.5 text-sm">{row.gost}</td>
+                          <td className="px-4 py-2.5 text-sm">{row.en}</td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
               </div>
 
-              {/* ===== OTHER TYPES ===== */}
+              {/* Types of Nickel Alloy Flat Products - Grid */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of High Nickel Alloy Sheets &{" "}
-                  <span className="text-[#66BB6A]">
-                    Nickel Alloy Plates & Coils
-                  </span>
+                  Other Types of Nickel Alloy Sheets, Plates &{" "}
+                  <span className="text-[#66BB6A]">Coils</span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {sheetsPlates.categories?.[0]?.types?.map((type) => (
+                  {productData.types.map((type, index) => (
                     <div
-                      key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "nickel-alloy-sheets-plates-coils"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      key={index}
+                      className="bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] transition-colors"
                     >
-                      <Link
-                        to={`/products/${activeCategory?.slug || "sheets-plates"}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
-                        {type.title}
-                      </Link>
-                      {type.specs && (
-                        <ul className="mt-2 space-y-0.5">
-                          {type.specs.map((spec, idx) => (
-                            <li key={idx} className="text-xs text-slate-500">
-                              • {spec}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  )) || (
-                    <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                      <p className="text-sm text-slate-600">
-                        Nickel Alloy 200 Sheets
+                      <p className="text-sm font-semibold text-[#4A148C]">
+                        {type}
                       </p>
                     </div>
-                  )}
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Nickel Alloy 201 Plates
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Nickel Alloy 200 Coils
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Nickel Alloy 200 Flats
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">Nickel 200 Plates</p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">Nickel 201 Sheets</p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Monel 400/K500 Rings
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Inconel 600/625 Strip
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Inconel 800/825 Sheets
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Hastelloy B2/C22/C276 Plates
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Hastelloy B2/C22/C276 Circle
-                    </p>
-                  </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-                    <p className="text-sm text-slate-600">
-                      Alloy 20 Sheets & Plates
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* ===== CONTACT BOX ===== */}
+              {/* Contact Box */}
               <div className="mt-8">
                 <div className="bg-[#4A148C] text-white rounded-2xl p-6 sm:p-8 text-center">
                   <p className="text-lg font-medium">
@@ -699,7 +660,7 @@ const NickelAlloySheetsPage = () => {
                 </div>
               </div>
 
-              {/* ===== EXPORT DESTINATIONS ===== */}
+              {/* Export Destinations */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   EXPORT DESTINATIONS FOR NICKEL ALLOY SHEETS, NICKEL ALLOY
@@ -726,6 +687,37 @@ const NickelAlloySheetsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Floating Call and WhatsApp Buttons */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

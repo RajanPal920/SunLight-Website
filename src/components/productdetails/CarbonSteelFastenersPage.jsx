@@ -1,12 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { MdOutlineWhatsapp } from "react-icons/md";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
-import sheetsplates from "../../data/productCategories/sheets-plates";
-import asSheetImage from "../../assets/productsImage/sheets.jpg";
+import { MdOutlineWhatsapp } from "react-icons/md";
+import fasteners from "../../data/productCategories/fasteners";
+import fastenerImage from "../../assets/productsImage/fastener.jpg";
 
-const AlloySteelSheetsPage = () => {
+const CarbonSteelFastenersPage = () => {
   const navigate = useNavigate();
 
   // YOUR EXACT CONTACT DETAILS
@@ -21,16 +21,16 @@ const AlloySteelSheetsPage = () => {
 
   const { categorySlug } = useParams();
 
-  // Get all sheet products from the structured data
-  const allSheetProducts = sheetsplates.categories?.[0]?.types || [];
+  // Get all fastener products from the structured data
+  const allFastenerProducts = fasteners.categories?.[0]?.types || [];
 
   // Find the current product by slug
-  const currentProduct = allSheetProducts.find(
-    (item) => item.slug === "alloy-steel-sheetsplates",
+  const currentProduct = allFastenerProducts.find(
+    (item) => item.slug === "carbon-steel-fasteners",
   );
 
-  // All sheet products for the sidebar
-  const sheetProducts = allSheetProducts;
+  // All fastener products for the sidebar
+  const fastenerProducts = allFastenerProducts;
 
   const allDestinations = [
     "Bahrain",
@@ -186,113 +186,125 @@ const AlloySteelSheetsPage = () => {
 
   // Product data
   const productData = {
-    title: "Alloy Steel Sheets, Plates & Coils / Alloy Steel Flat Products",
+    title: "Carbon Steel Fasteners / CS Bolts, Nuts & Studs",
     subtitle:
-      "Alloy Steel Sheets, Plates & Coils Manufacturer, ASTM A387 Gr.11/12/22/91 Plates & Coils, ASTM A514/A517/A709 Sheets, Alloy Steel Hot & Cold Rolled Plates Exporter in India.",
+      "Carbon Steel Fasteners Manufacturer, CS Bolts, Nuts, Screws, Washers, Studs, Grade 4.6/4.8/5.6/5.8/8.8/10.9/12.9 Fasteners, Carbon Steel Hex Bolts & Nuts Exporter in India.",
     description1:
-      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Alloy Steel Sheets, Plates & Coils, which are manufactured from premium alloy steel grades including ASTM A387 Gr.11/12/22/91, A514, A517, and A709. These flat products offer exceptional strength, hardness, wear resistance, and high-temperature performance for demanding industrial applications.",
+      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Carbon Steel Fasteners, which are manufactured from premium carbon steel grades including Grade 4.6, 4.8, 5.6, 5.8, 8.8, 10.9, and 12.9. These fasteners offer excellent strength, durability, and cost-effectiveness for demanding industrial applications.",
     description2:
-      "Alloy Steel Sheets, Plates & Coils are specifically designed for applications requiring high strength, excellent wear resistance, and reliable performance at elevated temperatures. These products are available in various forms including sheets, plates, coils, flats, strips, and rings to meet diverse industrial requirements.",
+      "Carbon Steel Fasteners are specifically designed for applications requiring high strength, excellent weldability, and reliable performance. These fasteners are available in various forms including bolts, nuts, screws, washers, studs, and custom fasteners to meet diverse industrial requirements.",
     description3:
-      "Our alloy steel flat products are manufactured as per ASTM A387 / ASME SA387 standards and are available in various grades including Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, and A709, each offering unique properties for specific applications.",
+      "Our carbon steel fasteners are manufactured as per ASTM A307 / ASME SA307 standards and are available in various grades including 4.6, 4.8, 5.6, 5.8, 8.8, 10.9, and 12.9, each offering unique properties for specific applications.",
     description4:
-      "Our Alloy Steel sheets, plates, and coils are available in sizes ranging from 0.5mm to 50mm thickness with widths up to 2000mm. We manufacture and stock even odd sizes which is hard to find.",
+      "Our Carbon Steel fasteners are available in sizes ranging from M2 to M64 with various thread types including UNC, UNF, BSW, and Metric. We manufacture and stock even odd sizes which is hard to find.",
     grades: [
-      "ASTM A387 Gr.11 / ASME SA387 Gr.11 (1.25% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.12 / ASME SA387 Gr.12 (1% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.22 / ASME SA387 Gr.22 (2.25% Cr, 1% Mo)",
-      "ASTM A387 Gr.91 / ASME SA387 Gr.91 (9% Cr, 1% Mo, V, Nb)",
-      "ASTM A514 / ASME SA514 (High Strength Quenched & Tempered)",
-      "ASTM A517 / ASME SA517 (High Strength Quenched & Tempered)",
-      "ASTM A709 / ASME SA709 (Structural Steel)",
+      "ASTM A307 / ASME SA307 Grade A (Low Carbon)",
+      "ASTM A307 / ASME SA307 Grade B (Medium Carbon)",
+      "ASTM A325 / ASME SA325 (High Strength Structural)",
+      "ASTM A490 / ASME SA490 (High Strength Structural)",
+      "ASTM A563 / ASME SA563 (Hex Nuts)",
+      "ASTM F568M / ASME SA568M (Metric Fasteners)",
     ],
     specifications: {
-      standard: "ASTM A387 / ASME SA387",
-      grades: "Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, A709",
-      form: "Sheets, Plates, Coils, Flats, Strips, Rings, Circles",
-      thickness: "0.5mm to 50mm",
-      width: "Up to 2000mm",
-      finish: "Hot Rolled (HR), Cold Rolled (CR), Quenched & Tempered",
+      standard: "ASTM A307 / ASME SA307",
+      grades: "4.6, 4.8, 5.6, 5.8, 8.8, 10.9, 12.9",
+      form: "Bolts, Nuts, Screws, Washers, Studs, Custom Fasteners",
+      size: "M2 to M64",
+      thread: "UNC, UNF, BSW, Metric",
+      finish: "Plain, Zinc Plated, Hot Dip Galvanized, Black Oxide",
     },
     standardsTable: [
       {
-        standard: "A387 Gr.11",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 3",
-        afnor: "12CD5",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
-      },
-      {
-        standard: "A387 Gr.12",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 2",
-        afnor: "12CD4",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
-      },
-      {
-        standard: "A387 Gr.22",
-        werkstoff: "1.7380",
-        uns: "K21590",
-        jis: "SCMV 4",
-        afnor: "10CD9-10",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "10CrMo9-10",
-      },
-      {
-        standard: "A387 Gr.91",
-        werkstoff: "1.4903",
-        uns: "K91560",
-        jis: "SCMV 91",
-        afnor: "10CDVNb9-1",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "X10CrMoVNb9-1",
-      },
-      {
-        standard: "A514",
-        werkstoff: "1.8928",
-        uns: "K11630",
-        jis: "SM 570",
-        afnor: "E 460",
+        standard: "Grade 4.6",
+        werkstoff: "1.0038",
+        uns: "K02600",
+        jis: "SS400",
+        afnor: "E24-2",
         bs: "BS 4360",
-        gost: "14Г2АФ",
-        en: "S460Q",
+        gost: "Ст3сп",
+        en: "S235JR",
       },
       {
-        standard: "A709",
-        werkstoff: "1.8946",
-        uns: "K12000",
-        jis: "SM 490",
-        afnor: "E 355",
+        standard: "Grade 4.8",
+        werkstoff: "1.0044",
+        uns: "K02800",
+        jis: "SS400",
+        afnor: "E24-2",
         bs: "BS 4360",
-        gost: "10Г2С1",
-        en: "S355J2",
+        gost: "Ст3сп",
+        en: "S275JR",
+      },
+      {
+        standard: "Grade 5.6",
+        werkstoff: "1.0035",
+        uns: "K03000",
+        jis: "SS330",
+        afnor: "E24-1",
+        bs: "BS 4360",
+        gost: "Ст2сп",
+        en: "S185",
+      },
+      {
+        standard: "Grade 5.8",
+        werkstoff: "1.0035",
+        uns: "K03000",
+        jis: "SS330",
+        afnor: "E24-1",
+        bs: "BS 4360",
+        gost: "Ст2сп",
+        en: "S185",
+      },
+      {
+        standard: "Grade 8.8",
+        werkstoff: "1.7225",
+        uns: "K03600",
+        jis: "S45C",
+        afnor: "42CD4",
+        bs: "BS 970",
+        gost: "40Х",
+        en: "42CrMo4",
+      },
+      {
+        standard: "Grade 10.9",
+        werkstoff: "1.7225",
+        uns: "K03600",
+        jis: "S45C",
+        afnor: "42CD4",
+        bs: "BS 970",
+        gost: "40Х",
+        en: "42CrMo4",
+      },
+      {
+        standard: "Grade 12.9",
+        werkstoff: "1.7243",
+        uns: "K03600",
+        jis: "S45C",
+        afnor: "42CD4",
+        bs: "BS 970",
+        gost: "40Х",
+        en: "42CrMo4",
       },
     ],
     types: [
-      "Alloy Steel A387 Gr.11 Sheets & Plates",
-      "A387 Gr.12 Plates & Coils",
-      "Alloy Steel A387 Gr.22 Sheets & Coils",
-      "A387 Gr.91 Hot Rolled Plates",
-      "Alloy Steel A514 Quenched & Tempered Plates",
-      "A517 High Strength Plates",
-      "Alloy Steel A709 Structural Plates",
-      "AS Coils & Strips",
-      "Alloy Steel Circle & Rings",
-      "AS Flats",
-      "Alloy Steel Hot Rolled Plates",
-      "AS Cold Rolled Sheets",
+      "Grade 4.6 Bolts & Nuts",
+      "Grade 4.8 Studs & Washers",
+      "Grade 5.6 Screws & Fasteners",
+      "Grade 5.8 Custom Fasteners",
+      "Grade 8.8 Hex Bolts & Nuts",
+      "Grade 10.9 High Strength Bolts",
+      "Grade 12.9 Washers & Studs",
+      "Carbon Steel Screws",
+      "CS Hex Bolts",
+      "CS Lock Nuts",
+      "Carbon Steel Washers",
+      "CS Threaded Rods",
+      "CS Allen Cap Screws",
+      "CS Heavy Duty Fasteners",
+      "CS Structural Fasteners",
     ],
   };
 
-  // Floating button styles
+  // Floating button styles (exactly as your code)
   const floatingStyles = {
     container: {
       position: "fixed",
@@ -331,12 +343,10 @@ const AlloySteelSheetsPage = () => {
   return (
     <>
       <Helmet>
-        <title>
-          Alloy Steel Sheets, Plates & Coils | Sunlight Forge & Fitting
-        </title>
+        <title>Carbon Steel Fasteners | CS Bolts & Nuts | Sunlight Forge</title>
         <meta
           name="description"
-          content="Alloy Steel Sheets, Plates & Coils Manufacturer. ASTM A387 Gr.11/12/22/91, A514, A517, A709. Export quality, best prices."
+          content="Carbon Steel Fasteners Manufacturer. Grade 4.6/4.8/5.6/5.8/8.8/10.9/12.9. Export quality, best prices."
         />
       </Helmet>
 
@@ -345,8 +355,7 @@ const AlloySteelSheetsPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               <div className="inline-block text-[#66BB6A] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#66BB6A] uppercase">
-                {sheetsplates.badge ||
-                  "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
+                {fasteners.badge || "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
               </div>
             </div>
           </div>
@@ -365,18 +374,18 @@ const AlloySteelSheetsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* ===== SHEETS, PLATES & COILS SECTION ===== */}
+                  {/* ===== FASTENERS SECTION ===== */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
-                      SHEETS, PLATES & COILS
+                      FASTENERS
                     </h4>
                     <ul className="space-y-0.5">
-                      {sheetProducts.map((item) => (
+                      {fastenerProducts.map((item) => (
                         <li key={item.slug}>
                           <Link
-                            to={`/products/sheets-plates/${item.slug}`}
+                            to={`/products/fasteners/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "alloy-steel-sheetsplates"
+                              item.slug === "carbon-steel-fasteners"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -399,7 +408,7 @@ const AlloySteelSheetsPage = () => {
                           <Link
                             to={`/products/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "sheets-plates"
+                              item.slug === "fasteners"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -418,11 +427,11 @@ const AlloySteelSheetsPage = () => {
               {/* Back Button */}
               <div className="mb-4">
                 <button
-                  onClick={() => navigate("/products/sheets-plates")}
+                  onClick={() => navigate("/products/fasteners")}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
                   <ArrowLeft size={18} />
-                  Back to Sheets & Plates
+                  Back to Fasteners
                 </button>
               </div>
 
@@ -432,7 +441,7 @@ const AlloySteelSheetsPage = () => {
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: `url(${asSheetImage})`,
+                      backgroundImage: `url(${fastenerImage})`,
                     }}
                   ></div>
                 </div>
@@ -468,8 +477,8 @@ const AlloySteelSheetsPage = () => {
               <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
                 <div className="flex justify-center">
                   <img
-                    src={asSheetImage}
-                    alt="Alloy Steel Sheets, Plates & Coils"
+                    src={fastenerImage}
+                    alt="Carbon Steel Fasteners"
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -478,7 +487,7 @@ const AlloySteelSheetsPage = () => {
               {/* Product Description */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  Alloy Steel Sheets, Plates & Coils – ASTM A387
+                  Carbon Steel Fasteners – ASTM A307
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
@@ -494,7 +503,7 @@ const AlloySteelSheetsPage = () => {
               {/* Grades List */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils Grades &{" "}
+                  Carbon Steel Fasteners Grades &{" "}
                   <span className="text-[#66BB6A]">Materials</span>
                 </h2>
 
@@ -513,7 +522,7 @@ const AlloySteelSheetsPage = () => {
               {/* Specifications */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils{" "}
+                  Carbon Steel Fasteners{" "}
                   <span className="text-[#66BB6A]">Specification</span>
                 </h2>
 
@@ -535,18 +544,18 @@ const AlloySteelSheetsPage = () => {
                         {productData.specifications.form}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
-                        {productData.specifications.finish}
+                        <strong className="text-[#4A148C]">Thread:</strong>{" "}
+                        {productData.specifications.thread}
                       </p>
                     </div>
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        {productData.specifications.thickness}
+                        <strong className="text-[#4A148C]">Size:</strong>{" "}
+                        {productData.specifications.size}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Width:</strong>{" "}
-                        {productData.specifications.width}
+                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
+                        {productData.specifications.finish}
                       </p>
                     </div>
                   </div>
@@ -611,11 +620,11 @@ const AlloySteelSheetsPage = () => {
                 </div>
               </div>
 
-              {/* Types of Alloy Steel Flat Products - Grid */}
+              {/* Types of Fasteners - Grid */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of Alloy Steel Sheets, Plates &{" "}
-                  <span className="text-[#66BB6A]">Coils</span>
+                  Other Types of Carbon Steel{" "}
+                  <span className="text-[#66BB6A]">Fasteners</span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -654,7 +663,8 @@ const AlloySteelSheetsPage = () => {
               {/* Export Destinations */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY STEEL SHEETS, PLATES & COILS
+                  EXPORT DESTINATIONS FOR CARBON STEEL FASTENERS, CS BOLTS,
+                  NUTS, SCREWS, WASHERS, STUDS
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -713,4 +723,4 @@ const AlloySteelSheetsPage = () => {
   );
 };
 
-export default AlloySteelSheetsPage;
+export default CarbonSteelFastenersPage;

@@ -204,27 +204,8 @@ const buttweldfittings = {
       types: [
         {
           id: 1,
-          title: "ASTM A234 WPB Buttweld Fittings",
-          slug: "astm-a234-wpb-buttweld-fittings",
-          specs: ["ASTM A234 WPB", "Carbon Steel", "High Strength"],
-        },
-        {
-          id: 2,
-          title: "ASTM A420 WPL6 Buttweld Fittings",
-          slug: "astm-a420-wpl6-buttweld-fittings",
-          specs: ["ASTM A420 WPL6", "Carbon Steel", "Low Temperature"],
-        },
-        {
-          id: 3,
-          title: "ASTM A860 WPHY 52/60/65/70 Buttweld Fittings",
-          slug: "astm-a860-wphy-buttweld-fittings",
-          specs: ["ASTM A860", "High Yield", "High Strength"],
-        },
-        {
-          id: 4,
-          title: "ASTM A234 WPC Buttweld Fittings",
-          slug: "astm-a234-wpc-buttweld-fittings",
-          specs: ["ASTM A234 WPC", "Carbon Steel", "High Strength"],
+          title: "Carbon Steel Buttweld Fittings",
+          slug: "carbon-steel-buttweld-fittings",
         },
       ],
     },

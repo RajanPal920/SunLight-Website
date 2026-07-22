@@ -1,39 +1,74 @@
 // src/data/productCategories/sheets-plates.js
 import tita from "../../assets/productsImage/sheets.jpg";
 
-const sheets = [
-  {
-    id: 1,
-    slug: "nickel-alloy-sheetsplates",
-    image: tita,
-    title: "Nickel Alloy Sheets, Plates & Coils",
-    shortDescription:
-      "Premium nickel alloy sheets, plates, and coils offering exceptional strength, superior corrosion resistance, and excellent performance in extreme temperatures for aerospace, marine, and chemical processing industries.",
-  },
-  {
-    id: 2,
-    slug: "stainless-steel-sheetsplates",
-    image: tita,
-    title: "Stainless Steel Sheets, Plates & Coils",
-    shortDescription:
-      "High-quality stainless steel sheets, plates, and coils providing excellent corrosion resistance, durability, and aesthetic appeal for construction, automotive, pharmaceutical, and food processing applications.",
-  },
-  {
-    id: 3,
-    slug: "carbon-steel-sheetsplates",
-    image: tita,
-    title: "Carbon Steel Sheets, Plates & Coils",
-    shortDescription:
-      "Premium carbon steel sheets, plates, and coils offering outstanding strength, excellent weldability, and cost-effectiveness for construction, automotive, pressure vessel, and general engineering applications.",
-  },
-  {
-    id: 4,
-    slug: "alloy-steel-sheetsplates",
-    image: tita,
-    title: "Alloy Steel Sheets, Plates & Coils",
-    shortDescription:
-      "High-performance alloy steel sheets, plates, and coils delivering exceptional strength, hardness, and wear resistance for demanding applications in oil and gas, power generation, and heavy machinery industries.",
-  },
-];
+const sheetsplates = {
+  id: 2,
+  name: "Sheets, Plates & Coils",
+  slug: "sheets-plates",
+  shortDescription:
+    "High-quality sheets, plates, and coils for industrial applications.",
+  longDescription:
+    "We offer premium quality sheets, plates, and coils in various grades including Nickel Alloy, Stainless Steel, Carbon Steel, and Alloy Steel for diverse industrial applications across aerospace, marine, chemical processing, construction, oil and gas, and power generation industries.",
+  badge: "GOVERNMENT RECOGNISED STAR EXPORT HOUSE",
 
-export default sheets;
+  specifications: {
+    material: "Nickel Alloy, Stainless Steel, Carbon Steel, Alloy Steel",
+    grades: "Nickel 200/201, SS 304/316, Carbon Steel, Alloy Steel",
+    form: "Sheets, Plates, Coils, Flats, Strips, Rings",
+    quality: "High-grade industrial quality",
+  },
+
+  categories: [
+    {
+      id: 1,
+      image: tita,
+      title: "Sheets, Plates & Coils",
+      description:
+        "Premium quality sheets, plates, and coils available in various grades for demanding industrial applications.",
+      types: [
+        {
+          id: 1,
+          title: "Nickel Alloy Sheets, Plates & Coils",
+          slug: "nickel-alloy-sheetsplates",
+          specs: [
+            "Excellent Corrosion Resistance",
+            "High Temperature Strength",
+            "Aerospace & Marine Grade",
+          ],
+        },
+        {
+          id: 2,
+          title: "Stainless Steel Sheets, Plates & Coils",
+          slug: "stainless-steel-sheetsplates",
+          specs: [
+            "Superior Corrosion Resistance",
+            "Durable & Aesthetic",
+            "Pharmaceutical & Food Grade",
+          ],
+        },
+        {
+          id: 3,
+          title: "Carbon Steel Sheets, Plates & Coils",
+          slug: "carbon-steel-sheetsplates",
+          specs: [
+            "High Strength & Weldability",
+            "Cost-Effective",
+            "Construction & Pressure Vessel Grade",
+          ],
+        },
+        {
+          id: 4,
+          title: "Alloy Steel Sheets, Plates & Coils",
+          slug: "alloy-steel-sheetsplates",
+          specs: [
+            "Exceptional Strength & Hardness",
+            "Wear Resistant",
+            "Oil & Gas and Power Generation Grade",
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export default sheetsplates;

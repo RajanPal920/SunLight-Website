@@ -1,12 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { MdOutlineWhatsapp } from "react-icons/md";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
-import sheetsplates from "../../data/productCategories/sheets-plates";
-import asSheetImage from "../../assets/productsImage/sheets.jpg";
+import { MdOutlineWhatsapp } from "react-icons/md";
+import fasteners from "../../data/productCategories/fasteners";
+import fastenerImage from "../../assets/productsImage/fastener.jpg";
 
-const AlloySteelSheetsPage = () => {
+const HighNickelAlloyFastenersPage = () => {
   const navigate = useNavigate();
 
   // YOUR EXACT CONTACT DETAILS
@@ -21,16 +21,16 @@ const AlloySteelSheetsPage = () => {
 
   const { categorySlug } = useParams();
 
-  // Get all sheet products from the structured data
-  const allSheetProducts = sheetsplates.categories?.[0]?.types || [];
+  // Get all fastener products from the structured data
+  const allFastenerProducts = fasteners.categories?.[0]?.types || [];
 
   // Find the current product by slug
-  const currentProduct = allSheetProducts.find(
-    (item) => item.slug === "alloy-steel-sheetsplates",
+  const currentProduct = allFastenerProducts.find(
+    (item) => item.slug === "high-nickel-alloy-fasteners",
   );
 
-  // All sheet products for the sidebar
-  const sheetProducts = allSheetProducts;
+  // All fastener products for the sidebar
+  const fastenerProducts = allFastenerProducts;
 
   const allDestinations = [
     "Bahrain",
@@ -186,109 +186,146 @@ const AlloySteelSheetsPage = () => {
 
   // Product data
   const productData = {
-    title: "Alloy Steel Sheets, Plates & Coils / Alloy Steel Flat Products",
+    title: "High Nickel Alloy Fasteners / Nickel Alloy Bolts, Nuts & Studs",
     subtitle:
-      "Alloy Steel Sheets, Plates & Coils Manufacturer, ASTM A387 Gr.11/12/22/91 Plates & Coils, ASTM A514/A517/A709 Sheets, Alloy Steel Hot & Cold Rolled Plates Exporter in India.",
+      "High Nickel Alloy Fasteners Manufacturer, Nickel Alloy Bolts, Nuts, Screws, Washers, Studs, Inconel 600/625 Fasteners, Monel 400/K500 Fasteners, Hastelloy C276 Fasteners, Incoloy 800/825 Fasteners, Alloy 20 Fasteners Exporter in India.",
     description1:
-      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Alloy Steel Sheets, Plates & Coils, which are manufactured from premium alloy steel grades including ASTM A387 Gr.11/12/22/91, A514, A517, and A709. These flat products offer exceptional strength, hardness, wear resistance, and high-temperature performance for demanding industrial applications.",
+      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of High Nickel Alloy Fasteners, which are manufactured from premium nickel-based alloys including Inconel, Monel, Hastelloy, Incoloy, Alloy 20, and Nickel 200/201. These fasteners offer exceptional corrosion resistance, high-temperature strength, and superior mechanical properties for demanding applications.",
     description2:
-      "Alloy Steel Sheets, Plates & Coils are specifically designed for applications requiring high strength, excellent wear resistance, and reliable performance at elevated temperatures. These products are available in various forms including sheets, plates, coils, flats, strips, and rings to meet diverse industrial requirements.",
+      "High Nickel Alloy Fasteners are specifically designed for applications requiring superior resistance to corrosion, oxidation, and high-temperature environments. These fasteners are available in various forms including bolts, nuts, screws, washers, studs, and custom fasteners to meet diverse industrial requirements.",
     description3:
-      "Our alloy steel flat products are manufactured as per ASTM A387 / ASME SA387 standards and are available in various grades including Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, and A709, each offering unique properties for specific applications.",
+      "Our nickel alloy fasteners are manufactured as per ASTM B166 / ASME SB166 standards and are available in various grades including Inconel 600/625, Monel 400/K500, Hastelloy C276, Incoloy 800/825, Alloy 20, and Nickel 200/201, each offering unique properties for specific applications.",
     description4:
-      "Our Alloy Steel sheets, plates, and coils are available in sizes ranging from 0.5mm to 50mm thickness with widths up to 2000mm. We manufacture and stock even odd sizes which is hard to find.",
+      "Our High Nickel Alloy fasteners are available in sizes ranging from M2 to M64 with various thread types including UNC, UNF, BSW, and Metric. We manufacture and stock even odd sizes which is hard to find.",
     grades: [
-      "ASTM A387 Gr.11 / ASME SA387 Gr.11 (1.25% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.12 / ASME SA387 Gr.12 (1% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.22 / ASME SA387 Gr.22 (2.25% Cr, 1% Mo)",
-      "ASTM A387 Gr.91 / ASME SA387 Gr.91 (9% Cr, 1% Mo, V, Nb)",
-      "ASTM A514 / ASME SA514 (High Strength Quenched & Tempered)",
-      "ASTM A517 / ASME SA517 (High Strength Quenched & Tempered)",
-      "ASTM A709 / ASME SA709 (Structural Steel)",
+      "ASTM B166 / ASME SB166 UNS N06600 (INCONEL 600)",
+      "ASTM B166 / ASME SB166 UNS N06625 (INCONEL 625)",
+      "ASTM B164 / ASME SB164 UNS N04400 (MONEL 400)",
+      "ASTM B164 / ASME SB164 UNS N05500 (MONEL K500)",
+      "ASTM B574 / ASME SB574 UNS N10276 (HASTELLOY C276)",
+      "ASTM B425 / ASME SB425 UNS N08800 (INCOLOY 800)",
+      "ASTM B425 / ASME SB425 UNS N08825 (INCOLOY 825)",
+      "ASTM B473 / ASME SB473 UNS N08020 (ALLOY 20)",
+      "ASTM B160 / ASME SB160 UNS N02200 (NICKEL 200)",
+      "ASTM B160 / ASME SB160 UNS N02201 (NICKEL 201)",
     ],
     specifications: {
-      standard: "ASTM A387 / ASME SA387",
-      grades: "Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, A709",
-      form: "Sheets, Plates, Coils, Flats, Strips, Rings, Circles",
-      thickness: "0.5mm to 50mm",
-      width: "Up to 2000mm",
-      finish: "Hot Rolled (HR), Cold Rolled (CR), Quenched & Tempered",
+      standard: "ASTM B166 / ASME SB166",
+      grades:
+        "Inconel 600/625, Monel 400/K500, Hastelloy C276, Incoloy 800/825, Alloy 20, Nickel 200/201",
+      form: "Bolts, Nuts, Screws, Washers, Studs, Custom Fasteners",
+      size: "M2 to M64",
+      thread: "UNC, UNF, BSW, Metric",
+      finish: "Plain, Zinc Plated, Hot Dip Galvanized, PTFE Coated",
     },
     standardsTable: [
       {
-        standard: "A387 Gr.11",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 3",
-        afnor: "12CD5",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
+        standard: "Inconel 600",
+        werkstoff: "2.4816",
+        uns: "N06600",
+        jis: "NW 6600",
+        afnor: "-",
+        bs: "NA 14",
+        gost: "ХН45Ю",
+        en: "NiCr15Fe",
       },
       {
-        standard: "A387 Gr.12",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 2",
-        afnor: "12CD4",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
+        standard: "Inconel 625",
+        werkstoff: "2.4856",
+        uns: "N06625",
+        jis: "NW 6625",
+        afnor: "-",
+        bs: "NA 21",
+        gost: "-",
+        en: "NiCr22Mo9Nb",
       },
       {
-        standard: "A387 Gr.22",
-        werkstoff: "1.7380",
-        uns: "K21590",
-        jis: "SCMV 4",
-        afnor: "10CD9-10",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "10CrMo9-10",
+        standard: "Monel 400",
+        werkstoff: "2.4360",
+        uns: "N04400",
+        jis: "NW 4400",
+        afnor: "-",
+        bs: "NA 13",
+        gost: "НП-2",
+        en: "NiCu30Fe",
       },
       {
-        standard: "A387 Gr.91",
-        werkstoff: "1.4903",
-        uns: "K91560",
-        jis: "SCMV 91",
-        afnor: "10CDVNb9-1",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "X10CrMoVNb9-1",
+        standard: "Monel K500",
+        werkstoff: "2.4375",
+        uns: "N05500",
+        jis: "NW 5500",
+        afnor: "-",
+        bs: "NA 18",
+        gost: "-",
+        en: "NiCu30Al",
       },
       {
-        standard: "A514",
-        werkstoff: "1.8928",
-        uns: "K11630",
-        jis: "SM 570",
-        afnor: "E 460",
-        bs: "BS 4360",
-        gost: "14Г2АФ",
-        en: "S460Q",
+        standard: "Hastelloy C276",
+        werkstoff: "2.4819",
+        uns: "N10276",
+        jis: "NW 0276",
+        afnor: "-",
+        bs: "-",
+        gost: "-",
+        en: "NiMo16Cr15W",
       },
       {
-        standard: "A709",
-        werkstoff: "1.8946",
-        uns: "K12000",
-        jis: "SM 490",
-        afnor: "E 355",
-        bs: "BS 4360",
-        gost: "10Г2С1",
-        en: "S355J2",
+        standard: "Incoloy 800",
+        werkstoff: "1.4876",
+        uns: "N08800",
+        jis: "NW 8800",
+        afnor: "-",
+        bs: "NA 15",
+        gost: "-",
+        en: "X10NiCrAlTi32-20",
+      },
+      {
+        standard: "Incoloy 825",
+        werkstoff: "2.4858",
+        uns: "N08825",
+        jis: "NW 8825",
+        afnor: "-",
+        bs: "NA 16",
+        gost: "-",
+        en: "NiCr21Mo",
+      },
+      {
+        standard: "Alloy 20",
+        werkstoff: "2.4660",
+        uns: "N08020",
+        jis: "NW 8020",
+        afnor: "Z3CNU20-10",
+        bs: "NA 17",
+        gost: "-",
+        en: "NiCr20CuMo",
+      },
+      {
+        standard: "Nickel 200",
+        werkstoff: "2.4066",
+        uns: "N02200",
+        jis: "NW 2200",
+        afnor: "N-100M",
+        bs: "NA 11",
+        gost: "НП-2",
+        en: "Ni 99.2",
       },
     ],
     types: [
-      "Alloy Steel A387 Gr.11 Sheets & Plates",
-      "A387 Gr.12 Plates & Coils",
-      "Alloy Steel A387 Gr.22 Sheets & Coils",
-      "A387 Gr.91 Hot Rolled Plates",
-      "Alloy Steel A514 Quenched & Tempered Plates",
-      "A517 High Strength Plates",
-      "Alloy Steel A709 Structural Plates",
-      "AS Coils & Strips",
-      "Alloy Steel Circle & Rings",
-      "AS Flats",
-      "Alloy Steel Hot Rolled Plates",
-      "AS Cold Rolled Sheets",
+      "Inconel 600 Bolts & Nuts",
+      "Inconel 625 Studs & Washers",
+      "Monel 400 Screws & Fasteners",
+      "Monel K500 Custom Fasteners",
+      "Hastelloy C276 Bolts & Nuts",
+      "Incoloy 800 Washers & Studs",
+      "Incoloy 825 Screws",
+      "Alloy 20 Fasteners",
+      "Nickel 200 Bolts & Nuts",
+      "Nickel 201 Studs & Washers",
+      "High Nickel Alloy Hex Bolts",
+      "Nickel Alloy Lock Nuts",
+      "Inconel 600 Washers",
+      "Monel 400 Threaded Rods",
+      "Hastelloy C276 Allen Cap Screws",
     ],
   };
 
@@ -332,11 +369,12 @@ const AlloySteelSheetsPage = () => {
     <>
       <Helmet>
         <title>
-          Alloy Steel Sheets, Plates & Coils | Sunlight Forge & Fitting
+          High Nickel Alloy Fasteners | Nickel Alloy Bolts & Nuts | Sunlight
+          Forge
         </title>
         <meta
           name="description"
-          content="Alloy Steel Sheets, Plates & Coils Manufacturer. ASTM A387 Gr.11/12/22/91, A514, A517, A709. Export quality, best prices."
+          content="High Nickel Alloy Fasteners Manufacturer. Inconel 600/625, Monel 400/K500, Hastelloy C276, Incoloy 800/825, Alloy 20. Export quality, best prices."
         />
       </Helmet>
 
@@ -345,8 +383,7 @@ const AlloySteelSheetsPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               <div className="inline-block text-[#66BB6A] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#66BB6A] uppercase">
-                {sheetsplates.badge ||
-                  "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
+                {fasteners.badge || "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
               </div>
             </div>
           </div>
@@ -365,18 +402,18 @@ const AlloySteelSheetsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* ===== SHEETS, PLATES & COILS SECTION ===== */}
+                  {/* ===== FASTENERS SECTION ===== */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
-                      SHEETS, PLATES & COILS
+                      FASTENERS
                     </h4>
                     <ul className="space-y-0.5">
-                      {sheetProducts.map((item) => (
+                      {fastenerProducts.map((item) => (
                         <li key={item.slug}>
                           <Link
-                            to={`/products/sheets-plates/${item.slug}`}
+                            to={`/products/fasteners/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "alloy-steel-sheetsplates"
+                              item.slug === "high-nickel-alloy-fasteners"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -399,7 +436,7 @@ const AlloySteelSheetsPage = () => {
                           <Link
                             to={`/products/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "sheets-plates"
+                              item.slug === "fasteners"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -418,11 +455,11 @@ const AlloySteelSheetsPage = () => {
               {/* Back Button */}
               <div className="mb-4">
                 <button
-                  onClick={() => navigate("/products/sheets-plates")}
+                  onClick={() => navigate("/products/fasteners")}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
                   <ArrowLeft size={18} />
-                  Back to Sheets & Plates
+                  Back to Fasteners
                 </button>
               </div>
 
@@ -432,7 +469,7 @@ const AlloySteelSheetsPage = () => {
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: `url(${asSheetImage})`,
+                      backgroundImage: `url(${fastenerImage})`,
                     }}
                   ></div>
                 </div>
@@ -468,8 +505,8 @@ const AlloySteelSheetsPage = () => {
               <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
                 <div className="flex justify-center">
                   <img
-                    src={asSheetImage}
-                    alt="Alloy Steel Sheets, Plates & Coils"
+                    src={fastenerImage}
+                    alt="High Nickel Alloy Fasteners"
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -478,7 +515,7 @@ const AlloySteelSheetsPage = () => {
               {/* Product Description */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  Alloy Steel Sheets, Plates & Coils – ASTM A387
+                  High Nickel Alloy Fasteners – ASTM B166
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
@@ -494,7 +531,7 @@ const AlloySteelSheetsPage = () => {
               {/* Grades List */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils Grades &{" "}
+                  High Nickel Alloy Fasteners Grades &{" "}
                   <span className="text-[#66BB6A]">Materials</span>
                 </h2>
 
@@ -513,7 +550,7 @@ const AlloySteelSheetsPage = () => {
               {/* Specifications */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils{" "}
+                  High Nickel Alloy Fasteners{" "}
                   <span className="text-[#66BB6A]">Specification</span>
                 </h2>
 
@@ -535,18 +572,18 @@ const AlloySteelSheetsPage = () => {
                         {productData.specifications.form}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
-                        {productData.specifications.finish}
+                        <strong className="text-[#4A148C]">Thread:</strong>{" "}
+                        {productData.specifications.thread}
                       </p>
                     </div>
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        {productData.specifications.thickness}
+                        <strong className="text-[#4A148C]">Size:</strong>{" "}
+                        {productData.specifications.size}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Width:</strong>{" "}
-                        {productData.specifications.width}
+                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
+                        {productData.specifications.finish}
                       </p>
                     </div>
                   </div>
@@ -611,11 +648,11 @@ const AlloySteelSheetsPage = () => {
                 </div>
               </div>
 
-              {/* Types of Alloy Steel Flat Products - Grid */}
+              {/* Types of Fasteners - Grid */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of Alloy Steel Sheets, Plates &{" "}
-                  <span className="text-[#66BB6A]">Coils</span>
+                  Other Types of High Nickel Alloy{" "}
+                  <span className="text-[#66BB6A]">Fasteners</span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -654,7 +691,8 @@ const AlloySteelSheetsPage = () => {
               {/* Export Destinations */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY STEEL SHEETS, PLATES & COILS
+                  EXPORT DESTINATIONS FOR HIGH NICKEL ALLOY FASTENERS, NICKEL
+                  ALLOY BOLTS, NUTS, SCREWS, WASHERS, STUDS
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -713,4 +751,4 @@ const AlloySteelSheetsPage = () => {
   );
 };
 
-export default AlloySteelSheetsPage;
+export default HighNickelAlloyFastenersPage;

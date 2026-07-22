@@ -1,12 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { MdOutlineWhatsapp } from "react-icons/md";
-import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
-import sheetsplates from "../../data/productCategories/sheets-plates";
-import asSheetImage from "../../assets/productsImage/sheets.jpg";
+import { Phone, Mail, Menu, Globe, ArrowLeft } from "lucide-react";
+import socketweldfittings from "../../data/productCategories/socketweld-fittings";
+import socketweldImage from "../../assets/productsImage/forged-fittings.jpg";
 
-const AlloySteelSheetsPage = () => {
+const HighNickelAlloySocketweldFittingsPage = () => {
   const navigate = useNavigate();
 
   // YOUR EXACT CONTACT DETAILS
@@ -21,16 +20,37 @@ const AlloySteelSheetsPage = () => {
 
   const { categorySlug } = useParams();
 
-  // Get all sheet products from the structured data
-  const allSheetProducts = sheetsplates.categories?.[0]?.types || [];
+  // Handle both data formats
+  const getSocketweldTypes = () => {
+    if (
+      socketweldfittings.categories &&
+      socketweldfittings.categories.length > 0
+    ) {
+      return socketweldfittings.categories[0].types || [];
+    } else if (Array.isArray(socketweldfittings)) {
+      return socketweldfittings;
+    }
+    return [];
+  };
 
-  // Find the current product by slug
-  const currentProduct = allSheetProducts.find(
-    (item) => item.slug === "alloy-steel-sheetsplates",
+  const currentCategory = socketweldfittings.categories?.find(
+    (cat) => cat.slug === categorySlug,
   );
 
-  // All sheet products for the sidebar
-  const sheetProducts = allSheetProducts;
+  const activeCategory = currentCategory || socketweldfittings.categories?.[0];
+
+  // Find current product from types
+  const findCurrentProduct = () => {
+    const types = getSocketweldTypes();
+    return types.find(
+      (item) => item.slug === "high-nickel-alloy-socketweld-fittings",
+    );
+  };
+
+  const currentProduct = findCurrentProduct();
+
+  // All socketweld fitting products for the sidebar
+  const socketweldFittingProducts = getSocketweldTypes();
 
   const allDestinations = [
     "Bahrain",
@@ -186,167 +206,109 @@ const AlloySteelSheetsPage = () => {
 
   // Product data
   const productData = {
-    title: "Alloy Steel Sheets, Plates & Coils / Alloy Steel Flat Products",
+    title: "High Nickel Alloy Socketweld Fittings / Nickel Alloy SW Fittings",
     subtitle:
-      "Alloy Steel Sheets, Plates & Coils Manufacturer, ASTM A387 Gr.11/12/22/91 Plates & Coils, ASTM A514/A517/A709 Sheets, Alloy Steel Hot & Cold Rolled Plates Exporter in India.",
+      "High Nickel Alloy Socketweld Fittings Manufacturer, Nickel Alloy SW Elbow, Tee, Coupling, Union, Cross, Cap, Plug, Reducer, Insert, Boss, Socketweld Fittings Exporter in India.",
     description1:
-      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of Alloy Steel Sheets, Plates & Coils, which are manufactured from premium alloy steel grades including ASTM A387 Gr.11/12/22/91, A514, A517, and A709. These flat products offer exceptional strength, hardness, wear resistance, and high-temperature performance for demanding industrial applications.",
+      "Sunlight Forge & Fitting Pvt. Ltd. is a leading manufacturer, supplier, and exporter of High Nickel Alloy Socketweld Fittings, which are manufactured from premium nickel-based alloys including Inconel, Monel, Hastelloy, Incoloy, and Alloy 20. These fittings offer exceptional corrosion resistance, high-temperature strength, and excellent mechanical properties for demanding applications.",
     description2:
-      "Alloy Steel Sheets, Plates & Coils are specifically designed for applications requiring high strength, excellent wear resistance, and reliable performance at elevated temperatures. These products are available in various forms including sheets, plates, coils, flats, strips, and rings to meet diverse industrial requirements.",
+      "High Nickel Alloy Socketweld Fittings are specifically designed for applications requiring superior resistance to corrosion, oxidation, and high-temperature environments. The socketweld connection provides a reliable, leak-proof joint that is ideal for small-bore piping systems in chemical processing, oil & gas, marine, and aerospace industries.",
     description3:
-      "Our alloy steel flat products are manufactured as per ASTM A387 / ASME SA387 standards and are available in various grades including Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, and A709, each offering unique properties for specific applications.",
+      "Our nickel alloy socketweld fittings are manufactured as per ASTM B366 / ASME SB366 standards and conform to ANSI/ASME B16.11 dimensions. They are available in various grades including Inconel 600/625, Monel 400, Hastelloy C276, Incoloy 800/825, and Alloy 20, each offering unique properties for specific applications.",
     description4:
-      "Our Alloy Steel sheets, plates, and coils are available in sizes ranging from 0.5mm to 50mm thickness with widths up to 2000mm. We manufacture and stock even odd sizes which is hard to find.",
+      'Our High Nickel Alloy socketweld fittings are available in sizes ranging from 1/8" NB to 4" NB with pressure ratings from Class 3000 to Class 9000. We manufacture and stock even odd sizes which is hard to find.',
     grades: [
-      "ASTM A387 Gr.11 / ASME SA387 Gr.11 (1.25% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.12 / ASME SA387 Gr.12 (1% Cr, 0.5% Mo)",
-      "ASTM A387 Gr.22 / ASME SA387 Gr.22 (2.25% Cr, 1% Mo)",
-      "ASTM A387 Gr.91 / ASME SA387 Gr.91 (9% Cr, 1% Mo, V, Nb)",
-      "ASTM A514 / ASME SA514 (High Strength Quenched & Tempered)",
-      "ASTM A517 / ASME SA517 (High Strength Quenched & Tempered)",
-      "ASTM A709 / ASME SA709 (Structural Steel)",
+      "ASTM / ASME SB 366 UNS N04400 (MONEL 400)",
+      "ASTM / ASME SB 366 UNS N06600 (INCONEL 600)",
+      "ASTM / ASME SB 366 UNS N06625 (INCONEL 625)",
+      "ASTM / ASME SB 366 UNS N08800 (INCOLOY 800)",
+      "ASTM / ASME SB 366 UNS N08825 (INCOLOY 825)",
+      "ASTM / ASME SB 366 UNS N10276 (HASTELLOY C276)",
+      "ASTM / ASME SB 366 UNS N08020 (ALLOY 20)",
     ],
     specifications: {
-      standard: "ASTM A387 / ASME SA387",
-      grades: "Gr.11, Gr.12, Gr.22, Gr.91, A514, A517, A709",
-      form: "Sheets, Plates, Coils, Flats, Strips, Rings, Circles",
-      thickness: "0.5mm to 50mm",
-      width: "Up to 2000mm",
-      finish: "Hot Rolled (HR), Cold Rolled (CR), Quenched & Tempered",
+      standard: "ASTM B366 / ASME SB366",
+      grades:
+        "Inconel 600/625, Monel 400, Hastelloy C276, Incoloy 800/825, Alloy 20",
+      type: "Socketweld (SW) Fittings",
+      dimensions: "ANSI/ASME B16.11",
+      size: '1/8" NB to 4" NB',
+      pressureClass: "Class 3000, 6000, 9000",
+      material: "Nickel-Based Alloys (Ni-Cr, Ni-Cu, Ni-Mo, Ni-Fe-Cr)",
     },
     standardsTable: [
       {
-        standard: "A387 Gr.11",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 3",
-        afnor: "12CD5",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
+        standard: "Monel 400",
+        werkstoff: "2.4360",
+        uns: "N04400",
+        jis: "NW 4400",
+        afnor: "-",
+        bs: "NA 13",
+        gost: "НП-2",
+        en: "NiCu30Fe",
       },
       {
-        standard: "A387 Gr.12",
-        werkstoff: "1.7335",
-        uns: "K11597",
-        jis: "SCMV 2",
-        afnor: "12CD4",
-        bs: "BS 1503",
-        gost: "15ХМ",
-        en: "13CrMo4-5",
+        standard: "Inconel 600",
+        werkstoff: "2.4816",
+        uns: "N06600",
+        jis: "NW 6600",
+        afnor: "-",
+        bs: "NA 14",
+        gost: "ХН45Ю",
+        en: "NiCr15Fe",
       },
       {
-        standard: "A387 Gr.22",
-        werkstoff: "1.7380",
-        uns: "K21590",
-        jis: "SCMV 4",
-        afnor: "10CD9-10",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "10CrMo9-10",
-      },
-      {
-        standard: "A387 Gr.91",
-        werkstoff: "1.4903",
-        uns: "K91560",
-        jis: "SCMV 91",
-        afnor: "10CDVNb9-1",
-        bs: "BS 1503",
-        gost: "12Х2МФ",
-        en: "X10CrMoVNb9-1",
-      },
-      {
-        standard: "A514",
-        werkstoff: "1.8928",
-        uns: "K11630",
-        jis: "SM 570",
-        afnor: "E 460",
-        bs: "BS 4360",
-        gost: "14Г2АФ",
-        en: "S460Q",
-      },
-      {
-        standard: "A709",
-        werkstoff: "1.8946",
-        uns: "K12000",
-        jis: "SM 490",
-        afnor: "E 355",
-        bs: "BS 4360",
-        gost: "10Г2С1",
-        en: "S355J2",
+        standard: "Hastelloy C276",
+        werkstoff: "2.4819",
+        uns: "N10276",
+        jis: "NW 0276",
+        afnor: "-",
+        bs: "-",
+        gost: "-",
+        en: "NiMo16Cr15W",
       },
     ],
     types: [
-      "Alloy Steel A387 Gr.11 Sheets & Plates",
-      "A387 Gr.12 Plates & Coils",
-      "Alloy Steel A387 Gr.22 Sheets & Coils",
-      "A387 Gr.91 Hot Rolled Plates",
-      "Alloy Steel A514 Quenched & Tempered Plates",
-      "A517 High Strength Plates",
-      "Alloy Steel A709 Structural Plates",
-      "AS Coils & Strips",
-      "Alloy Steel Circle & Rings",
-      "AS Flats",
-      "Alloy Steel Hot Rolled Plates",
-      "AS Cold Rolled Sheets",
+      "Inconel 600 Socketweld Elbow",
+      "Inconel 625 SW Tee",
+      "Monel 400 SW Coupling",
+      "Monel 400 Union",
+      "Hastelloy C276 SW Cross",
+      "Hastelloy C276 Cap",
+      "Incoloy 800 SW Plug",
+      "Incoloy 825 Reducer Insert",
+      "Alloy 20 SW Boss",
+      "Nickel Alloy 200 SW Half Coupling",
+      "Inconel 600 SW Street Elbow",
+      "Monel 400 SW 90° Elbow",
+      "Hastelloy C276 SW 45° Elbow",
+      "Incoloy 800 SW Tee (Equ/Red)",
+      "Alloy 20 SW Union",
+      "Nickel Alloy 200 SW Cap",
     ],
-  };
-
-  // Floating button styles
-  const floatingStyles = {
-    container: {
-      position: "fixed",
-      bottom: "30px",
-      right: "30px",
-      display: "flex",
-      flexDirection: "column",
-      gap: "12px",
-      zIndex: 9999,
-    },
-    button: {
-      width: "56px",
-      height: "56px",
-      borderRadius: "50%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
-      transition: "all 0.3s ease",
-      cursor: "pointer",
-      border: "none",
-      textDecoration: "none",
-      color: "white",
-      fontSize: "24px",
-    },
-    call: {
-      backgroundColor: "blue",
-      hover: "#2E0A5E",
-    },
-    whatsapp: {
-      backgroundColor: "#25D366",
-      hover: "#128C7E",
-    },
   };
 
   return (
     <>
       <Helmet>
         <title>
-          Alloy Steel Sheets, Plates & Coils | Sunlight Forge & Fitting
+          High Nickel Alloy Socketweld Fittings | Nickel Alloy SW Fittings |
+          Sunlight Forge
         </title>
         <meta
           name="description"
-          content="Alloy Steel Sheets, Plates & Coils Manufacturer. ASTM A387 Gr.11/12/22/91, A514, A517, A709. Export quality, best prices."
+          content="High Nickel Alloy Socketweld Fittings Manufacturer. Inconel, Monel, Hastelloy, Incoloy SW Elbow, Tee, Coupling, Union, Cap. ASTM B366, ANSI B16.11. Corrosion-Resistant, High-Temperature."
         />
       </Helmet>
 
       <div className="bg-white min-h-screen">
-        <div className="bg-[#4A148C] py-2">
+        {/* Government Recognised Badge */}
+        <div className="bg-[#0b2a4a] py-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
-              <div className="inline-block text-[#66BB6A] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#66BB6A] uppercase">
-                {sheetsplates.badge ||
-                  "GOVERNMENT RECOGNISED STAR EXPORT HOUSE"}
+              <div className="inline-block text-[#ffd700] font-bold text-xs tracking-[0.15em] px-6 py-1 rounded-full border border-[#ffd700] uppercase">
+                <i className="fas fa-award mr-2"></i>
+                GOVERNMENT RECOGNISED STAR EXPORT HOUSE
               </div>
             </div>
           </div>
@@ -365,18 +327,19 @@ const AlloySteelSheetsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* ===== SHEETS, PLATES & COILS SECTION ===== */}
+                  {/* ===== SOCKETWELD FITTINGS SECTION ===== */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
-                      SHEETS, PLATES & COILS
+                      SOCKETWELD FITTINGS
                     </h4>
                     <ul className="space-y-0.5">
-                      {sheetProducts.map((item) => (
+                      {socketweldFittingProducts.map((item) => (
                         <li key={item.slug}>
                           <Link
-                            to={`/products/sheets-plates/${item.slug}`}
+                            to={`/products/socketweld-fittings/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "alloy-steel-sheetsplates"
+                              item.slug ===
+                              "high-nickel-alloy-socketweld-fittings"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -399,7 +362,7 @@ const AlloySteelSheetsPage = () => {
                           <Link
                             to={`/products/${item.slug}`}
                             className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
-                              item.slug === "sheets-plates"
+                              item.slug === "socketweld-fittings"
                                 ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
                                 : ""
                             }`}
@@ -414,15 +377,16 @@ const AlloySteelSheetsPage = () => {
               </div>
             </aside>
 
+            {/* Main Content */}
             <div className="flex-1 min-w-0 pt-4">
               {/* Back Button */}
               <div className="mb-4">
                 <button
-                  onClick={() => navigate("/products/sheets-plates")}
+                  onClick={() => navigate("/products/socketweld-fittings")}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
                   <ArrowLeft size={18} />
-                  Back to Sheets & Plates
+                  Back to Socketweld Fittings
                 </button>
               </div>
 
@@ -432,7 +396,7 @@ const AlloySteelSheetsPage = () => {
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{
-                      backgroundImage: `url(${asSheetImage})`,
+                      backgroundImage: `url(${socketweldImage || activeCategory?.image})`,
                     }}
                   ></div>
                 </div>
@@ -468,8 +432,8 @@ const AlloySteelSheetsPage = () => {
               <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
                 <div className="flex justify-center">
                   <img
-                    src={asSheetImage}
-                    alt="Alloy Steel Sheets, Plates & Coils"
+                    src={socketweldImage}
+                    alt="High Nickel Alloy Socketweld Fittings"
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -478,7 +442,7 @@ const AlloySteelSheetsPage = () => {
               {/* Product Description */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  Alloy Steel Sheets, Plates & Coils – ASTM A387
+                  High Nickel Alloy Socketweld Fittings – ASTM B366
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
@@ -494,7 +458,7 @@ const AlloySteelSheetsPage = () => {
               {/* Grades List */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils Grades &{" "}
+                  High Nickel Alloy Socketweld Fittings Grades &{" "}
                   <span className="text-[#66BB6A]">Materials</span>
                 </h2>
 
@@ -513,7 +477,7 @@ const AlloySteelSheetsPage = () => {
               {/* Specifications */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Alloy Steel Sheets, Plates & Coils{" "}
+                  High Nickel Alloy Socketweld Fittings{" "}
                   <span className="text-[#66BB6A]">Specification</span>
                 </h2>
 
@@ -531,22 +495,28 @@ const AlloySteelSheetsPage = () => {
                         {productData.specifications.grades}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Form:</strong>{" "}
-                        {productData.specifications.form}
+                        <strong className="text-[#4A148C]">Type:</strong>{" "}
+                        {productData.specifications.type}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
-                        {productData.specifications.finish}
+                        <strong className="text-[#4A148C]">Dimensions:</strong>{" "}
+                        {productData.specifications.dimensions}
                       </p>
                     </div>
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        {productData.specifications.thickness}
+                        <strong className="text-[#4A148C]">Size:</strong>{" "}
+                        {productData.specifications.size}
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Width:</strong>{" "}
-                        {productData.specifications.width}
+                        <strong className="text-[#4A148C]">
+                          Pressure Class:
+                        </strong>{" "}
+                        {productData.specifications.pressureClass}
+                      </p>
+                      <p>
+                        <strong className="text-[#4A148C]">Material:</strong>{" "}
+                        {productData.specifications.material}
                       </p>
                     </div>
                   </div>
@@ -611,11 +581,11 @@ const AlloySteelSheetsPage = () => {
                 </div>
               </div>
 
-              {/* Types of Alloy Steel Flat Products - Grid */}
+              {/* Types of Socketweld Fittings - Grid */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of Alloy Steel Sheets, Plates &{" "}
-                  <span className="text-[#66BB6A]">Coils</span>
+                  Other Types of High Nickel Alloy Socketweld{" "}
+                  <span className="text-[#66BB6A]">Fittings</span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -654,7 +624,9 @@ const AlloySteelSheetsPage = () => {
               {/* Export Destinations */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY STEEL SHEETS, PLATES & COILS
+                  EXPORT DESTINATIONS FOR HIGH NICKEL ALLOY SOCKETWELD FITTINGS,
+                  NICKEL ALLOY SW FITTINGS, SW SEAMLESS FITTINGS, SW WELDED
+                  FITTINGS IN INDIA
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -678,39 +650,8 @@ const AlloySteelSheetsPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Floating Call and WhatsApp Buttons */}
-      <div style={floatingStyles.container}>
-        {/* Call Button */}
-        <a
-          href={`tel:${contactDetails.phone}`}
-          style={{
-            ...floatingStyles.button,
-            backgroundColor: floatingStyles.call.backgroundColor,
-          }}
-          className="hover:scale-110 transition-transform duration-300"
-          aria-label="Call us"
-        >
-          <PhoneCall size={28} />
-        </a>
-
-        {/* WhatsApp Button */}
-        <a
-          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            ...floatingStyles.button,
-            backgroundColor: floatingStyles.whatsapp.backgroundColor,
-          }}
-          className="hover:scale-110 transition-transform duration-300"
-          aria-label="Chat on WhatsApp"
-        >
-          <MdOutlineWhatsapp size={28} />
-        </a>
-      </div>
     </>
   );
 };
 
-export default AlloySteelSheetsPage;
+export default HighNickelAlloySocketweldFittingsPage;
