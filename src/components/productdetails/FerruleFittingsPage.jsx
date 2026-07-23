@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import ferruleFittings from "../../data/productCategories/ferrule-fittings";
-import ferruleImage from "../../assets/productsImage/ferrule-fittings.jpg";
+import ferruleImage from "../../assets/productsImage/ferrule-fittings1.jpg";
 
 const FerruleFittingsPage = () => {
   const navigate = useNavigate();

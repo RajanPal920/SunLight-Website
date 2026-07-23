@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft } from "lucide-react";
 import socketweldfittings from "../../data/productCategories/socketweld-fittings";
-import socketweldImage from "../../assets/productsImage/forged-fittings.jpg";
-
+import socketweldImage from "../../assets/productsImage/forged-fittings3.jpg";
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 const CarbonSteelSocketweldFittingsPage = () => {
   const navigate = useNavigate();
 
@@ -27,7 +28,39 @@ const CarbonSteelSocketweldFittingsPage = () => {
 
   // All socketweld products for the sidebar
   const socketweldProducts = socketweldfittings.categories?.[0]?.types || [];
-
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
   const allDestinations = [
     "Bahrain",
     "Australia",
@@ -606,6 +639,36 @@ const CarbonSteelSocketweldFittingsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

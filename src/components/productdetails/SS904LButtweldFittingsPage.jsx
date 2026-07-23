@@ -4,7 +4,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft } from "lucide-react";
 import buttweld from "../../data/productCategories/buttweld-fittings";
 import buttweldImage from "../../assets/productsImage/buttweld.jpg";
-
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 const SS904LButtweldFittingsPage = () => {
   const navigate = useNavigate();
 
@@ -54,7 +55,39 @@ const SS904LButtweldFittingsPage = () => {
     size: "Seamless ½” to 24”, Welded ½” to 24”, Two Joint / Two Halve Fittings 6” to 48”",
     thickness: "Sch 10, 20, 40, STD, 60, 80, XS, 100, 120, 140, 160 to Sch XXS",
   };
-
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
   // EXACT EQUIVALENT STANDARDS TABLE
   const equivalentStandards = [
     { standard: "UNS", value: "N08904" },
@@ -617,6 +650,36 @@ const SS904LButtweldFittingsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

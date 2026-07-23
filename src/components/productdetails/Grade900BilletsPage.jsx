@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import billets from "../../data/productCategories/billets";
-import billetImage from "../../assets/productsImage/billets.jpg";
+import billetImage from "../../assets/productsImage/gr900-billets.jpg";
 
 const Grade900BilletsPage = () => {
   const navigate = useNavigate();

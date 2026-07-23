@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import {
   Phone,
   Mail,
@@ -11,7 +13,7 @@ import {
 } from "lucide-react";
 // Assuming you have a butt-weld fittings data file similar to roundbars
 import buttweld from "../../data/productCategories/buttweld-fittings";
-import buttweldImage from "../../assets/productsImage/buttweld.jpg";
+import buttweldImage from "../../assets/productsImage/but.jpg";
 
 const NickelAlloy200ButtweldFittingsPage = () => {
   const navigate = useNavigate();
@@ -162,7 +164,39 @@ const NickelAlloy200ButtweldFittingsPage = () => {
     "Cairo",
     "Dakar",
   ];
-
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
   const productRange = [
     { name: "Pipes & Tubes", slug: "pipes-tubes" },
     { name: "Sheets & Plates", slug: "sheets-plates" },
@@ -219,7 +253,7 @@ const NickelAlloy200ButtweldFittingsPage = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar - Similar to roundbars example */}
+            {/* Sidebar */}
             <aside className="lg:w-80 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-4">
                 <div className="bg-[#4A148C] px-5 py-4">
@@ -230,7 +264,7 @@ const NickelAlloy200ButtweldFittingsPage = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
-                  {/* Use buttweld categories here */}
+                  {/* Buttweld Fittings Categories */}
                   {buttweld.categories?.map((category) => (
                     <div key={category.id}>
                       <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
@@ -241,7 +275,7 @@ const NickelAlloy200ButtweldFittingsPage = () => {
                           <li key={type.id}>
                             <Link
                               to={`/products/${category.slug}/${type.slug}`}
-                              className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
+                              className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 hover:border-l-2 hover:border-[#66BB6A] transition-all duration-200 block py-1 px-2 rounded ${
                                 type.slug ===
                                 "nickel-alloy-200-buttweld-fittings"
                                   ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
@@ -635,6 +669,36 @@ const NickelAlloy200ButtweldFittingsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

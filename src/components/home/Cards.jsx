@@ -9,7 +9,7 @@ import pipes from "../../assets/productsImage/pipes.jpg";
 import roundBars from "../../assets/productsImage/round-bars.jpg";
 import sheets from "../../assets/productsImage/sheets.jpg";
 import strips from "../../assets/productsImage/strips.jpg";
-import wires from "../../assets/productsImage/wires.jpg";
+import fas from "../../assets/productsImage/fastener.jpg";
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -51,28 +51,29 @@ const Cards = () => {
       image: coils,
       description:
         "High-quality coils for continuous processing and manufacturing",
-      link: "/products/coils",
+      link: "/products/sheets-plates",
     },
     {
       id: 6,
       title: "STRIPS",
       image: strips,
       description: "Precision strips for specialized industrial applications",
-      link: "/products/strips",
+      link: "/products/cladded-plates",
     },
     {
       id: 7,
       title: "BUTTWELD FITTINGS",
       image: buttweld,
       description: "Precision buttweld fittings for piping systems",
-      link: "/products/socketweld-fittings",
+      link: "/products/buttweld-fittings",
     },
     {
       id: 8,
-      title: "WIRES & MESH",
-      image: wires,
-      description: "Industrial wires and mesh for filtration and reinforcement",
-      link: "/products/wires",
+      title: "FASTENERS",
+      image: fas,
+      description:
+        "Corrosion-resistant stainless steel, alloy steel, duplex, and nickel alloy fasteners for critical industries.",
+      link: "/products/fasteners",
     },
   ];
 
@@ -137,14 +138,14 @@ const Cards = () => {
               }}
               variants={fadeUp}
               transition={{ delay: index * 0.08 }}
-              className="h-full"
+              className="h-full flex" /* <-- Added flex so child Link can stretch */
             >
               <Link
                 to={card.link}
-                className="group block bg-white rounded-2xl overflow-hidden border-2 border-slate-200 hover:border-[#46127B] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full"
+                className="group block bg-white rounded-2xl overflow-hidden border-2 border-slate-200 hover:border-[#46127B] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-full flex flex-col"
               >
                 {/* Image Container */}
-                <div className="relative w-full h-48 overflow-hidden bg-slate-100">
+                <div className="relative w-full h-48 overflow-hidden bg-slate-100 shrink-0">
                   <motion.img
                     src={card.image}
                     alt={card.title}
@@ -160,13 +161,15 @@ const Cards = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 bg-white group-hover:bg-[#46127B] transition-colors duration-300">
-                  <h3 className="text-lg font-black text-[#46127B] uppercase group-hover:text-white transition-colors duration-300">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 group-hover:text-white/80 mt-2 leading-relaxed transition-colors duration-300">
-                    {card.description}
-                  </p>
+                <div className="p-6 bg-white group-hover:bg-[#46127B] transition-colors duration-300 flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg font-black text-[#46127B] uppercase group-hover:text-white transition-colors duration-300">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 group-hover:text-white/80 mt-2 leading-relaxed transition-colors duration-300">
+                      {card.description}
+                    </p>
+                  </div>
                   <div className="flex items-center gap-2 mt-4 text-[#03A58D] font-semibold text-sm group-hover:text-white group-hover:gap-3 transition-all duration-300">
                     <span>Explore</span>
                     <ArrowRight

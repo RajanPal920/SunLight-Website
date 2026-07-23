@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, PhoneCall, Globe, ArrowLeft } from "lucide-react";
-import { MdOutlineWhatsapp} from "react-icons/md";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import sheetsplates from "../../data/productCategories/sheets-plates";
-import nickelSheetImage from "../../assets/productsImage/sheets.jpg";
+import nickelSheetImage from "../../assets/productsImage/sheets1.jpg";
 
 const NickelAlloySheetsPage = () => {
   const navigate = useNavigate();
@@ -301,7 +301,7 @@ const NickelAlloySheetsPage = () => {
     ],
   };
 
- // Floating button styles
+  // Floating button styles
   const floatingStyles = {
     container: {
       position: "fixed",

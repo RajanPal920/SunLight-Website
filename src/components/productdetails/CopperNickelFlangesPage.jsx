@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import {
   Phone,
   Mail,
@@ -11,7 +13,7 @@ import {
 } from "lucide-react";
 // Assuming you have a flanges data file similar to roundbars
 import flanges from "../../data/productCategories/flanges";
-import flangesImage from "../../assets/productsImage/flanges.jpg";
+import flangesImage from "../../assets/productsImage/fanc.jpg";
 
 const CopperNickelFlangesPage = () => {
   const navigate = useNavigate();
@@ -162,7 +164,39 @@ const CopperNickelFlangesPage = () => {
     "Abidjan",
     "Mogadishu",
   ];
-
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
   const productRange = [
     { name: "Pipes & Tubes", slug: "pipes-tubes" },
     { name: "Sheets & Plates", slug: "sheets-plates" },
@@ -530,6 +564,36 @@ const CopperNickelFlangesPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

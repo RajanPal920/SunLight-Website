@@ -1,20 +1,21 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom"; // Added useNavigate
 import {
   Phone,
   Mail,
-  MapPin,
-  Factory,
-  ExternalLink,
   Menu,
   Globe,
-  ChevronRight,
+  ArrowLeft, // Added ArrowLeft
+  PhoneCall, // Added PhoneCall
 } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md"; // Added WhatsApp icon
 import pipesTubes from "../../data/productCategories/pipes-tubes";
-import astmP12Image from "../../assets/productsImage/pipes.jpg";
+import astmP12Image from "../../assets/productsImage/p5.jpg";
 
 const ASTMA335P12Page = () => {
+  const navigate = useNavigate(); // Added for back button
+
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -37,28 +38,130 @@ const ASTMA335P12Page = () => {
   );
 
   const allDestinations = [
-    "Argentina", "Iraq", "Sri Lanka", "Thailand (Bangkok)", "Malaysia",
-    "Vietnam", "Bahrain", "Ghana", "Azerbaijan", "Kazakhstan", "Russia",
-    "Ethiopa", "Morocco", "Brazil", "Dubai", "Egypt", "Kuwait", "Nigeria",
-    "Canada", "Peru", "Democratic Republic of the Congo", "Saudi Arabia",
-    "London", "Mozambique", "New Zealand", "Jordan", "Venezuela", "Germany",
-    "Cameroon", "Turkey", "Houston", "South Africa", "Israel", "Colombia",
-    "Mexico", "Africa", "Iran", "Algeria", "Chine", "UAE", "Angola",
-    "Italy", "Sudan", "Tunisia", "UK", "Uganda", "Indonesia",
-    "United States", "Australia", "Trinidad and Tobago", "Lubumbashi",
-    "Amman", "Harare", "Zaria", "Port Harcourt", "Jerusalem", "Kaduna",
-    "Fez", "Lusaka", "Bamako", "Yaoundé", "Tel Aviv", "Brazzaville",
-    "Port Elizabeth", "Rabat", "New York", "Dar es Salaam", "Durban",
-    "Antananarivo", "Alexandria", "Cairo", "Maiduguri", "Pretoria",
-    "Kolwezi", "Singapore", "Mecca", "Freetown", "Giza", "Nairobi",
-    "Bulawayo", "Ibadan", "Casablanca", "Dubai", "Soweto", "Conakry",
-    "Omdurman", "Douala", "Dammam", "Mbuji-Mayi", "Lagos", "Colombo",
-    "Dakar", "Riyadh", "Tripoli", "Jeddah", "Accra", "Abidjan", "Hong Kong",
-    "Maputo", "Algiers", "Kampala", "Abu Dhabi", "Subra al-Haymah",
-    "Kinshasa", "Addis Ababa", "Cairo", "Istanbul", "Doha", "Bethlehem",
-    "Tehran", "Luanda", "Khartoum", "Mogadishu", "Benin", "Muscat",
-    "Cape Town", "Byblos", "Ouagadougou", "Johannesburg", "Kano",
-    "Manama", "Sharm el-Sheikh", "Aqaba", "Beirut",
+    "Argentina",
+    "Iraq",
+    "Sri Lanka",
+    "Thailand (Bangkok)",
+    "Malaysia",
+    "Vietnam",
+    "Bahrain",
+    "Ghana",
+    "Azerbaijan",
+    "Kazakhstan",
+    "Russia",
+    "Ethiopa",
+    "Morocco",
+    "Brazil",
+    "Dubai",
+    "Egypt",
+    "Kuwait",
+    "Nigeria",
+    "Canada",
+    "Peru",
+    "Democratic Republic of the Congo",
+    "Saudi Arabia",
+    "London",
+    "Mozambique",
+    "New Zealand",
+    "Jordan",
+    "Venezuela",
+    "Germany",
+    "Cameroon",
+    "Turkey",
+    "Houston",
+    "South Africa",
+    "Israel",
+    "Colombia",
+    "Mexico",
+    "Africa",
+    "Iran",
+    "Algeria",
+    "Chine",
+    "UAE",
+    "Angola",
+    "Italy",
+    "Sudan",
+    "Tunisia",
+    "UK",
+    "Uganda",
+    "Indonesia",
+    "United States",
+    "Australia",
+    "Trinidad and Tobago",
+    "Lubumbashi",
+    "Amman",
+    "Harare",
+    "Zaria",
+    "Port Harcourt",
+    "Jerusalem",
+    "Kaduna",
+    "Fez",
+    "Lusaka",
+    "Bamako",
+    "Yaoundé",
+    "Tel Aviv",
+    "Brazzaville",
+    "Port Elizabeth",
+    "Rabat",
+    "New York",
+    "Dar es Salaam",
+    "Durban",
+    "Antananarivo",
+    "Alexandria",
+    "Cairo",
+    "Maiduguri",
+    "Pretoria",
+    "Kolwezi",
+    "Singapore",
+    "Mecca",
+    "Freetown",
+    "Giza",
+    "Nairobi",
+    "Bulawayo",
+    "Ibadan",
+    "Casablanca",
+    "Dubai",
+    "Soweto",
+    "Conakry",
+    "Omdurman",
+    "Douala",
+    "Dammam",
+    "Mbuji-Mayi",
+    "Lagos",
+    "Colombo",
+    "Dakar",
+    "Riyadh",
+    "Tripoli",
+    "Jeddah",
+    "Accra",
+    "Abidjan",
+    "Hong Kong",
+    "Maputo",
+    "Algiers",
+    "Kampala",
+    "Abu Dhabi",
+    "Subra al-Haymah",
+    "Kinshasa",
+    "Addis Ababa",
+    "Cairo",
+    "Istanbul",
+    "Doha",
+    "Bethlehem",
+    "Tehran",
+    "Luanda",
+    "Khartoum",
+    "Mogadishu",
+    "Benin",
+    "Muscat",
+    "Cape Town",
+    "Byblos",
+    "Ouagadougou",
+    "Johannesburg",
+    "Kano",
+    "Manama",
+    "Sharm el-Sheikh",
+    "Aqaba",
+    "Beirut",
   ];
 
   const productRange = [
@@ -69,21 +172,64 @@ const ASTMA335P12Page = () => {
     { name: "Buttweld Fittings", slug: "buttweld-fittings" },
     { name: "Socketweld Fittings", slug: "socketweld-fittings" },
     { name: "Fasteners", slug: "fasteners" },
-    { name: "Refractory Fixings & Anchors", slug: "refractory-fixings-anchors" },
+    {
+      name: "Refractory Fixings & Anchors",
+      slug: "refractory-fixings-anchors",
+    },
     { name: "Angles & Channels", slug: "angles-channels" },
     { name: "Tube Sheets", slug: "tube-sheets" },
     { name: "Ferrule Fittings", slug: "ferrule-fittings" },
     { name: "Cladded Plates", slug: "cladded-plates" },
     { name: "Olets", slug: "olets" },
     { name: "Valves", slug: "valves" },
-    { name: "Graphite Filled Bronze Bush", slug: "graphite-filled-bronze-bush" },
+    {
+      name: "Graphite Filled Bronze Bush",
+      slug: "graphite-filled-bronze-bush",
+    },
     { name: "Billets", slug: "billets" },
   ];
+
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
 
   return (
     <>
       <Helmet>
-        <title>Alloy Steel ASTM A335 P12 Pipes & A213 T12 Tubes | Sunlight Forge & Fitting</title>
+        <title>
+          Alloy Steel ASTM A335 P12 Pipes & A213 T12 Tubes | Sunlight Forge &
+          Fitting
+        </title>
         <meta
           name="description"
           content="High Alloy Steel ASTM A335 P12 Pipes & A213 T12 Tubes Manufacturer. Seamless & Welded Pipes, Tubes. Export quality, best prices."
@@ -168,6 +314,17 @@ const ASTMA335P12Page = () => {
             </aside>
 
             <div className="flex-1 min-w-0 pt-4">
+              {/* ===== BACK BUTTON ===== */}
+              <div className="mb-4">
+                <button
+                  onClick={() => navigate("/products/pipes-tubes")}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <ArrowLeft size={18} />
+                  Back to Pipes & Tubes
+                </button>
+              </div>
+
               {/* ===== HERO IMAGE & HEADING ===== */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
@@ -181,7 +338,8 @@ const ASTMA335P12Page = () => {
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {currentProduct?.title || "Alloy Steel P12 Pipes & T12 Tubes"}
+                      {currentProduct?.title ||
+                        "Alloy Steel P12 Pipes & T12 Tubes"}
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
                       {activeCategory.description}
@@ -211,7 +369,9 @@ const ASTMA335P12Page = () => {
                 <div className="flex justify-center">
                   <img
                     src={astmP12Image}
-                    alt={currentProduct?.title || "ASTM A335 P12 Alloy Steel Pipe"}
+                    alt={
+                      currentProduct?.title || "ASTM A335 P12 Alloy Steel Pipe"
+                    }
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -226,16 +386,31 @@ const ASTMA335P12Page = () => {
                   <span className="font-semibold text-[#4A148C]">
                     {contactDetails.company}
                   </span>{" "}
-                  is a leading manufacturers & exporter of A335 P12 alloy steel pipe & ASTM A213 T12 Tubes delivering to the whole of the world. we are ISO 9001:2008 accredited company, exporting A335 P12 alloy steel pipe & ASTM A213 T12 Tubes to internationally approved quality standards for applications.
+                  is a leading manufacturers & exporter of A335 P12 alloy steel
+                  pipe & ASTM A213 T12 Tubes delivering to the whole of the
+                  world. we are ISO 9001:2008 accredited company, exporting A335
+                  P12 alloy steel pipe & ASTM A213 T12 Tubes to internationally
+                  approved quality standards for applications.
                 </p>
                 <p>
-                  ASTM A335 Pipe (ASME S/A335, Chorme-Moly) is a seamless ferritic Alloy-Steel Pipe for high temperature service. Pipe ordered to this specification shall be suitable for bending, flanging (vanstoning), and similar forming operations, and for fusion welding.
+                  ASTM A335 Pipe (ASME S/A335, Chorme-Moly) is a seamless
+                  ferritic Alloy-Steel Pipe for high temperature service. Pipe
+                  ordered to this specification shall be suitable for bending,
+                  flanging (vanstoning), and similar forming operations, and for
+                  fusion welding.
                 </p>
                 <p>
-                  The A335 P12 alloy steel pipe & ASTM A213 T12 Tubes supplied by us are accepted by clients in various spheres of the industries ranging from basic industries such as Sugar, Paper, Textile, Dairy, Engineering to more complex such as Oil & Gas, Petrochemical, Chemical & Fertilizers, Power Generation, Nuclear Industries and other industrial projects.
+                  The A335 P12 alloy steel pipe & ASTM A213 T12 Tubes supplied
+                  by us are accepted by clients in various spheres of the
+                  industries ranging from basic industries such as Sugar, Paper,
+                  Textile, Dairy, Engineering to more complex such as Oil & Gas,
+                  Petrochemical, Chemical & Fertilizers, Power Generation,
+                  Nuclear Industries and other industrial projects.
                 </p>
                 <p>
-                  ASTM A335 P12 High Pressure Pipe & Tube Exporter, Alloy Steel A213 T12 Seamless Tubes Supplier, Alloy P12 Fabricated Pipe, ASME SA335 P12 SAW/LSAW Pipe Manufacturer in India.
+                  ASTM A335 P12 High Pressure Pipe & Tube Exporter, Alloy Steel
+                  A213 T12 Seamless Tubes Supplier, Alloy P12 Fabricated Pipe,
+                  ASME SA335 P12 SAW/LSAW Pipe Manufacturer in India.
                 </p>
               </div>
 
@@ -250,20 +425,23 @@ const ASTMA335P12Page = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Grade:</strong>{" "}
-                        Alloy Steel A335 GR P12 / Alloy Steel A213 GR T12
+                        <strong className="text-[#4A148C]">Grade:</strong> Alloy
+                        Steel A335 GR P12 / Alloy Steel A213 GR T12
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Specification:</strong>{" "}
+                        <strong className="text-[#4A148C]">
+                          Specification:
+                        </strong>{" "}
                         ASTM A335, A213 / ASME SA335, SA213
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Size:</strong>{" "}
-                        1/2" NB - 24" NB
+                        <strong className="text-[#4A148C]">Size:</strong> 1/2"
+                        NB - 24" NB
                       </p>
                       <p>
                         <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80, SCH120, SCH140, SCH160, XXS
+                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80,
+                        SCH120, SCH140, SCH160, XXS
                       </p>
                     </div>
                     <div>
@@ -280,8 +458,8 @@ const ASTMA335P12Page = () => {
                         Single Random, Double Random & Cut Length.
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">End:</strong>{" "}
-                        Plain End, Beveled End, Treaded
+                        <strong className="text-[#4A148C]">End:</strong> Plain
+                        End, Beveled End, Treaded
                       </p>
                     </div>
                   </div>
@@ -292,25 +470,21 @@ const ASTMA335P12Page = () => {
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Types of Alloy Steel ASTM A335, ASME SA335 P12 Pipes &{" "}
-                  <span className="text-[#66BB6A]">ASTM A213, ASME SA213 T12 Tubes</span>
+                  <span className="text-[#66BB6A]">
+                    ASTM A213, ASME SA213 T12 Tubes
+                  </span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {activeCategory.types?.map((type) => (
                     <div
                       key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "astm-a335-p12-pipes"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] hover:bg-green-100 transition-all duration-200 cursor-pointer`}
                     >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
+                      {/* ✅ Link removed — static text only */}
+                      <p className="text-sm font-semibold text-[#4A148C]">
                         {type.title}
-                      </Link>
+                      </p>
                       {type.specs && (
                         <ul className="mt-2 space-y-0.5">
                           {type.specs.map((spec, idx) => (
@@ -347,7 +521,8 @@ const ASTMA335P12Page = () => {
               {/* ===== EXPORT DESTINATIONS ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY STEEL P12 PIPES, ALLOY STEEL P12 TUBES
+                  EXPORT DESTINATIONS FOR ALLOY STEEL P12 PIPES, ALLOY STEEL P12
+                  TUBES
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -370,6 +545,37 @@ const ASTMA335P12Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

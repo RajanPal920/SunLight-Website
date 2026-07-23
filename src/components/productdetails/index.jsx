@@ -192,6 +192,7 @@ import FourAFiveASixABilletsPage from "./FourAFiveASixABilletsPage";
 import C12ABilletsPage from "./C12ABilletsPage";
 import Grade900BilletsPage from "./Grade900BilletsPage";
 import BronzeBushesPage from "./BronzeBushesPage";
+import ASTMA335P5Page from "./ASTMA335P5Page";
 
 // Map product slugs to their respective components
 const productDetailsMap = {
@@ -259,9 +260,9 @@ const productDetailsMap = {
   "astm-a333-pipestubes": ASTMA333Page,
 
   // ASTM A335 Alloy Steel
-  "astm-a335-p1-pipes": ASTMA335P11Page,
+  "astm-a335-p1-pipes": ASTMA335P1Page,
   "astm-a335-p2-pipes": ASTMA335P2Page,
-  "astm-a335-p5-pipes": ASTMA335P2Page,
+  "astm-a335-p5-pipes": ASTMA335P5Page,
   "astm-a335-p9-pipes": ASTMA335P9Page,
   "astm-a335-p11-pipes": ASTMA335P11Page,
   "astm-a335-p12-pipes": ASTMA335P12Page,

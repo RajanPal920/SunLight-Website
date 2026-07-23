@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import claddedPlates from "../../data/productCategories/cladded-plates";
-import claddedImage from "../../assets/productsImage/cladded-plates.jpg";
+import claddedImage from "../../assets/productsImage/cladded-plates1.jpg";
 
 const CladdedPlatesPage = () => {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import sheetsplates from "../../data/productCategories/sheets-plates";
-import asSheetImage from "../../assets/productsImage/sheets.jpg";
+import asSheetImage from "../../assets/productsImage/sheets4.jpg";
 
 const AlloySteelSheetsPage = () => {
   const navigate = useNavigate();

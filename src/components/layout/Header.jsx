@@ -5,7 +5,24 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa6";
-import { Phone, Menu, X, Mail, ChevronDown } from "lucide-react";
+import {
+  Phone,
+  Menu,
+  X,
+  Mail,
+  ChevronDown,
+  ChevronRight,
+  // Importing specific icons for products
+  Box,
+  Activity,
+  GitCommitHorizontal,
+  CircleDot,
+  Layers,
+  Hexagon,
+  Nut,
+  Zap,
+  ArrowLeft,
+} from "lucide-react";
 
 import logo from "../../assets/logo/logo.webp";
 import products from "../../data/products";
@@ -25,44 +42,66 @@ const Logo = () => (
   </Link>
 );
 
-/* ───────────────── Navigation ───────────────── */
+/* ───────────────── Navigation Links ───────────────── */
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Products", to: "/products", hasDropdown: true },
-  { label: "Quality & Certifications", to: "/quality" },
+  { label: "Certifications", to: "/certifications" },
   { label: "Contact", to: "/contact" },
 ];
+
+/* ───────────────── Product Icons Map ───────────────── */
+const productIcons = {
+  "Pipes & Tubes": <Box size={16} />,
+  "Sheets & Plates": <Layers size={16} />,
+  "Flanges & Fittings": <CircleDot size={16} />,
+  "Rods & Bars": <GitCommitHorizontal size={16} />,
+  Coils: <Activity size={16} />,
+  Strips: <Hexagon size={16} />,
+  "Buttweld Fittings": <Zap size={16} />,
+  Fasteners: <Nut size={16} />,
+};
+
+/* ───────────────── Group Products for Mega Menu ───────────────── */
+const chunkArray = (arr, size) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+};
 
 const Header = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Desktop State
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
-  // Handle scroll effect (throttled with rAF + hysteresis to prevent flicker)
+  // Mobile Drill-Down State (Only used for the "Back" to Main Menu)
+  const [mobileViewStack, setMobileViewStack] = useState(["main"]);
+
+  // Group products into columns for the Mega Menu
+  const productColumns = chunkArray(products, Math.ceil(products.length / 4));
+
+  // Handle scroll effect
   useEffect(() => {
     let ticking = false;
-
     const handleScroll = () => {
       if (ticking) return;
       ticking = true;
-
       requestAnimationFrame(() => {
         setScrolled((prev) => {
           const y = window.scrollY;
-          if (prev) {
-            return y > 8;
-          } else {
-            return y > 40;
-          }
+          return prev ? y > 8 : y > 40;
         });
         ticking = false;
       });
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -74,7 +113,6 @@ const Header = () => {
         setIsDropdownOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -82,24 +120,44 @@ const Header = () => {
   // Close dropdown on route change
   useEffect(() => {
     setIsDropdownOpen(false);
+    setMobileOpen(false);
+    setMobileViewStack(["main"]); // Reset mobile stack on route change
   }, [location]);
 
-  // Handle hover with delay for better UX
+  // Desktop Hover Logic
   const handleMouseEnter = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setIsDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
-    }, 200);
+    }, 150);
   };
 
+  // Mobile handlers
+  const pushMobileView = (viewId) => {
+    setMobileViewStack((prev) => [...prev, viewId]);
+  };
+
+  const popMobileView = () => {
+    setMobileViewStack((prev) => {
+      if (prev.length > 1) {
+        return prev.slice(0, -1);
+      }
+      return prev;
+    });
+  };
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setTimeout(() => setMobileViewStack(["main"]), 300);
+  };
+
+  // Desktop Link Classes
   const desktopNavClass = ({ isActive }) =>
-    `relative font-semibold text-sm lg:text-base transition-all duration-300
+    `relative font-semibold text-sm lg:text-base transition-all duration-300 py-1
      after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#46127B]
      after:transition-all after:duration-300
      ${
@@ -260,14 +318,14 @@ const Header = () => {
           </div>
 
           {/* ================= Desktop Navigation ================= */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 relative">
             {navLinks.map((item) => {
               if (item.hasDropdown) {
                 return (
                   <div
                     key={item.to}
                     ref={dropdownRef}
-                    className="relative"
+                    className="relative h-full flex items-center"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -275,65 +333,73 @@ const Header = () => {
                       to={item.to}
                       end={item.to === "/"}
                       className={({ isActive }) =>
-                        `relative font-semibold text-sm lg:text-base transition-all duration-300 flex items-center gap-1
+                        `relative font-semibold text-sm lg:text-base transition-all duration-300 flex items-center gap-1 py-1
                          after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-[#46127B]
                          after:transition-all after:duration-300
-                         ${
-                           isActive
-                             ? "text-[#46127B] after:w-full"
-                             : "text-gray-700 hover:text-[#46127B] after:w-0 hover:after:w-full"
-                         }`
+                         ${isActive ? "text-[#46127B] after:w-full" : "text-gray-700 hover:text-[#46127B] after:w-0 hover:after:w-full"}`
                       }
                     >
                       {item.label}
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-300 ${
-                          isDropdownOpen ? "rotate-180" : ""
-                        }`}
+                        className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
                       />
                     </NavLink>
 
-                    {/* Horizontal Dropdown Menu - centered under trigger, width clamped to viewport */}
+                    {/* ─── CENTERED 4-COLUMN MEGA MENU ─── */}
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 mt-2 w-[min(92vw,1100px)] bg-white rounded-lg shadow-2xl border border-gray-100 transition-all duration-300 origin-top z-[1000] ${
+                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(92vw,1050px)] bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 origin-top z-[1000] ${
                         isDropdownOpen
-                          ? "opacity-100 visible scale-100"
-                          : "opacity-0 invisible scale-95"
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible translate-y-4 pointer-events-none"
                       }`}
-                      style={{
-                        maxHeight: "500px",
-                        overflowY: "auto",
-                      }}
                     >
-                      <div className="p-4">
-                        {/* Header */}
-                        <div className="flex items-center justify-between mb-3 pb-2 border-b border-gray-200">
-                          <h3 className="text-lg font-bold text-gray-800">
-                            Our Products
-                          </h3>
-                          <Link
-                            to="/products"
-                            className="text-sm text-[#46127B] font-medium hover:underline"
-                            onClick={() => setIsDropdownOpen(false)}
-                          >
-                            View All →
-                          </Link>
-                        </div>
+                      {/* Top Bar */}
+                      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50 rounded-t-xl">
+                        <h3 className="text-sm font-bold text-[#46127B] uppercase tracking-wide">
+                          Our Product Range
+                        </h3>
+                        <Link
+                          to="/products"
+                          className="text-xs font-semibold text-[#03A58D] hover:text-[#46127B] transition-colors flex items-center gap-1"
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          View All <ChevronRight size={14} />
+                        </Link>
+                      </div>
 
-                        {/* Product Grid - Horizontal Layout */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
-                          {products.map((product) => (
-                            <Link
-                              key={product.id}
-                              to={`/products/${product.slug}`}
-                              className="px-3 py-2 text-sm text-gray-700 hover:bg-[#46127B] hover:text-white rounded-lg transition-colors duration-200 text-center border border-transparent hover:border-[#46127B]/20"
-                              onClick={() => setIsDropdownOpen(false)}
-                            >
-                              {product.name}
-                            </Link>
-                          ))}
-                        </div>
+                      {/* 4-Column Grid with Icons */}
+                      <div className="grid grid-cols-4 gap-0 p-6">
+                        {productColumns.map((column, colIndex) => (
+                          <div
+                            key={colIndex}
+                            className={`px-5 ${colIndex !== productColumns.length - 1 ? "border-r border-gray-100" : ""}`}
+                          >
+                            {column.map((product) => (
+                              <Link
+                                key={product.id}
+                                to={`/products/${product.slug}`}
+                                className="group flex items-center justify-between py-2.5 px-2 rounded-lg text-sm text-gray-700 hover:bg-[#46127B]/5 hover:text-[#46127B] transition-all duration-200"
+                                onClick={() => setIsDropdownOpen(false)}
+                              >
+                                <div className="flex items-center gap-3 min-w-0">
+                                  <span className="text-[#03A58D] flex-shrink-0">
+                                    {productIcons[product.name] || (
+                                      <Box size={16} />
+                                    )}
+                                  </span>
+                                  <span className="font-medium truncate">
+                                    {product.name}
+                                  </span>
+                                </div>
+                                <ChevronRight
+                                  size={14}
+                                  className="opacity-0 group-hover:opacity-100 text-[#03A58D] transition-all duration-200 -translate-x-2 group-hover:translate-x-0 flex-shrink-0"
+                                />
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -355,7 +421,10 @@ const Header = () => {
 
           {/* ================= Mobile Menu Button ================= */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => {
+              setMobileOpen(!mobileOpen);
+              if (!mobileOpen) setMobileViewStack(["main"]); // Reset drill-down when opening
+            }}
             className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[#46127B]/10 transition-colors duration-300 flex-shrink-0"
             aria-label="Toggle Menu"
           >
@@ -369,62 +438,105 @@ const Header = () => {
       </div>
 
       {/* =============================== */}
-      {/* MOBILE NAVIGATION */}
+      {/* MOBILE NAVIGATION & DROPDOWN (NO SUB-PAGES) */}
       {/* =============================== */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 z-[999] transition-all duration-300 ease-in-out ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden ${
           mobileOpen
             ? "max-h-[calc(100vh-100px)] opacity-100 visible"
             : "max-h-0 opacity-0 invisible"
         }`}
       >
-        <div className="bg-white border-t border-gray-100 px-4 sm:px-6 py-4 sm:py-6 overflow-y-auto max-h-[calc(100vh-120px)] shadow-xl">
-          <nav className="flex flex-col gap-1">
-            {navLinks.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === "/"}
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 ${
-                    isActive
-                      ? "bg-[#46127B] text-white"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Mobile Products Grid */}
-          <div className="border-t border-gray-200 mt-4 pt-4">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-              Our Products
-            </p>
-            <div className="grid grid-cols-2 gap-1">
-              {products.map((product) => (
-                <Link
-                  key={product.id}
-                  to={`/products/${product.slug}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2 text-sm text-gray-700 hover:bg-[#46127B] hover:text-white rounded-lg transition-colors duration-200 text-center"
-                >
-                  {product.name}
-                </Link>
-              ))}
-            </div>
-            <Link
-              to="/products"
-              onClick={() => setMobileOpen(false)}
-              className="block mt-3 text-center text-[#46127B] font-medium text-sm hover:underline"
+        <div className="px-4 sm:px-6 py-4 sm:py-6 overflow-y-auto max-h-[calc(100vh-120px)]">
+          <div className="relative flex flex-col w-full overflow-hidden min-h-[300px]">
+            {/* --- Main Menu View --- */}
+            <div
+              className={`w-full flex-shrink-0 transition-all duration-300 ease-in-out ${
+                mobileViewStack[mobileViewStack.length - 1] === "main"
+                  ? "opacity-100 translate-x-0 block"
+                  : "opacity-0 translate-x-[-100%] hidden absolute top-0 left-0 w-full"
+              }`}
             >
-              View All Products →
-            </Link>
+              <nav className="flex flex-col gap-1">
+                {navLinks.map((item) => {
+                  if (item.hasDropdown) {
+                    return (
+                      <div
+                        key={item.to}
+                        className="border-b border-gray-100 last:border-0"
+                      >
+                        <button
+                          onClick={() => pushMobileView("products")}
+                          className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 text-gray-700 hover:bg-gray-50"
+                        >
+                          <span>{item.label}</span>
+                          <ChevronRight size={16} className="text-gray-400" />
+                        </button>
+                      </div>
+                    );
+                  }
+                  return (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      end={item.to === "/"}
+                      onClick={closeMobileMenu}
+                      className={({ isActive }) =>
+                        `px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 ${
+                          isActive
+                            ? "bg-[#46127B] text-white"
+                            : "text-gray-700 hover:bg-gray-100"
+                        }`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* --- Products List View --- */}
+            <div
+              className={`w-full flex-shrink-0 transition-all duration-300 ease-in-out ${
+                mobileViewStack[mobileViewStack.length - 1] === "products"
+                  ? "opacity-100 translate-x-0 block"
+                  : "opacity-0 translate-x-[100%] hidden absolute top-0 left-0 w-full"
+              }`}
+            >
+              <button
+                onClick={popMobileView}
+                className="w-full flex items-center gap-2 px-2 py-3 text-sm font-semibold text-[#46127B] hover:bg-gray-50 rounded-lg transition-colors border-b border-gray-100"
+              >
+                <ArrowLeft size={16} />
+                Back
+              </button>
+              <div className="mt-2 space-y-1">
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="border-b border-gray-50 last:border-0"
+                  >
+                    <Link
+                      to={`/products/${product.slug}`}
+                      onClick={closeMobileMenu}
+                      className="w-full flex items-center justify-between px-2 py-3 rounded-lg font-medium text-sm transition-all duration-200 text-gray-700 hover:bg-[#46127B]/5"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#03A58D] flex-shrink-0">
+                          {productIcons[product.name] || <Box size={16} />}
+                        </span>
+                        <span>{product.name}</span>
+                      </div>
+                      <ChevronRight size={14} className="text-gray-400" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
+          {/* Mobile Contact info */}
           <div className="border-t border-gray-200 mt-4 pt-4 space-y-3">
             <a
               href="tel:+919636901159"
@@ -432,13 +544,6 @@ const Header = () => {
             >
               <Phone size={16} className="text-[#03A58D]" />
               +91 96369 01159
-            </a>
-            <a
-              href="tel:+919833286629"
-              className="flex items-center gap-3 text-gray-700 hover:text-[#46127B] transition-colors text-sm"
-            >
-              <Phone size={16} className="text-[#03A58D]" />
-              +91 98332 86629
             </a>
             <a
               href="mailto:sunlight.barmer@gmail.com"

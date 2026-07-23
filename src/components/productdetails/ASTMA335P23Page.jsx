@@ -1,20 +1,21 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom"; // Added useNavigate
 import {
   Phone,
   Mail,
-  MapPin,
-  Factory,
-  ExternalLink,
   Menu,
   Globe,
-  ChevronRight,
+  ArrowLeft, // Added ArrowLeft
+  PhoneCall, // Added PhoneCall
 } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md"; // Added WhatsApp icon
 import pipesTubes from "../../data/productCategories/pipes-tubes";
-import astmP23Image from "../../assets/productsImage/pipes.jpg";
+import astmP23Image from "../../assets/productsImage/car1.jpg";
 
 const ASTMA335P23Page = () => {
+  const navigate = useNavigate(); // Added for back button
+
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -37,28 +38,130 @@ const ASTMA335P23Page = () => {
   );
 
   const allDestinations = [
-    "Turkey", "Ghana", "Dubai", "Thailand (Bangkok)", "Tunisia", "Iran",
-    "Ethiopa", "UK", "South Africa", "Canada", "Sudan", "London",
-    "Colombia", "Sri Lanka", "Italy", "Democratic Republic of the Congo",
-    "Peru", "Australia", "Egypt", "Brazil", "Azerbaijan", "Malaysia",
-    "Israel", "Cameroon", "Trinidad and Tobago", "Saudi Arabia", "Jordan",
-    "Uganda", "Africa", "Mexico", "Argentina", "Angola", "Mozambique",
-    "New Zealand", "Chine", "Iraq", "Germany", "Nigeria", "United States",
-    "Venezuela", "Vietnam", "Algeria", "Houston", "Morocco", "Indonesia",
-    "Bahrain", "UAE", "Kuwait", "Kazakhstan", "Russia", "Port Elizabeth",
-    "Bethlehem", "Jeddah", "Manama", "Mbuji-Mayi", "Yaoundé", "Benin",
-    "Lagos", "Cairo", "Algiers", "Cape Town", "Beirut", "Bulawayo",
-    "Mogadishu", "Subra al-Haymah", "Fez", "Harare", "Ouagadougou",
-    "Byblos", "Singapore", "Sharm el-Sheikh", "Kampala", "Conakry",
-    "Dakar", "Nairobi", "Bamako", "Kolwezi", "Aqaba", "Antananarivo",
-    "Doha", "Brazzaville", "Addis Ababa", "Casablanca", "Khartoum",
-    "Soweto", "Omdurman", "Amman", "Colombo", "Tehran", "Kaduna",
-    "Alexandria", "Douala", "Riyadh", "Muscat", "Maiduguri", "Kano",
-    "Lusaka", "New York", "Luanda", "Maputo", "Abu Dhabi", "Jerusalem",
-    "Ibadan", "Dubai", "Freetown", "Dammam", "Abidjan", "Pretoria",
-    "Hong Kong", "Tel Aviv", "Lubumbashi", "Mecca", "Cairo", "Durban",
-    "Kinshasa", "Port Harcourt", "Zaria", "Johannesburg", "Dar es Salaam",
-    "Tripoli", "Rabat", "Accra", "Istanbul", "Giza",
+    "Turkey",
+    "Ghana",
+    "Dubai",
+    "Thailand (Bangkok)",
+    "Tunisia",
+    "Iran",
+    "Ethiopa",
+    "UK",
+    "South Africa",
+    "Canada",
+    "Sudan",
+    "London",
+    "Colombia",
+    "Sri Lanka",
+    "Italy",
+    "Democratic Republic of the Congo",
+    "Peru",
+    "Australia",
+    "Egypt",
+    "Brazil",
+    "Azerbaijan",
+    "Malaysia",
+    "Israel",
+    "Cameroon",
+    "Trinidad and Tobago",
+    "Saudi Arabia",
+    "Jordan",
+    "Uganda",
+    "Africa",
+    "Mexico",
+    "Argentina",
+    "Angola",
+    "Mozambique",
+    "New Zealand",
+    "Chine",
+    "Iraq",
+    "Germany",
+    "Nigeria",
+    "United States",
+    "Venezuela",
+    "Vietnam",
+    "Algeria",
+    "Houston",
+    "Morocco",
+    "Indonesia",
+    "Bahrain",
+    "UAE",
+    "Kuwait",
+    "Kazakhstan",
+    "Russia",
+    "Port Elizabeth",
+    "Bethlehem",
+    "Jeddah",
+    "Manama",
+    "Mbuji-Mayi",
+    "Yaoundé",
+    "Benin",
+    "Lagos",
+    "Cairo",
+    "Algiers",
+    "Cape Town",
+    "Beirut",
+    "Bulawayo",
+    "Mogadishu",
+    "Subra al-Haymah",
+    "Fez",
+    "Harare",
+    "Ouagadougou",
+    "Byblos",
+    "Singapore",
+    "Sharm el-Sheikh",
+    "Kampala",
+    "Conakry",
+    "Dakar",
+    "Nairobi",
+    "Bamako",
+    "Kolwezi",
+    "Aqaba",
+    "Antananarivo",
+    "Doha",
+    "Brazzaville",
+    "Addis Ababa",
+    "Casablanca",
+    "Khartoum",
+    "Soweto",
+    "Omdurman",
+    "Amman",
+    "Colombo",
+    "Tehran",
+    "Kaduna",
+    "Alexandria",
+    "Douala",
+    "Riyadh",
+    "Muscat",
+    "Maiduguri",
+    "Kano",
+    "Lusaka",
+    "New York",
+    "Luanda",
+    "Maputo",
+    "Abu Dhabi",
+    "Jerusalem",
+    "Ibadan",
+    "Dubai",
+    "Freetown",
+    "Dammam",
+    "Abidjan",
+    "Pretoria",
+    "Hong Kong",
+    "Tel Aviv",
+    "Lubumbashi",
+    "Mecca",
+    "Cairo",
+    "Durban",
+    "Kinshasa",
+    "Port Harcourt",
+    "Zaria",
+    "Johannesburg",
+    "Dar es Salaam",
+    "Tripoli",
+    "Rabat",
+    "Accra",
+    "Istanbul",
+    "Giza",
   ];
 
   const productRange = [
@@ -69,21 +172,64 @@ const ASTMA335P23Page = () => {
     { name: "Buttweld Fittings", slug: "buttweld-fittings" },
     { name: "Socketweld Fittings", slug: "socketweld-fittings" },
     { name: "Fasteners", slug: "fasteners" },
-    { name: "Refractory Fixings & Anchors", slug: "refractory-fixings-anchors" },
+    {
+      name: "Refractory Fixings & Anchors",
+      slug: "refractory-fixings-anchors",
+    },
     { name: "Angles & Channels", slug: "angles-channels" },
     { name: "Tube Sheets", slug: "tube-sheets" },
     { name: "Ferrule Fittings", slug: "ferrule-fittings" },
     { name: "Cladded Plates", slug: "cladded-plates" },
     { name: "Olets", slug: "olets" },
     { name: "Valves", slug: "valves" },
-    { name: "Graphite Filled Bronze Bush", slug: "graphite-filled-bronze-bush" },
+    {
+      name: "Graphite Filled Bronze Bush",
+      slug: "graphite-filled-bronze-bush",
+    },
     { name: "Billets", slug: "billets" },
   ];
+
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
 
   return (
     <>
       <Helmet>
-        <title>Alloy Steel ASTM A335 P23 Pipes & A213 T23 Tubes | Sunlight Forge & Fitting</title>
+        <title>
+          Alloy Steel ASTM A335 P23 Pipes & A213 T23 Tubes | Sunlight Forge &
+          Fitting
+        </title>
         <meta
           name="description"
           content="High Alloy Steel ASTM A335 P23 Pipes & A213 T23 Tubes Manufacturer. Seamless & Welded Pipes, Tubes. Export quality, best prices."
@@ -168,6 +314,17 @@ const ASTMA335P23Page = () => {
             </aside>
 
             <div className="flex-1 min-w-0 pt-4">
+              {/* ===== BACK BUTTON ===== */}
+              <div className="mb-4">
+                <button
+                  onClick={() => navigate("/products/pipes-tubes")}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <ArrowLeft size={18} />
+                  Back to Pipes & Tubes
+                </button>
+              </div>
+
               {/* ===== HERO IMAGE & HEADING ===== */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
@@ -181,7 +338,8 @@ const ASTMA335P23Page = () => {
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {currentProduct?.title || "Alloy Steel P23 Pipes & T23 Tubes"}
+                      {currentProduct?.title ||
+                        "Alloy Steel P23 Pipes & T23 Tubes"}
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
                       {activeCategory.description}
@@ -211,7 +369,9 @@ const ASTMA335P23Page = () => {
                 <div className="flex justify-center">
                   <img
                     src={astmP23Image}
-                    alt={currentProduct?.title || "ASTM A335 P23 Alloy Steel Pipe"}
+                    alt={
+                      currentProduct?.title || "ASTM A335 P23 Alloy Steel Pipe"
+                    }
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -226,16 +386,34 @@ const ASTMA335P23Page = () => {
                   <span className="font-semibold text-[#4A148C]">
                     {contactDetails.company}
                   </span>{" "}
-                  is one of the oldest manufacturer and exporters of High Quality ASTM A335 P23 Alloy Steel Pipes & ASTM A213 T23 Tubes. We provide a wide range of ASTM A335 P23 Alloy Steel. Our range comprises of ASTM A335 P23 Alloy Steel Seamless Pipes & ASTM A213 T23 Tubes in the form of Round, Square, Rectangular, Hydraulic Etc.
+                  is one of the oldest manufacturer and exporters of High
+                  Quality ASTM A335 P23 Alloy Steel Pipes & ASTM A213 T23 Tubes.
+                  We provide a wide range of ASTM A335 P23 Alloy Steel. Our
+                  range comprises of ASTM A335 P23 Alloy Steel Seamless Pipes &
+                  ASTM A213 T23 Tubes in the form of Round, Square, Rectangular,
+                  Hydraulic Etc.
                 </p>
                 <p>
-                  Our range comprises of ASTM A335 P23 Alloy Steel Pipes & ASTM A213 T23 Tubes are available in different dimensions & grades. We also deliver these pipes & tubes as per client specification & requirements. Addition of such alloying elements is usually for the purpose to increase hardness, strength or chemical resistance.
+                  Our range comprises of ASTM A335 P23 Alloy Steel Pipes & ASTM
+                  A213 T23 Tubes are available in different dimensions & grades.
+                  We also deliver these pipes & tubes as per client
+                  specification & requirements. Addition of such alloying
+                  elements is usually for the purpose to increase hardness,
+                  strength or chemical resistance.
                 </p>
                 <p>
-                  ASTM A335 P23 Alloy Steel Pipes & ASTM A213 T23 Tubes supplied by us are accepted by clients in various spheres of the industries ranging to Oil & Gas, Refineries, Fertilizers, Heat-Exchangers, Paper & Pulp, Pharmaceuticals, Chemicals, Water Treatment, Dairy, Sugar & Food Processing, Construction, Mining, Shipbuilding, Offshore, Engineering Co., Oil Mills, and other industrial projects.
+                  ASTM A335 P23 Alloy Steel Pipes & ASTM A213 T23 Tubes supplied
+                  by us are accepted by clients in various spheres of the
+                  industries ranging to Oil & Gas, Refineries, Fertilizers,
+                  Heat-Exchangers, Paper & Pulp, Pharmaceuticals, Chemicals,
+                  Water Treatment, Dairy, Sugar & Food Processing, Construction,
+                  Mining, Shipbuilding, Offshore, Engineering Co., Oil Mills,
+                  and other industrial projects.
                 </p>
                 <p>
-                  ASTM A335 P23 High Pressure Pipe & Tube Exporter, Alloy Steel A213 T23 Seamless Tubes Supplier, Alloy P23 Fabricated Pipe, ASME SA335 P23 SAW/LSAW Pipe Manufacturer in India.
+                  ASTM A335 P23 High Pressure Pipe & Tube Exporter, Alloy Steel
+                  A213 T23 Seamless Tubes Supplier, Alloy P23 Fabricated Pipe,
+                  ASME SA335 P23 SAW/LSAW Pipe Manufacturer in India.
                 </p>
               </div>
 
@@ -250,20 +428,23 @@ const ASTMA335P23Page = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Grade:</strong>{" "}
-                        Alloy Steel A335 GR P23 / Alloy Steel A213 GR T23
+                        <strong className="text-[#4A148C]">Grade:</strong> Alloy
+                        Steel A335 GR P23 / Alloy Steel A213 GR T23
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Specification:</strong>{" "}
+                        <strong className="text-[#4A148C]">
+                          Specification:
+                        </strong>{" "}
                         ASTM A335, A213 / ASME SA335, SA213
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Size:</strong>{" "}
-                        1/2" NB - 24" NB
+                        <strong className="text-[#4A148C]">Size:</strong> 1/2"
+                        NB - 24" NB
                       </p>
                       <p>
                         <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80, SCH120, SCH140, SCH160, XXS
+                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80,
+                        SCH120, SCH140, SCH160, XXS
                       </p>
                     </div>
                     <div>
@@ -280,8 +461,8 @@ const ASTMA335P23Page = () => {
                         Single Random, Double Random & Cut Length.
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">End:</strong>{" "}
-                        Plain End, Beveled End, Treaded
+                        <strong className="text-[#4A148C]">End:</strong> Plain
+                        End, Beveled End, Treaded
                       </p>
                     </div>
                   </div>
@@ -292,25 +473,21 @@ const ASTMA335P23Page = () => {
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Types of Alloy Steel ASTM A335, ASME SA335 P23 Pipes &{" "}
-                  <span className="text-[#66BB6A]">ASTM A213, ASME SA213 T23 Tubes</span>
+                  <span className="text-[#66BB6A]">
+                    ASTM A213, ASME SA213 T23 Tubes
+                  </span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {activeCategory.types?.map((type) => (
                     <div
                       key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "astm-a335-p23-pipes"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] hover:bg-green-100 transition-all duration-200 cursor-pointer`}
                     >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
+                      {/* ✅ Link removed — static text only */}
+                      <p className="text-sm font-semibold text-[#4A148C]">
                         {type.title}
-                      </Link>
+                      </p>
                       {type.specs && (
                         <ul className="mt-2 space-y-0.5">
                           {type.specs.map((spec, idx) => (
@@ -347,7 +524,8 @@ const ASTMA335P23Page = () => {
               {/* ===== EXPORT DESTINATIONS ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY P23 PIPES, AS P23 PIPES, ALLOY T23 TUBES, AS T23 TUBES
+                  EXPORT DESTINATIONS FOR ALLOY P23 PIPES, AS P23 PIPES, ALLOY
+                  T23 TUBES, AS T23 TUBES
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -370,6 +548,37 @@ const ASTMA335P23Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

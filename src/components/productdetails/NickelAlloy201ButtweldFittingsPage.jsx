@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import {
   Phone,
   Mail,
@@ -162,7 +164,39 @@ const NickelAlloy201ButtweldFittingsPage = () => {
     "Riyadh",
     "Johannesburg",
   ];
-
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
   const productRange = [
     { name: "Pipes & Tubes", slug: "pipes-tubes" },
     { name: "Sheets & Plates", slug: "sheets-plates" },
@@ -241,7 +275,7 @@ const NickelAlloy201ButtweldFittingsPage = () => {
                           <li key={type.id}>
                             <Link
                               to={`/products/${category.slug}/${type.slug}`}
-                              className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 transition-all duration-200 block py-1 px-2 rounded ${
+                              className={`text-xs text-slate-600 hover:text-[#66BB6A] hover:bg-green-50 hover:border-l-2 hover:border-[#66BB6A] transition-all duration-200 block py-1 px-2 rounded ${
                                 type.slug ===
                                 "nickel-alloy-201-buttweld-fittings"
                                   ? "text-[#66BB6A] font-semibold bg-green-50 border-l-2 border-[#66BB6A]"
@@ -631,6 +665,36 @@ const NickelAlloy201ButtweldFittingsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

@@ -8,8 +8,9 @@ import {
   Globe,
   ChevronRight,
   ArrowLeft,
+  PhoneCall,
 } from "lucide-react";
-// Assuming you have a flanges data file similar to roundbars
+import { MdOutlineWhatsapp } from "react-icons/md";
 import flanges from "../../data/productCategories/flanges";
 import flangesImage from "../../assets/productsImage/flanges.jpg";
 
@@ -32,9 +33,9 @@ const StainlessSteel347FlangesPage = () => {
 
   const activeCategory = currentCategory || flanges.categories?.[0];
 
-  const currentProduct = activeCategory?.types?.find(
-    (type) => type.slug === "stainless-steel-347-flanges",
-  );
+  // const currentProduct = activeCategory?.types?.find(
+  //   (type) => type.slug === "stainless-steel-347-flanges",
+  // );
 
   const allDestinations = [
     "UK",
@@ -188,6 +189,40 @@ const StainlessSteel347FlangesPage = () => {
     { name: "Billets", slug: "billets" },
   ];
 
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -217,7 +252,7 @@ const StainlessSteel347FlangesPage = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar - Similar to roundbars example */}
+            {/* Sidebar */}
             <aside className="lg:w-80 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-4">
                 <div className="bg-[#4A148C] px-5 py-4">
@@ -497,7 +532,7 @@ const StainlessSteel347FlangesPage = () => {
                   ].map((type, index) => (
                     <div
                       key={index}
-                      className="bg-green-50 rounded-xl p-4 border border-green-200 hover:border-[#66BB6A] transition-colors"
+                      className="bg-green-50 rounded-xl p-4 border border-green-200 hover:border-[#66BB6A] transition-colors cursor-pointer"
                     >
                       <p className="text-sm font-medium text-[#4A148C]">
                         {type}
@@ -553,6 +588,37 @@ const StainlessSteel347FlangesPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

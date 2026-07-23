@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import anglesChannels from "../../data/productCategories/angles-channels";
-import angleImage from "../../assets/productsImage/angle-channels.jpg";
+import angleImage from "../../assets/productsImage/angle-channels1.jpg";
 
 const AnglesChannelsPage = () => {
   const navigate = useNavigate();

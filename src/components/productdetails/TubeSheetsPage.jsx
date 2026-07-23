@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import tubeSheets from "../../data/productCategories/tube-sheets";
-import tubeSheetImage from "../../assets/productsImage/tubeSheets.jpg";
+import tubeSheetImage from "../../assets/productsImage/tubeSheets1.jpg";
 
 const TubeSheetsPage = () => {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import fasteners from "../../data/productCategories/fasteners";
-import fastenerImage from "../../assets/productsImage/fastener.jpg";
+import fastenerImage from "../../assets/productsImage/fastener5.jpg";
 
 const NonFerrousMetalFastenersPage = () => {
   const navigate = useNavigate();

@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import {
   Phone,
   Mail,
@@ -10,7 +12,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import roundbars from "../../data/productCategories/round-bars";
-import roundBarImage from "../../assets/productsImage/round-bars.jpg";
+import roundBarImage from "../../assets/productsImage/bar2.jpg";
 
 const Inconel800RoundBarsPage = () => {
   const navigate = useNavigate();
@@ -36,29 +38,165 @@ const Inconel800RoundBarsPage = () => {
   );
 
   const allDestinations = [
-    "UK", "Turkey", "Indonesia", "Brazil", "Azerbaijan", "Bahrain", "Dubai",
-    "Argentina", "Mozambique", "Colombia", "Iraq", "Peru", "Australia",
-    "Egypt", "Germany", "South Africa", "Nigeria", "Africa", "Canada",
-    "Italy", "Iran", "Vietnam", "Morocco", "Chine", "Venezuela", "Uganda",
-    "Mexico", "Sudan", "Ghana", "Thailand (Bangkok)", "Kazakhstan",
-    "Israel", "UAE", "Jordan", "Trinidad and Tobago", "Malaysia",
-    "New Zealand", "Houston", "Ethiopa", "Saudi Arabia", "Tunisia",
-    "Algeria", "Sri Lanka", "Democratic Republic of the Congo", "London",
-    "United States", "Russia", "Cameroon", "Angola", "Kuwait", "Manama",
-    "Fez", "Rabat", "Byblos", "Pretoria", "Conakry", "Cape Town",
-    "Mbuji-Mayi", "Freetown", "Nairobi", "Istanbul", "Soweto", "Bethlehem",
-    "Douala", "Dubai", "Maputo", "Zaria", "Kampala", "Riyadh",
-    "Port Harcourt", "Kano", "Cairo", "Dar es Salaam", "Abu Dhabi",
-    "Maiduguri", "Singapore", "Brazzaville", "Giza", "Tel Aviv",
-    "Sharm el-Sheikh", "Beirut", "Yaoundé", "Kolwezi", "Tehran",
-    "Bulawayo", "Jerusalem", "Omdurman", "Dammam", "Hong Kong", "Colombo",
-    "Antananarivo", "Accra", "Addis Ababa", "Casablanca", "Johannesburg",
-    "Lagos", "New York", "Mogadishu", "Durban", "Aqaba", "Lusaka",
-    "Ouagadougou", "Algiers", "Khartoum", "Benin", "Port Elizabeth",
-    "Kinshasa", "Lubumbashi", "Harare", "Luanda", "Alexandria", "Jeddah",
-    "Amman", "Kaduna", "Subra al-Haymah", "Doha", "Mecca", "Ibadan",
-    "Cairo", "Bamako", "Dakar", "Muscat", "Abidjan", "Tripoli",
+    "UK",
+    "Turkey",
+    "Indonesia",
+    "Brazil",
+    "Azerbaijan",
+    "Bahrain",
+    "Dubai",
+    "Argentina",
+    "Mozambique",
+    "Colombia",
+    "Iraq",
+    "Peru",
+    "Australia",
+    "Egypt",
+    "Germany",
+    "South Africa",
+    "Nigeria",
+    "Africa",
+    "Canada",
+    "Italy",
+    "Iran",
+    "Vietnam",
+    "Morocco",
+    "Chine",
+    "Venezuela",
+    "Uganda",
+    "Mexico",
+    "Sudan",
+    "Ghana",
+    "Thailand (Bangkok)",
+    "Kazakhstan",
+    "Israel",
+    "UAE",
+    "Jordan",
+    "Trinidad and Tobago",
+    "Malaysia",
+    "New Zealand",
+    "Houston",
+    "Ethiopa",
+    "Saudi Arabia",
+    "Tunisia",
+    "Algeria",
+    "Sri Lanka",
+    "Democratic Republic of the Congo",
+    "London",
+    "United States",
+    "Russia",
+    "Cameroon",
+    "Angola",
+    "Kuwait",
+    "Manama",
+    "Fez",
+    "Rabat",
+    "Byblos",
+    "Pretoria",
+    "Conakry",
+    "Cape Town",
+    "Mbuji-Mayi",
+    "Freetown",
+    "Nairobi",
+    "Istanbul",
+    "Soweto",
+    "Bethlehem",
+    "Douala",
+    "Dubai",
+    "Maputo",
+    "Zaria",
+    "Kampala",
+    "Riyadh",
+    "Port Harcourt",
+    "Kano",
+    "Cairo",
+    "Dar es Salaam",
+    "Abu Dhabi",
+    "Maiduguri",
+    "Singapore",
+    "Brazzaville",
+    "Giza",
+    "Tel Aviv",
+    "Sharm el-Sheikh",
+    "Beirut",
+    "Yaoundé",
+    "Kolwezi",
+    "Tehran",
+    "Bulawayo",
+    "Jerusalem",
+    "Omdurman",
+    "Dammam",
+    "Hong Kong",
+    "Colombo",
+    "Antananarivo",
+    "Accra",
+    "Addis Ababa",
+    "Casablanca",
+    "Johannesburg",
+    "Lagos",
+    "New York",
+    "Mogadishu",
+    "Durban",
+    "Aqaba",
+    "Lusaka",
+    "Ouagadougou",
+    "Algiers",
+    "Khartoum",
+    "Benin",
+    "Port Elizabeth",
+    "Kinshasa",
+    "Lubumbashi",
+    "Harare",
+    "Luanda",
+    "Alexandria",
+    "Jeddah",
+    "Amman",
+    "Kaduna",
+    "Subra al-Haymah",
+    "Doha",
+    "Mecca",
+    "Ibadan",
+    "Cairo",
+    "Bamako",
+    "Dakar",
+    "Muscat",
+    "Abidjan",
+    "Tripoli",
   ];
+
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
 
   const productRange = [
     { name: "Pipes & Tubes", slug: "pipes-tubes" },
@@ -88,7 +226,9 @@ const Inconel800RoundBarsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Inconel Alloy 800 Round Bars & Rods | Sunlight Forge & Fitting</title>
+        <title>
+          Inconel Alloy 800 Round Bars & Rods | Sunlight Forge & Fitting
+        </title>
         <meta
           name="description"
           content="High Inconel Alloy 800 Round Bars & Rods Manufacturer. UNS N08800 Hex Bars, Square Bars & Round Rods Supplier in India."
@@ -190,7 +330,8 @@ const Inconel800RoundBarsPage = () => {
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {currentProduct?.title || "Inconel Alloy 800 Round Bars & Rods"}
+                      {currentProduct?.title ||
+                        "Inconel Alloy 800 Round Bars & Rods"}
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
                       {activeCategory.description}
@@ -227,13 +368,15 @@ const Inconel800RoundBarsPage = () => {
 
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  {currentProduct?.title || "Inconel Alloy 800 Round Bars & Rods"}
+                  {currentProduct?.title ||
+                    "Inconel Alloy 800 Round Bars & Rods"}
                 </p>
                 <p>
-                  {currentProduct?.title || "Inconel Alloy 800 Round Bars & Rods"} -
-                  Manufacturers & Exporters of Inconel Alloy 800 Round Bars & Rods,
-                  Alloy UNS N08800 Hex Bars, Incoloy 800 Square Bars & Alloy 800
-                  Round Rods Supplier in India.
+                  {currentProduct?.title ||
+                    "Inconel Alloy 800 Round Bars & Rods"}{" "}
+                  - Manufacturers & Exporters of Inconel Alloy 800 Round Bars &
+                  Rods, Alloy UNS N08800 Hex Bars, Incoloy 800 Square Bars &
+                  Alloy 800 Round Rods Supplier in India.
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
@@ -241,16 +384,16 @@ const Inconel800RoundBarsPage = () => {
                   </span>{" "}
                   is an unparalleled name in manufacturing & exporting a premium
                   quality range of Inconel 800 Round Bar & Rods to our clients.
-                  Our Inconel 800 round bars are highly appreciated by our patrons
-                  for their various features like dimensional accuracy, robustness
-                  and corrosion resistance.
+                  Our Inconel 800 round bars are highly appreciated by our
+                  patrons for their various features like dimensional accuracy,
+                  robustness and corrosion resistance.
                 </p>
                 <p>
                   Inconel 800 bars manufactured from quality raw material, these
                   Inconel round bars are known for its unique features such as
                   tight tolerance, smooth surface and uniform, Non-magnetic,
-                  Excellent mechanical properties, High strength, Good workability,
-                  readily weld ability.
+                  Excellent mechanical properties, High strength, Good
+                  workability, readily weld ability.
                 </p>
                 <p>
                   Being one of the major provider, we are delivering engineered
@@ -267,9 +410,10 @@ const Inconel800RoundBarsPage = () => {
                   treating equipment, steam generator tubing etc.
                 </p>
                 <p>
-                  Inconel Alloy 800 Rods, Inconel Werkstoff Nr 1.4876 Round Bars,
-                  Inconel 800 Round Rods, Inconel Alloy 800 Hexagonal Bars, Alloy
-                  800 Bright Bars Supplier & Incoloy 800 Bars Exporter in India.
+                  Inconel Alloy 800 Rods, Inconel Werkstoff Nr 1.4876 Round
+                  Bars, Inconel 800 Round Rods, Inconel Alloy 800 Hexagonal
+                  Bars, Alloy 800 Bright Bars Supplier & Incoloy 800 Bars
+                  Exporter in India.
                 </p>
               </div>
 
@@ -287,12 +431,12 @@ const Inconel800RoundBarsPage = () => {
                         ASTM B166 / ASME SB166
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Grade:</strong> Inconel
-                        800 (UNS N08800)
+                        <strong className="text-[#4A148C]">Grade:</strong>{" "}
+                        Inconel 800 (UNS N08800)
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Size:</strong> 15NB to
-                        150NB In
+                        <strong className="text-[#4A148C]">Size:</strong> 15NB
+                        to 150NB In
                       </p>
                       <p>
                         <strong className="text-[#4A148C]">Type:</strong>{" "}
@@ -301,13 +445,15 @@ const Inconel800RoundBarsPage = () => {
                     </div>
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Finish:</strong> Bright,
-                        Black, Polish
+                        <strong className="text-[#4A148C]">Finish:</strong>{" "}
+                        Bright, Black, Polish
                       </p>
                       {currentProduct?.specs && (
                         <div className="mt-2">
                           <p>
-                            <strong className="text-[#4A148C]">Standards:</strong>
+                            <strong className="text-[#4A148C]">
+                              Standards:
+                            </strong>
                           </p>
                           <ul className="list-disc list-inside text-sm text-slate-600">
                             {currentProduct.specs.map((spec, idx) => (
@@ -321,8 +467,8 @@ const Inconel800RoundBarsPage = () => {
                   <p className="text-slate-600 mt-4 pt-4 border-t border-green-200 text-sm">
                     Inconel 800 Round Bars, Inconel 800 Rods, Inconel Alloy
                     Werkstoff Nr.1.4876 Round Bars & Rods, Inconel 800 Hex Bars,
-                    Inconel 800 Square Bars Supplier, Inconel Alloy 800 EFW / ERW
-                    Bars & Rods Exporter in India.
+                    Inconel 800 Square Bars Supplier, Inconel Alloy 800 EFW /
+                    ERW Bars & Rods Exporter in India.
                   </p>
                 </div>
               </div>
@@ -372,7 +518,9 @@ const Inconel800RoundBarsPage = () => {
                         </td>
                         <td className="px-4 py-2.5 text-sm">N08800</td>
                         <td className="px-4 py-2.5 text-sm">1.4876</td>
-                        <td className="px-4 py-2.5 text-sm">X10NiCrAlTi32-20</td>
+                        <td className="px-4 py-2.5 text-sm">
+                          X10NiCrAlTi32-20
+                        </td>
                         <td className="px-4 py-2.5 text-sm">XH32T</td>
                         <td className="px-4 py-2.5 text-sm">NA 15</td>
                         <td className="px-4 py-2.5 text-sm">ЭИ670</td>
@@ -410,40 +558,27 @@ const Inconel800RoundBarsPage = () => {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Other Types of ASTM A166 Inconel Alloy 800 Round Bars &{" "}
-                  <span className="text-[#66BB6A]">Inconel 800 Rods</span>
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {activeCategory.types?.map((type) => (
-                    <div
-                      key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "inconel-800-roundbars"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
-                    >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
-                        {type.title}
-                      </Link>
-                      {type.specs && (
-                        <ul className="mt-2 space-y-0.5">
-                          {type.specs.map((spec, idx) => (
-                            <li key={idx} className="text-xs text-slate-500">
-                              • {spec}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {activeCategory.types?.map((type) => (
+                  <div
+                    key={type.id}
+                    className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] hover:bg-green-100 transition-all duration-200 cursor-pointer`}
+                  >
+                    {/* ✅ Link removed — static text only */}
+                    <p className="text-sm font-semibold text-[#4A148C]">
+                      {type.title}
+                    </p>
+                    {type.specs && (
+                      <ul className="mt-2 space-y-0.5">
+                        {type.specs.map((spec, idx) => (
+                          <li key={idx} className="text-xs text-slate-500">
+                            • {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
               </div>
 
               <div className="mt-8">
@@ -466,8 +601,8 @@ const Inconel800RoundBarsPage = () => {
 
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY 800 ROUND BARS, INCONEL 800 RODS,
-                  ALLOY 800 BARS, ALLOY 800 ROUND RODS
+                  EXPORT DESTINATIONS FOR ALLOY 800 ROUND BARS, INCONEL 800
+                  RODS, ALLOY 800 BARS, ALLOY 800 ROUND RODS
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -490,6 +625,37 @@ const Inconel800RoundBarsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

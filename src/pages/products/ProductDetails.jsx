@@ -9,7 +9,9 @@ import {
   Mail,
   ArrowLeft,
   Check,
+  PhoneCall, // Added PhoneCall
 } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md"; // Added WhatsApp icon
 import { getCategoryBySlug } from "../../data/productCategories";
 // FIX: Import from the correct location
 import productDetailsMap from "../../components/productdetails/index";
@@ -26,6 +28,40 @@ const ProductDetails = () => {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
     company: "Sunlight Forge & Fitting Pvt. Ltd.",
+  };
+
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
   };
 
   useEffect(() => {
@@ -229,7 +265,7 @@ const ProductDetails = () => {
                 <Link
                   key={related.id}
                   to={`/products/${category}/${related.slug}`}
-                  className="group block bg-gray-50 rounded-lg p-4 hover:bg-[#46127B] hover:text-white transition-all duration-300"
+                  className="group block bg-gray-50 rounded-lg p-4 hover:bg-green-100 hover:border-[#66BB6A] border-2 border-transparent transition-all duration-300"
                 >
                   {related.image && (
                     <img
@@ -238,10 +274,10 @@ const ProductDetails = () => {
                       className="w-full h-24 object-cover rounded-lg mb-2"
                     />
                   )}
-                  <h4 className="font-medium text-gray-800 group-hover:text-white">
+                  <h4 className="font-medium text-gray-800 group-hover:text-[#4A148C]">
                     {related.title}
                   </h4>
-                  <div className="mt-2 text-[#46127B] group-hover:text-white text-sm font-medium">
+                  <div className="mt-2 text-[#46127B] group-hover:text-[#66BB6A] text-sm font-medium">
                     View Details →
                   </div>
                 </Link>
@@ -274,6 +310,37 @@ const ProductDetails = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </div>
   );

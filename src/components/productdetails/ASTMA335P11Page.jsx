@@ -1,20 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Factory,
-  ExternalLink,
-  Menu,
-  Globe,
-  ChevronRight,
-} from "lucide-react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import pipesTubes from "../../data/productCategories/pipes-tubes";
-import astmP11Image from "../../assets/productsImage/pipes.jpg";
+import astmP11Image from "../../assets/productsImage/p5.jpg";
 
 const ASTMA335P11Page = () => {
+  const navigate = useNavigate();
+
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -188,6 +182,40 @@ const ASTMA335P11Page = () => {
     { name: "Billets", slug: "billets" },
   ];
 
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -279,6 +307,17 @@ const ASTMA335P11Page = () => {
             </aside>
 
             <div className="flex-1 min-w-0 pt-4">
+              {/* ===== BACK BUTTON ===== */}
+              <div className="mb-4">
+                <button
+                  onClick={() => navigate("/products/pipes-tubes")}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <ArrowLeft size={18} />
+                  Back to Pipes & Tubes
+                </button>
+              </div>
+
               {/* ===== HERO IMAGE & HEADING ===== */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
@@ -430,18 +469,12 @@ const ASTMA335P11Page = () => {
                   {activeCategory.types?.map((type) => (
                     <div
                       key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "astm-a335-p11-pipes"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] hover:bg-green-100 transition-all duration-200 cursor-pointer`}
                     >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
+                      {/* ✅ Link removed — static text only */}
+                      <p className="text-sm font-semibold text-[#4A148C]">
                         {type.title}
-                      </Link>
+                      </p>
                       {type.specs && (
                         <ul className="mt-2 space-y-0.5">
                           {type.specs.map((spec, idx) => (
@@ -501,6 +534,37 @@ const ASTMA335P11Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

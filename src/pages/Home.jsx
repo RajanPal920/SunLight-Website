@@ -416,7 +416,6 @@ const Home = () => {
         />
       </Helmet>
 
-    
       {/* HERO SECTION WITH SLIDESHOW - FIXED FOR MOBILE */}
       {/* =============================== */}
       <section
@@ -720,14 +719,19 @@ const Home = () => {
                   validation standards.
                 </p>
 
-                <div className="flex flex-wrap gap-3 sm:gap-4">
+                <div className="flex flex-wrap gap-4">
                   <a
-                    href="#"
-                    className="inline-flex items-center gap-2 bg-[#03A58D] hover:bg-[#028773] text-white font-bold text-xs sm:text-sm px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 font-sans"
+                    href="/certifications"
+                    className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#0056A6] to-[#03A58D] hover:from-[#004B84] hover:to-[#028773] text-white font-semibold px-5 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
                   >
-                    <FileText size={20} className="sm:size-[20px]" />
-                    View Certificate
-                    <span className="text-[10px] opacity-70">PDF</span>
+                    <FileText
+                      size={20}
+                      className="transition-transform duration-300 group-hover:rotate-6"
+                    />
+                    <span>View Certificate</span>
+                    <span className="text-xs font-medium border border-white/30 rounded-full px-2 py-0.5">
+                      PDF
+                    </span>
                   </a>
                 </div>
 

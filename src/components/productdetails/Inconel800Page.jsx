@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Phone,
   Mail,
@@ -10,10 +10,16 @@ import {
   Menu,
   Globe,
   ChevronRight,
+  ArrowLeft,
+  PhoneCall,
 } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md";
 import pipesTubes from "../../data/productCategories/pipes-tubes";
+import pipesTubesImage from "../../assets/productsImage/inc1.jpg";
 
 const Inconel800Page = () => {
+  const navigate = useNavigate();
+
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -185,6 +191,40 @@ const Inconel800Page = () => {
     { name: "Billets", slug: "billets" },
   ];
 
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -208,6 +248,7 @@ const Inconel800Page = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8">
+            {/* ===== SIDEBAR - PRODUCT CATEGORIES ===== */}
             <aside className="lg:w-80 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden sticky top-4">
                 <div className="bg-[#4A148C] px-5 py-4">
@@ -218,6 +259,7 @@ const Inconel800Page = () => {
                 </div>
 
                 <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
+                  {/* Pipes & Tubes Categories */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
                       PIPES & TUBES
@@ -247,6 +289,7 @@ const Inconel800Page = () => {
                     ))}
                   </div>
 
+                  {/* Product Range */}
                   <div>
                     <h4 className="text-xs font-bold text-[#4A148C] uppercase tracking-wider mb-2 border-b-2 border-[#66BB6A] pb-1">
                       PRODUCT RANGE
@@ -272,7 +315,20 @@ const Inconel800Page = () => {
               </div>
             </aside>
 
+            {/* ===== MAIN CONTENT AREA ===== */}
             <div className="flex-1 min-w-0 pt-4">
+              {/* ===== BACK BUTTON ===== */}
+              <div className="mb-4">
+                <button
+                  onClick={() => navigate("/products/pipes-tubes")}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <ArrowLeft size={18} />
+                  Back to Pipes & Tubes
+                </button>
+              </div>
+
+              {/* ===== HERO SECTION ===== */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
                   <div
@@ -310,6 +366,18 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== PRODUCT IMAGE ===== */}
+              <div className="mb-8 bg-white rounded-2xl p-4 border border-slate-200">
+                <div className="flex justify-center">
+                  <img
+                    src={pipesTubesImage}
+                    alt={currentProduct?.title || "Inconel 800 Pipes & Tubes"}
+                    className="w-full max-w-2xl h-auto object-contain rounded-lg"
+                  />
+                </div>
+              </div>
+
+              {/* ===== PRODUCT DESCRIPTION ===== */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
                   {currentProduct?.title || "Inconel 800 Pipes & Tubes"}
@@ -356,6 +424,7 @@ const Inconel800Page = () => {
                 </p>
               </div>
 
+              {/* ===== SPECIFICATIONS ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Inconel 800 Seamless & Inconel 800 Welded{" "}
@@ -411,6 +480,7 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== CHEMICAL COMPOSITION ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   High Inconel 800 Pipes & Tubes UNS N08800 Pipes{" "}
@@ -468,6 +538,7 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== STANDARDS TABLE ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Standards <span className="text-[#66BB6A]">Equivalents</span>
@@ -521,6 +592,7 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== OTHER TYPES ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   Other Types of {activeCategory.title}
@@ -530,18 +602,12 @@ const Inconel800Page = () => {
                   {activeCategory.types?.map((type) => (
                     <div
                       key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "inconel-800-pipestubes"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A] transition-colors cursor-pointer `}
                     >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
+                      {/* ✅ Link removed — static text only */}
+                      <p className="text-sm font-semibold text-[#4A148C]">
                         {type.title}
-                      </Link>
+                      </p>
                       {type.specs && (
                         <ul className="mt-2 space-y-0.5">
                           {type.specs.map((spec, idx) => (
@@ -556,6 +622,7 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== CONTACT BOX ===== */}
               <div className="mt-8">
                 <div className="bg-[#4A148C] text-white rounded-2xl p-6 sm:p-8 text-center">
                   <p className="text-lg font-medium">
@@ -574,6 +641,7 @@ const Inconel800Page = () => {
                 </div>
               </div>
 
+              {/* ===== EXPORT DESTINATIONS ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
                   EXPORT DESTINATIONS FOR INCONEL 800 PIPES, INCONEL 800 TUBES,{" "}
@@ -603,6 +671,37 @@ const Inconel800Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

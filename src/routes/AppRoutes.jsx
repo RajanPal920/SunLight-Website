@@ -5,12 +5,13 @@ import Layout from "../components/layout/Layout";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
-import Quality from "../pages/Quality";
+import Quality from "../pages/Certifications";
 
 // Import products pages from the products folder
 import Products from "../pages/products/Products";
 import ProductCategory from "../pages/products/ProductCategory";
 import ProductDetails from "../pages/products/ProductDetails";
+import Certifications from "../pages/Certifications";
 
 const AppRoutes = () => {
   return (
@@ -19,7 +20,7 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/quality" element={<Quality />} />
+        <Route path="/certifications" element={<Certifications />} />
 
         {/* Products Routes */}
         <Route path="/products" element={<Products />} />

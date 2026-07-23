@@ -1,20 +1,21 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom"; // Added useNavigate
 import {
   Phone,
   Mail,
-  MapPin,
-  Factory,
-  ExternalLink,
   Menu,
   Globe,
-  ChevronRight,
+  ArrowLeft, // Added ArrowLeft
+  PhoneCall, // Added PhoneCall
 } from "lucide-react";
+import { MdOutlineWhatsapp } from "react-icons/md"; // Added WhatsApp icon
 import pipesTubes from "../../data/productCategories/pipes-tubes";
-import astmP1Image from "../../assets/productsImage/pipes.jpg";
+import astmP1Image from "../../assets/productsImage/p1.jpg";
 
 const ASTMA335P1Page = () => {
+  const navigate = useNavigate(); // Added for back button
+
   const contactDetails = {
     phone: "+91 96369 01159",
     email: "sunlight.barmer@gmail.com",
@@ -37,29 +38,130 @@ const ASTMA335P1Page = () => {
   );
 
   const allDestinations = [
-    "Tunisia", "UK", "South Africa", "Ethiopa", "Egypt", "Venezuela",
-    "Kazakhstan", "Angola", "Chine", "Mexico", "London", "Australia",
-    "Iran", "Indonesia", "Azerbaijan", "Bahrain", "Malaysia", "Vietnam",
-    "Italy", "Germany", "Democratic Republic of the Congo", "Sri Lanka",
-    "Jordan", "Houston", "Peru", "Morocco", "Mozambique", "Algeria",
-    "Brazil", "Sudan", "New Zealand", "Dubai", "Thailand (Bangkok)",
-    "Iraq", "Cameroon", "Turkey", "Russia", "United States", "Kuwait",
-    "Ghana", "Canada", "Saudi Arabia", "Uganda", "Nigeria",
-    "Trinidad and Tobago", "Africa", "Argentina", "UAE", "Israel",
-    "Colombia", "Singapore", "Jerusalem", "Beirut", "Bulawayo", "Yaoundé",
-    "Fez", "Dar es Salaam", "Port Elizabeth", "Doha", "Bamako",
-    "Hong Kong", "Cape Town", "Antananarivo", "Dubai", "Conakry",
-    "Sharm el-Sheikh", "Durban", "Manama", "Amman", "Mbuji-Mayi",
-    "Byblos", "Maiduguri", "Giza", "Khartoum", "Kano", "Brazzaville",
-    "Istanbul", "Lubumbashi", "Dammam", "Abu Dhabi", "Accra",
-    "Ouagadougou", "Tel Aviv", "Rabat", "New York", "Cairo", "Muscat",
-    "Mogadishu", "Tripoli", "Dakar", "Abidjan", "Aqaba", "Colombo",
-    "Alexandria", "Jeddah", "Cairo", "Douala", "Bethlehem", "Maputo",
-    "Freetown", "Subra al-Haymah", "Port Harcourt", "Kaduna", "Benin",
-    "Luanda", "Pretoria", "Algiers", "Nairobi", "Mecca", "Kampala",
-    "Kolwezi", "Lagos", "Ibadan", "Soweto", "Lusaka", "Riyadh",
-    "Addis Ababa", "Tehran", "Zaria", "Johannesburg", "Omdurman",
-    "Casablanca", "Harare", "Kinshasa",
+    "Tunisia",
+    "UK",
+    "South Africa",
+    "Ethiopa",
+    "Egypt",
+    "Venezuela",
+    "Kazakhstan",
+    "Angola",
+    "Chine",
+    "Mexico",
+    "London",
+    "Australia",
+    "Iran",
+    "Indonesia",
+    "Azerbaijan",
+    "Bahrain",
+    "Malaysia",
+    "Vietnam",
+    "Italy",
+    "Germany",
+    "Democratic Republic of the Congo",
+    "Sri Lanka",
+    "Jordan",
+    "Houston",
+    "Peru",
+    "Morocco",
+    "Mozambique",
+    "Algeria",
+    "Brazil",
+    "Sudan",
+    "New Zealand",
+    "Dubai",
+    "Thailand (Bangkok)",
+    "Iraq",
+    "Cameroon",
+    "Turkey",
+    "Russia",
+    "United States",
+    "Kuwait",
+    "Ghana",
+    "Canada",
+    "Saudi Arabia",
+    "Uganda",
+    "Nigeria",
+    "Trinidad and Tobago",
+    "Africa",
+    "Argentina",
+    "UAE",
+    "Israel",
+    "Colombia",
+    "Singapore",
+    "Jerusalem",
+    "Beirut",
+    "Bulawayo",
+    "Yaoundé",
+    "Fez",
+    "Dar es Salaam",
+    "Port Elizabeth",
+    "Doha",
+    "Bamako",
+    "Hong Kong",
+    "Cape Town",
+    "Antananarivo",
+    "Dubai",
+    "Conakry",
+    "Sharm el-Sheikh",
+    "Durban",
+    "Manama",
+    "Amman",
+    "Mbuji-Mayi",
+    "Byblos",
+    "Maiduguri",
+    "Giza",
+    "Khartoum",
+    "Kano",
+    "Brazzaville",
+    "Istanbul",
+    "Lubumbashi",
+    "Dammam",
+    "Abu Dhabi",
+    "Accra",
+    "Ouagadougou",
+    "Tel Aviv",
+    "Rabat",
+    "New York",
+    "Cairo",
+    "Muscat",
+    "Mogadishu",
+    "Tripoli",
+    "Dakar",
+    "Abidjan",
+    "Aqaba",
+    "Colombo",
+    "Alexandria",
+    "Jeddah",
+    "Cairo",
+    "Douala",
+    "Bethlehem",
+    "Maputo",
+    "Freetown",
+    "Subra al-Haymah",
+    "Port Harcourt",
+    "Kaduna",
+    "Benin",
+    "Luanda",
+    "Pretoria",
+    "Algiers",
+    "Nairobi",
+    "Mecca",
+    "Kampala",
+    "Kolwezi",
+    "Lagos",
+    "Ibadan",
+    "Soweto",
+    "Lusaka",
+    "Riyadh",
+    "Addis Ababa",
+    "Tehran",
+    "Zaria",
+    "Johannesburg",
+    "Omdurman",
+    "Casablanca",
+    "Harare",
+    "Kinshasa",
   ];
 
   const productRange = [
@@ -70,16 +172,56 @@ const ASTMA335P1Page = () => {
     { name: "Buttweld Fittings", slug: "buttweld-fittings" },
     { name: "Socketweld Fittings", slug: "socketweld-fittings" },
     { name: "Fasteners", slug: "fasteners" },
-    { name: "Refractory Fixings & Anchors", slug: "refractory-fixings-anchors" },
+    {
+      name: "Refractory Fixings & Anchors",
+      slug: "refractory-fixings-anchors",
+    },
     { name: "Angles & Channels", slug: "angles-channels" },
     { name: "Tube Sheets", slug: "tube-sheets" },
     { name: "Ferrule Fittings", slug: "ferrule-fittings" },
     { name: "Cladded Plates", slug: "cladded-plates" },
     { name: "Olets", slug: "olets" },
     { name: "Valves", slug: "valves" },
-    { name: "Graphite Filled Bronze Bush", slug: "graphite-filled-bronze-bush" },
+    {
+      name: "Graphite Filled Bronze Bush",
+      slug: "graphite-filled-bronze-bush",
+    },
     { name: "Billets", slug: "billets" },
   ];
+
+  // Floating button styles
+  const floatingStyles = {
+    container: {
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+      zIndex: 9999,
+    },
+    button: {
+      width: "56px",
+      height: "56px",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      border: "none",
+      textDecoration: "none",
+      color: "white",
+      fontSize: "24px",
+    },
+    call: {
+      backgroundColor: "blue",
+    },
+    whatsapp: {
+      backgroundColor: "#25D366",
+    },
+  };
 
   return (
     <>
@@ -169,6 +311,17 @@ const ASTMA335P1Page = () => {
             </aside>
 
             <div className="flex-1 min-w-0 pt-4">
+              {/* ===== BACK BUTTON ===== */}
+              <div className="mb-4">
+                <button
+                  onClick={() => navigate("/products/pipes-tubes")}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#46127B] text-white rounded-lg hover:bg-[#46127B]/90 transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <ArrowLeft size={18} />
+                  Back to Pipes & Tubes
+                </button>
+              </div>
+
               {/* ===== HERO IMAGE & HEADING ===== */}
               <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#4A148C] to-[#2E0A5E] mb-8">
                 <div className="absolute inset-0 opacity-10">
@@ -182,7 +335,8 @@ const ASTMA335P1Page = () => {
                 <div className="relative p-8 sm:p-12 text-white">
                   <div className="max-w-2xl">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                      {currentProduct?.title || "Alloy Steel ASTM A335 P1 Pipes"}
+                      {currentProduct?.title ||
+                        "Alloy Steel ASTM A335 P1 Pipes"}
                     </h1>
                     <p className="mt-3 text-white/80 text-sm sm:text-base">
                       {activeCategory.description}
@@ -212,7 +366,9 @@ const ASTMA335P1Page = () => {
                 <div className="flex justify-center">
                   <img
                     src={astmP1Image}
-                    alt={currentProduct?.title || "ASTM A335 P1 Alloy Steel Pipe"}
+                    alt={
+                      currentProduct?.title || "ASTM A335 P1 Alloy Steel Pipe"
+                    }
                     className="w-full max-w-2xl h-auto object-contain rounded-lg"
                   />
                 </div>
@@ -221,22 +377,33 @@ const ASTMA335P1Page = () => {
               {/* ===== PRODUCT DESCRIPTION ===== */}
               <div className="space-y-4 text-slate-700 leading-relaxed bg-white rounded-2xl p-6 sm:p-8 border border-slate-200">
                 <p className="text-lg font-semibold text-[#4A148C]">
-                  {currentProduct?.title || "Alloy Steel ASTM A335 / ASME SA335 P1 Pipe"}
+                  {currentProduct?.title ||
+                    "Alloy Steel ASTM A335 / ASME SA335 P1 Pipe"}
                 </p>
                 <p>
                   <span className="font-semibold text-[#4A148C]">
                     {contactDetails.company}
                   </span>{" "}
-                  is a Manufacturer & Exporter of Alloy Steel ASTM A335 P1 Seamless Pipe & P1 Welded Pipe, Alloy P1 ERW Pipes, Alloy ASME SA335 EFW Pipe Supplier in India.
+                  is a Manufacturer & Exporter of Alloy Steel ASTM A335 P1
+                  Seamless Pipe & P1 Welded Pipe, Alloy P1 ERW Pipes, Alloy ASME
+                  SA335 EFW Pipe Supplier in India.
                 </p>
                 <p>
-                  Leveraging on the support of experienced professionals, We Neon Alloys are engaged in manufacturing & exporting of fine grade Alloy Steel ASTM / ASME A335 Gr. P1 Seamless Pipe.
+                  Leveraging on the support of experienced professionals, We
+                  Neon Alloys are engaged in manufacturing & exporting of fine
+                  grade Alloy Steel ASTM / ASME A335 Gr. P1 Seamless Pipe.
                 </p>
                 <p>
-                  These ASTM A335 P1 Alloy Seamless Steel Pipes are available in different lengths and diameters to serve diverse applications and are made of premium quality. These ASTM A335 P1 Alloy Seamless Steel Pipes are highly durable and have long lasting functional life.
+                  These ASTM A335 P1 Alloy Seamless Steel Pipes are available in
+                  different lengths and diameters to serve diverse applications
+                  and are made of premium quality. These ASTM A335 P1 Alloy
+                  Seamless Steel Pipes are highly durable and have long lasting
+                  functional life.
                 </p>
                 <p>
-                  Alloy ASTM A335 P1 High Pressure Pipe Exporter, Alloy Steel P1 Fabricated Pipe, ASME SA335 P1 SAW Pipe, Alloy Steel P1 LSAW Pipe Manufacturer in India.
+                  Alloy ASTM A335 P1 High Pressure Pipe Exporter, Alloy Steel P1
+                  Fabricated Pipe, ASME SA335 P1 SAW Pipe, Alloy Steel P1 LSAW
+                  Pipe Manufacturer in India.
                 </p>
               </div>
 
@@ -251,20 +418,23 @@ const ASTMA335P1Page = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <p>
-                        <strong className="text-[#4A148C]">Grade:</strong>{" "}
-                        Alloy Steel A335 GR P1
+                        <strong className="text-[#4A148C]">Grade:</strong> Alloy
+                        Steel A335 GR P1
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Specification:</strong>{" "}
+                        <strong className="text-[#4A148C]">
+                          Specification:
+                        </strong>{" "}
                         ASTM A335 / ASME SA335
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">Size:</strong>{" "}
-                        1/2" NB - 24" NB
+                        <strong className="text-[#4A148C]">Size:</strong> 1/2"
+                        NB - 24" NB
                       </p>
                       <p>
                         <strong className="text-[#4A148C]">Thickness:</strong>{" "}
-                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80, SCH120, SCH140, SCH160, XXS
+                        SCH20, SCH30, SCH40, STD, SCH80, XS, SCH60, SCH80,
+                        SCH120, SCH140, SCH160, XXS
                       </p>
                     </div>
                     <div>
@@ -281,8 +451,8 @@ const ASTMA335P1Page = () => {
                         Single Random, Double Random & Cut Length.
                       </p>
                       <p>
-                        <strong className="text-[#4A148C]">End:</strong>{" "}
-                        Plain End, Beveled End, Treaded
+                        <strong className="text-[#4A148C]">End:</strong> Plain
+                        End, Beveled End, Treaded
                       </p>
                     </div>
                   </div>
@@ -292,26 +462,19 @@ const ASTMA335P1Page = () => {
               {/* ===== OTHER TYPES ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  Types of ASTM A335 Alloy Steel{" "}
-                  <span className="text-[#66BB6A]">P1 Pipes</span>
+                  Other Types of {activeCategory.title}
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {activeCategory.types?.map((type) => (
                     <div
                       key={type.id}
-                      className={`bg-green-50 rounded-xl p-5 border ${
-                        type.slug === "astm-a335-p1-pipes"
-                          ? "border-[#66BB6A] bg-green-100"
-                          : "border-green-200"
-                      }`}
+                      className={`bg-green-50 rounded-xl p-5 border border-green-200 hover:border-[#66BB6A]  transition-all duration-200 cursor-pointer`}
                     >
-                      <Link
-                        to={`/products/${activeCategory.slug}/${type.slug}`}
-                        className="text-sm font-semibold text-[#4A148C] hover:text-[#66BB6A] transition-colors block"
-                      >
+                      {/* ✅ Link removed — static text only */}
+                      <p className="text-sm font-semibold text-[#4A148C]">
                         {type.title}
-                      </Link>
+                      </p>
                       {type.specs && (
                         <ul className="mt-2 space-y-0.5">
                           {type.specs.map((spec, idx) => (
@@ -348,7 +511,8 @@ const ASTMA335P1Page = () => {
               {/* ===== EXPORT DESTINATIONS ===== */}
               <div className="mt-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#4A148C] text-center mb-6">
-                  EXPORT DESTINATIONS FOR ALLOY P1 PIPES, ALLOY STEEL P1 PIPES, AS P1 PIPES, AS A335 P1 PIPES
+                  EXPORT DESTINATIONS FOR ALLOY P1 PIPES, ALLOY STEEL P1 PIPES,
+                  AS P1 PIPES, AS A335 P1 PIPES
                 </h2>
 
                 <div className="bg-green-50 rounded-2xl p-6 sm:p-8 border border-green-200">
@@ -371,6 +535,37 @@ const ASTMA335P1Page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ===== FLOATING CALL AND WHATSAPP BUTTONS ===== */}
+      <div style={floatingStyles.container}>
+        {/* Call Button */}
+        <a
+          href={`tel:${contactDetails.phone}`}
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.call.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Call us"
+        >
+          <PhoneCall size={28} />
+        </a>
+
+        {/* WhatsApp Button */}
+        <a
+          href={`https://wa.me/${contactDetails.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            ...floatingStyles.button,
+            backgroundColor: floatingStyles.whatsapp.backgroundColor,
+          }}
+          className="hover:scale-110 transition-transform duration-300"
+          aria-label="Chat on WhatsApp"
+        >
+          <MdOutlineWhatsapp size={28} />
+        </a>
       </div>
     </>
   );

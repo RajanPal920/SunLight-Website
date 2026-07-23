@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Phone, Mail, Menu, Globe, ArrowLeft, PhoneCall } from "lucide-react";
 import { MdOutlineWhatsapp } from "react-icons/md";
 import refractoryAnchors from "../../data/productCategories/refractory-fittings";
-import anchorImage from "../../assets/productsImage/fastener.jpg";
+import anchorImage from "../../assets/productsImage/refractory-anchor.jpg";
 
 const RefractoryFixingsAnchorsPage = () => {
   const navigate = useNavigate();
