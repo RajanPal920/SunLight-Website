@@ -193,7 +193,7 @@ import C12ABilletsPage from "./C12ABilletsPage";
 import Grade900BilletsPage from "./Grade900BilletsPage";
 import BronzeBushesPage from "./BronzeBushesPage";
 import ASTMA335P5Page from "./ASTMA335P5Page";
-import MonelK500RoundBarsPage from "./MonelK500RoundBarsPage";
+import MonelK500RoundbarsPage from "./MonelK500RoundbarsPage";
 
 // Map product slugs to their respective components
 const productDetailsMap = {
@@ -288,7 +288,7 @@ const productDetailsMap = {
   "nickel-alloy-200-roundbars": NickelAlloy200RoundBarsPage,
   "nickel-alloy-201-roundbars": NickelAlloy201RoundBarsPage,
   "monel-400-roundbars": Monel400RoundBarsPage,
-  "monel-k500-roundbars": MonelK500RoundBarsPage,
+  "monel-k500-roundbars": MonelK500RoundbarsPage,
   "inconel-600-roundbars": Inconel600RoundBarsPage,
   "inconel-601-roundbars": Inconel601RoundBarsPage,
   "inconel-625-roundbars": Inconel625RoundBarsPage,

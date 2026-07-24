@@ -14,7 +14,7 @@ import { MdOutlineWhatsapp } from "react-icons/md"; // Added WhatsApp icon
 import roundbars from "../../data/productCategories/round-bars";
 import roundBarImage from "../../assets/productsImage/bar2.jpg";
 
-const MonelK500RoundBarsPage = () => {
+const MonelK500RoundbarsPage = () => {
   const navigate = useNavigate();
   const contactDetails = {
     phone: "+91 96369 01159",
@@ -690,4 +690,4 @@ const MonelK500RoundBarsPage = () => {
   );
 };
 
-export default MonelK500RoundBarsPage;
+export default MonelK500RoundbarsPage;
