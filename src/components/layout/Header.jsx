@@ -12,7 +12,7 @@ import {
   Mail,
   ChevronDown,
   ChevronRight,
-  // Importing specific icons for products
+  ArrowRight,
   Box,
   Activity,
   GitCommitHorizontal,
@@ -21,7 +21,6 @@ import {
   Hexagon,
   Nut,
   Zap,
-  ArrowLeft,
 } from "lucide-react";
 
 import logo from "../../assets/logo/logo.webp";
@@ -53,23 +52,14 @@ const navLinks = [
 
 /* ───────────────── Product Icons Map ───────────────── */
 const productIcons = {
-  "Pipes & Tubes": <Box size={16} />,
-  "Sheets & Plates": <Layers size={16} />,
-  "Flanges & Fittings": <CircleDot size={16} />,
-  "Rods & Bars": <GitCommitHorizontal size={16} />,
-  Coils: <Activity size={16} />,
-  Strips: <Hexagon size={16} />,
-  "Buttweld Fittings": <Zap size={16} />,
-  Fasteners: <Nut size={16} />,
-};
-
-/* ───────────────── Group Products for Mega Menu ───────────────── */
-const chunkArray = (arr, size) => {
-  const result = [];
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
-  }
-  return result;
+  "Pipes & Tubes": <Box size={18} />,
+  "Sheets & Plates": <Layers size={18} />,
+  "Flanges & Fittings": <CircleDot size={18} />,
+  "Rods & Bars": <GitCommitHorizontal size={18} />,
+  Coils: <Activity size={18} />,
+  Strips: <Hexagon size={18} />,
+  "Buttweld Fittings": <Zap size={18} />,
+  Fasteners: <Nut size={18} />,
 };
 
 const Header = () => {
@@ -82,11 +72,8 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
-  // Mobile Drill-Down State (Only used for the "Back" to Main Menu)
-  const [mobileViewStack, setMobileViewStack] = useState(["main"]);
-
-  // Group products into columns for the Mega Menu
-  const productColumns = chunkArray(products, Math.ceil(products.length / 4));
+  // Mobile Accordion State
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   // Handle scroll effect
   useEffect(() => {
@@ -117,11 +104,11 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close dropdown on route change
+  // Close menus on route change
   useEffect(() => {
     setIsDropdownOpen(false);
     setMobileOpen(false);
-    setMobileViewStack(["main"]); // Reset mobile stack on route change
+    setMobileProductsOpen(false);
   }, [location]);
 
   // Desktop Hover Logic
@@ -134,25 +121,6 @@ const Header = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
     }, 150);
-  };
-
-  // Mobile handlers
-  const pushMobileView = (viewId) => {
-    setMobileViewStack((prev) => [...prev, viewId]);
-  };
-
-  const popMobileView = () => {
-    setMobileViewStack((prev) => {
-      if (prev.length > 1) {
-        return prev.slice(0, -1);
-      }
-      return prev;
-    });
-  };
-
-  const closeMobileMenu = () => {
-    setMobileOpen(false);
-    setTimeout(() => setMobileViewStack(["main"]), 300);
   };
 
   // Desktop Link Classes
@@ -325,7 +293,7 @@ const Header = () => {
                   <div
                     key={item.to}
                     ref={dropdownRef}
-                    className="relative h-full flex items-center"
+                    className="relative h-full flex items-center py-2"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -346,60 +314,68 @@ const Header = () => {
                       />
                     </NavLink>
 
-                    {/* ─── CENTERED 4-COLUMN MEGA MENU ─── */}
+                    {/* ─── NEW SPLIT-PANEL MEGA MENU WITH 70% HEIGHT ─── */}
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(92vw,1050px)] bg-white rounded-xl shadow-2xl border border-gray-100 transition-all duration-300 origin-top z-[1000] ${
+                      className={`absolute right-0 top-[110%] w-[750px] max-h-[70vh] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-gray-100 transition-all duration-300 origin-top z-[1000] overflow-hidden flex flex-col ${
                         isDropdownOpen
-                          ? "opacity-100 visible translate-y-0"
-                          : "opacity-0 invisible translate-y-4 pointer-events-none"
+                          ? "opacity-100 visible translate-y-0 scale-100"
+                          : "opacity-0 invisible translate-y-4 scale-95 pointer-events-none"
                       }`}
                     >
-                      {/* Top Bar */}
-                      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50 rounded-t-xl">
-                        <h3 className="text-sm font-bold text-[#46127B] uppercase tracking-wide">
-                          Our Product Range
-                        </h3>
-                        <Link
-                          to="/products"
-                          className="text-xs font-semibold text-[#03A58D] hover:text-[#46127B] transition-colors flex items-center gap-1"
-                          onClick={() => setIsDropdownOpen(false)}
-                        >
-                          View All <ChevronRight size={14} />
-                        </Link>
-                      </div>
+                      {/* Scrollable content wrapper */}
+                      <div className="flex flex-1 overflow-hidden">
+                        {/* Left Sidebar Call to action */}
+                        <div className="w-1/3 bg-gradient-to-br from-[#46127B] to-[#2E0B52] p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                          {/* Decorative circle */}
+                          <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#03A58D] rounded-full blur-3xl opacity-20"></div>
 
-                      {/* 4-Column Grid with Icons */}
-                      <div className="grid grid-cols-4 gap-0 p-6">
-                        {productColumns.map((column, colIndex) => (
-                          <div
-                            key={colIndex}
-                            className={`px-5 ${colIndex !== productColumns.length - 1 ? "border-r border-gray-100" : ""}`}
+                          <div className="relative z-10">
+                            <h3 className="text-xl font-bold mb-3 leading-tight">
+                              Premium Industrial Solutions
+                            </h3>
+                            <p className="text-white/70 text-sm leading-relaxed mb-6">
+                              Explore our ISO-certified range of high-quality
+                              forged fittings, flanges, and more built for
+                              extreme durability.
+                            </p>
+                          </div>
+                          <Link
+                            to="/products"
+                            onClick={() => setIsDropdownOpen(false)}
+                            className="relative z-10 inline-flex items-center gap-2 text-sm font-bold text-[#03A58D] hover:text-white transition-colors group w-max"
                           >
-                            {column.map((product) => (
+                            View Full Catalog
+                            <ArrowRight
+                              size={16}
+                              className="transform group-hover:translate-x-1 transition-transform"
+                            />
+                          </Link>
+                        </div>
+
+                        {/* Right Grid - Products */}
+                        <div className="w-2/3 p-6 bg-gray-50/50 overflow-y-auto">
+                          <div className="grid grid-cols-2 gap-3">
+                            {products.map((product) => (
                               <Link
                                 key={product.id}
                                 to={`/products/${product.slug}`}
-                                className="group flex items-center justify-between py-2.5 px-2 rounded-lg text-sm text-gray-700 hover:bg-[#46127B]/5 hover:text-[#46127B] transition-all duration-200"
                                 onClick={() => setIsDropdownOpen(false)}
+                                className="group flex items-center p-3 rounded-xl hover:bg-white hover:shadow-md border border-transparent hover:border-gray-200 transition-all duration-300"
                               >
-                                <div className="flex items-center gap-3 min-w-0">
-                                  <span className="text-[#03A58D] flex-shrink-0">
-                                    {productIcons[product.name] || (
-                                      <Box size={16} />
-                                    )}
-                                  </span>
-                                  <span className="font-medium truncate">
+                                <div className="w-10 h-10 rounded-lg bg-[#46127B]/5 flex items-center justify-center text-[#03A58D] group-hover:bg-[#03A58D] group-hover:text-white transition-colors shrink-0">
+                                  {productIcons[product.name] || (
+                                    <Box size={18} />
+                                  )}
+                                </div>
+                                <div className="ml-4 min-w-0">
+                                  <span className="block font-semibold text-gray-800 group-hover:text-[#46127B] text-sm truncate transition-colors">
                                     {product.name}
                                   </span>
                                 </div>
-                                <ChevronRight
-                                  size={14}
-                                  className="opacity-0 group-hover:opacity-100 text-[#03A58D] transition-all duration-200 -translate-x-2 group-hover:translate-x-0 flex-shrink-0"
-                                />
                               </Link>
                             ))}
                           </div>
-                        ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -421,10 +397,7 @@ const Header = () => {
 
           {/* ================= Mobile Menu Button ================= */}
           <button
-            onClick={() => {
-              setMobileOpen(!mobileOpen);
-              if (!mobileOpen) setMobileViewStack(["main"]); // Reset drill-down when opening
-            }}
+            onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[#46127B]/10 transition-colors duration-300 flex-shrink-0"
             aria-label="Toggle Menu"
           >
@@ -438,7 +411,7 @@ const Header = () => {
       </div>
 
       {/* =============================== */}
-      {/* MOBILE NAVIGATION & DROPDOWN (NO SUB-PAGES) */}
+      {/* MOBILE OVERLAY-STYLE MENU WITH GRID */}
       {/* =============================== */}
       <div
         className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden ${
@@ -448,110 +421,114 @@ const Header = () => {
         }`}
       >
         <div className="px-4 sm:px-6 py-4 sm:py-6 overflow-y-auto max-h-[calc(100vh-120px)]">
-          <div className="relative flex flex-col w-full overflow-hidden min-h-[300px]">
-            {/* --- Main Menu View --- */}
-            <div
-              className={`w-full flex-shrink-0 transition-all duration-300 ease-in-out ${
-                mobileViewStack[mobileViewStack.length - 1] === "main"
-                  ? "opacity-100 translate-x-0 block"
-                  : "opacity-0 translate-x-[-100%] hidden absolute top-0 left-0 w-full"
-              }`}
-            >
-              <nav className="flex flex-col gap-1">
-                {navLinks.map((item) => {
-                  if (item.hasDropdown) {
-                    return (
-                      <div
-                        key={item.to}
-                        className="border-b border-gray-100 last:border-0"
-                      >
-                        <button
-                          onClick={() => pushMobileView("products")}
-                          className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 text-gray-700 hover:bg-gray-50"
-                        >
-                          <span>{item.label}</span>
-                          <ChevronRight size={16} className="text-gray-400" />
-                        </button>
-                      </div>
-                    );
-                  }
-                  return (
-                    <NavLink
-                      key={item.to}
-                      to={item.to}
-                      end={item.to === "/"}
-                      onClick={closeMobileMenu}
-                      className={({ isActive }) =>
-                        `px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200 ${
-                          isActive
-                            ? "bg-[#46127B] text-white"
-                            : "text-gray-700 hover:bg-gray-100"
-                        }`
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  );
-                })}
-              </nav>
-            </div>
-
-            {/* --- Products List View --- */}
-            <div
-              className={`w-full flex-shrink-0 transition-all duration-300 ease-in-out ${
-                mobileViewStack[mobileViewStack.length - 1] === "products"
-                  ? "opacity-100 translate-x-0 block"
-                  : "opacity-0 translate-x-[100%] hidden absolute top-0 left-0 w-full"
-              }`}
-            >
-              <button
-                onClick={popMobileView}
-                className="w-full flex items-center gap-2 px-2 py-3 text-sm font-semibold text-[#46127B] hover:bg-gray-50 rounded-lg transition-colors border-b border-gray-100"
-              >
-                <ArrowLeft size={16} />
-                Back
-              </button>
-              <div className="mt-2 space-y-1">
-                {products.map((product) => (
+          <nav className="flex flex-col gap-1">
+            {navLinks.map((item) => {
+              if (item.hasDropdown) {
+                return (
                   <div
-                    key={product.id}
-                    className="border-b border-gray-50 last:border-0"
+                    key={item.to}
+                    className="flex flex-col border-b border-gray-100 last:border-0 overflow-hidden"
                   >
-                    <Link
-                      to={`/products/${product.slug}`}
-                      onClick={closeMobileMenu}
-                      className="w-full flex items-center justify-between px-2 py-3 rounded-lg font-medium text-sm transition-all duration-200 text-gray-700 hover:bg-[#46127B]/5"
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg font-medium text-sm transition-all duration-200 text-gray-700 hover:bg-[#46127B]/5"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-[#03A58D] flex-shrink-0">
-                          {productIcons[product.name] || <Box size={16} />}
-                        </span>
-                        <span>{product.name}</span>
-                      </div>
-                      <ChevronRight size={14} className="text-gray-400" />
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                      <span
+                        className={
+                          mobileProductsOpen ? "text-[#46127B] font-bold" : ""
+                        }
+                      >
+                        {item.label}
+                      </span>
+                      <ChevronDown
+                        size={18}
+                        className={`transition-transform duration-300 ${
+                          mobileProductsOpen
+                            ? "rotate-180 text-[#46127B]"
+                            : "text-gray-400"
+                        }`}
+                      />
+                    </button>
 
-          {/* Mobile Contact info */}
-          <div className="border-t border-gray-200 mt-4 pt-4 space-y-3">
-            <a
-              href="tel:+919636901159"
-              className="flex items-center gap-3 text-gray-700 hover:text-[#46127B] transition-colors text-sm"
-            >
-              <Phone size={16} className="text-[#03A58D]" />
-              +91 96369 01159
-            </a>
-            <a
-              href="mailto:sunlight.barmer@gmail.com"
-              className="flex items-center gap-3 text-gray-700 hover:text-[#46127B] transition-colors text-sm break-all"
-            >
-              <Mail size={16} className="text-[#03A58D]" />
-              sunlight.barmer@gmail.com
-            </a>
+                    {/* Mobile Products Grid Dropdown - Clean UI */}
+                    <div
+                      className={`grid grid-cols-2 gap-2 transition-all duration-300 ease-in-out origin-top ${
+                        mobileProductsOpen
+                          ? "max-h-[600px] opacity-100 p-2 mb-2 scale-100"
+                          : "max-h-0 opacity-0 m-0 p-0 scale-95"
+                      }`}
+                    >
+                      {products.map((product) => (
+                        <Link
+                          key={product.id}
+                          to={`/products/${product.slug}`}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#03A58D]/30 hover:bg-[#03A58D]/5 transition-all"
+                        >
+                          <span className="text-[#03A58D] mb-1.5 bg-white p-2 rounded-lg shadow-sm">
+                            {productIcons[product.name] || <Box size={16} />}
+                          </span>
+                          <span className="text-[11px] font-semibold text-gray-700 leading-tight">
+                            {product.name}
+                          </span>
+                        </Link>
+                      ))}
+                      <Link
+                        to="/products"
+                        onClick={() => setMobileOpen(false)}
+                        className="col-span-2 mt-2 py-2.5 flex items-center justify-center gap-2 text-xs font-bold text-[#46127B] bg-[#46127B]/5 rounded-xl hover:bg-[#46127B]/10 transition-colors"
+                      >
+                        Browse All Products <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.to === "/"}
+                  onClick={() => setMobileOpen(false)}
+                  className={({ isActive }) =>
+                    `px-4 py-3.5 rounded-lg font-medium text-sm transition-all duration-200 border-b border-gray-100 last:border-0 ${
+                      isActive
+                        ? "bg-[#46127B] text-white border-transparent"
+                        : "text-gray-700 hover:bg-[#46127B]/5"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Contact Action Bar - Enhanced */}
+          <div className="mt-6 pt-5 border-t border-gray-100">
+            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-2">
+              Contact Us
+            </h4>
+            <div className="space-y-3">
+              <a
+                href="tel:+919636901159"
+                className="flex items-center gap-3 px-2 text-gray-700 hover:text-[#46127B] transition-colors text-sm font-medium"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03A58D]/10 flex items-center justify-center">
+                  <Phone size={14} className="text-[#03A58D]" />
+                </div>
+                +91 96369 01159
+              </a>
+              <a
+                href="mailto:sunlight.barmer@gmail.com"
+                className="flex items-center gap-3 px-2 text-gray-700 hover:text-[#46127B] transition-colors text-sm font-medium break-all"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#03A58D]/10 flex items-center justify-center">
+                  <Mail size={14} className="text-[#03A58D]" />
+                </div>
+                sunlight.barmer@gmail.com
+              </a>
+            </div>
           </div>
         </div>
       </div>

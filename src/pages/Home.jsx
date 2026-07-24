@@ -1,5 +1,6 @@
 // src/pages/Home/Home.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosCall } from "react-icons/io";
@@ -139,6 +140,41 @@ const logoColors = {
   SGS: "hover:bg-emerald-100 border-emerald-200",
   TUV: "hover:bg-orange-100 border-orange-200",
   UHDE: "hover:bg-cyan-100 border-cyan-200",
+};
+
+// Animated Number Component
+const AnimatedNumber = ({ target, suffix = "", duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const stepTime = 16; // ~60fps
+      const steps = duration / stepTime;
+      const increment = parseInt(target) / steps;
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= parseInt(target)) {
+          setCount(parseInt(target));
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, stepTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, target, duration]);
+
+  return (
+    <span ref={ref} className="font-sans">
+      {count}
+      {suffix}
+    </span>
+  );
 };
 
 const Home = () => {
@@ -1140,93 +1176,70 @@ const Home = () => {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
-              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#03A58D] uppercase font-sans">
-                Supply Chain Excellence
-              </span>
-              <span className="w-8 sm:w-10 h-0.5 bg-[#03A58D]"></span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase text-white leading-tight font-sans">
-              Global Footprint
-              <br />
-              <span className="text-[#03A58D]">& Domestic Reach</span>
-            </h2>
-            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-slate-300 max-w-3xl mx-auto leading-relaxed font-sans">
-              Sunlight Forge & Fitting operates a sophisticated industrial
-              supply chain, serving as a critical material partner for
-              refineries, petrochemical plants, and power stations across 50+
-              countries and every major industrial hub in India.
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+          >
+            <Globe2 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+              <AnimatedNumber target="50" suffix="+" />
             </p>
-          </div>
+            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              Export Countries
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
-            >
-              <Globe2 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
-              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
-                50+
-              </p>
-              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
-                Export Countries
-              </p>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+          >
+            <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+              <AnimatedNumber target="100" suffix="+" />
+            </p>
+            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              Domestic Hubs
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
-            >
-              <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
-              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
-                100+
-              </p>
-              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
-                Domestic Hubs
-              </p>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+          >
+            <Clock3 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+              <AnimatedNumber target="12" />
+            </p>
+            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              Hours Response
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
-            >
-              <Clock3 className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
-              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
-                12
-              </p>
-              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
-                Hours Response
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
-            >
-              <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
-              <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
-                100%
-              </p>
-              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
-                Quality Assured
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-[#03A58D]/40 transition-all duration-300"
+          >
+            <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-[#03A58D] mx-auto mb-1.5 sm:mb-2" />
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-white font-sans">
+              <AnimatedNumber target="100" suffix="%" />
+            </p>
+            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400 font-sans">
+              Quality Assured
+            </p>
+          </motion.div>
         </div>
       </section>
 

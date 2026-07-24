@@ -1,5 +1,5 @@
 // src/pages/About/About.jsx
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -32,7 +32,7 @@ import {
   Eye,
   Heart,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 
 // Import components
@@ -114,13 +114,49 @@ const About = () => {
     },
   ];
 
-  // Stats data
+  // Stats data (from PDF)
   const stats = [
-    { value: "25+", label: "YEARS OF EXCELLENCE", icon: Award },
+    { value: "2006", label: "FOUNDED", icon: Award },
     { value: "50+", label: "COUNTRIES SERVED", icon: Globe2 },
-    { value: "5000+", label: "DELIVERIES", icon: Package },
-    { value: "100%", label: "QUALITY ASSURED", icon: ShieldCheck },
+    { value: "ISO 9001", label: "CERTIFIED", icon: ShieldCheck },
+    { value: "24/7", label: "SUPPORT", icon: Headphones },
   ];
+
+  // Custom Counter Component
+  const Counter = ({ target, suffix = "" }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
+
+    useEffect(() => {
+      if (inView) {
+        let start = 0;
+        const duration = 2000; // 2 seconds
+        const stepTime = 16; // ~60fps
+        const steps = duration / stepTime;
+        const increment = parseInt(target) / steps;
+
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= parseInt(target)) {
+            setCount(parseInt(target));
+            clearInterval(timer);
+          } else {
+            setCount(Math.floor(start));
+          }
+        }, stepTime);
+
+        return () => clearInterval(timer);
+      }
+    }, [inView, target]);
+
+    return (
+      <span ref={ref}>
+        {count}
+        {suffix}
+      </span>
+    );
+  };
 
   // Milestones data
   const milestones = [
@@ -215,7 +251,7 @@ const About = () => {
               className="w-full max-w-3xl mx-auto text-center"
             >
               <motion.div variants={fadeUp}>
-                <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="flex items-center justify-center gap-3 mb-4 mt-10">
                   <span className="w-10 h-0.5 bg-[#03A58D]"></span>
                   <span className="text-xs font-bold tracking-[0.25em] text-[#03A58D] uppercase">
                     About Us
@@ -475,31 +511,42 @@ const About = () => {
       </section>
 
       {/* =============================== */}
-      {/* STATS SECTION */}
+      {/* STATS SECTION - WITH ANIMATED COUNTERS */}
       {/* =============================== */}
       <section className="w-full py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-12 h-12 mx-auto bg-[#03A58D]/10 rounded-full flex items-center justify-center mb-3">
-                  <stat.icon className="w-6 h-6 text-[#03A58D]" />
-                </div>
-                <p className="text-3xl md:text-4xl font-black text-[#46127B]">
-                  {stat.value}
-                </p>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              const isNumeric = /^\d+$/.test(stat.value.replace(/[^0-9]/g, ""));
+              const numericValue = stat.value.replace(/[^0-9]/g, "");
+              const suffix = stat.value.replace(/[0-9]/g, "");
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="w-12 h-12 mx-auto bg-[#03A58D]/10 rounded-full flex items-center justify-center mb-3">
+                    <Icon className="w-6 h-6 text-[#03A58D]" />
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black text-[#46127B]">
+                    {isNumeric ? (
+                      <Counter target={numericValue} suffix={suffix} />
+                    ) : (
+                      stat.value
+                    )}
+                  </p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -26,7 +26,7 @@ export const categoryDataMap = {
   "round-bars": roundbars,
   "buttweld-fittings": buttweldfittings,
   "socketweld-fittings": socketweldfittings,
-  "refractory-fixings-anchors": refractoryAnchors,
+  "refractory-fixings": refractoryAnchors,
   "angles-channels": angleChannels,
   "tube-sheets": tubeSheets,
   "ferrule-fittings": ferruleFittings,

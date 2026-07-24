@@ -29,7 +29,7 @@ const refractoryAnchors = {
         {
           id: 1,
           title: "Refractory Fixings & Anchors",
-          slug: "refractory-fixings-anchors",
+          slug: "refractory-fixings",
           specs: [
             "High Temperature Resistance (up to 1200°C)",
             "Excellent Corrosion Resistance",

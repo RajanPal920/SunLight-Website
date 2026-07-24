@@ -19,7 +19,7 @@ const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'About Us', to: '/about' },
   { label: 'Products', to: '/products' },
-  { label: 'Quality & Certifications', to: '/quality' },
+  { label: 'Certifications', to: '/certifications' },
   { label: 'Contact', to: '/contact' },
 ];
 

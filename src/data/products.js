@@ -33,7 +33,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Sheets & Plates",
+    name: "Sheets, Plates & Coils",
     slug: "sheets-plates",
     image: sheetsImg,
     shortDescription: "High-quality stainless steel sheets and plates.",

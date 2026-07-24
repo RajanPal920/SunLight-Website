@@ -416,7 +416,7 @@ const productDetailsMap = {
   "non-ferrous-metal-fasteners": NonFerrousMetalFastenersPage,
 
   // refactory-anchors
-  "refractory-fixings-anchors": RefractoryFixingsAnchorsPage,
+  "refractory-fixings": RefractoryFixingsAnchorsPage,
 
   // angle-channels
   "angles-channels": AnglesChannelsPage,
