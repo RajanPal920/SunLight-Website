@@ -193,7 +193,7 @@ import C12ABilletsPage from "./C12ABilletsPage";
 import Grade900BilletsPage from "./Grade900BilletsPage";
 import BronzeBushesPage from "./BronzeBushesPage";
 import ASTMA335P5Page from "./ASTMA335P5Page";
-import MonelK500RoundBarsPage from "./MonelK500RoundbarsPage";
+import MonelK500RoundBarsPage from "./MonelK500RoundBarsPage";
 
 // Map product slugs to their respective components
 const productDetailsMap = {
