@@ -1,5 +1,61 @@
-// src/pages/products/productDetailsMap.js
+// src/components/productdetails/index.jsx
+
+// ============================================
+// PIPES & TUBES
+// ============================================
+
+// Nickel Alloy
+import NickelAlloy200Page from "./NickelAlloy200Page";
+import NickelAlloy201Page from "./NickelAlloy201Page";
+
+// Monel
+import Monel400Page from "./Monel400Page";
+import MonelK500Page from "./MonelK500Page";
+
+// Inconel
+import Inconel600Page from "./Inconel600Page";
+import Inconel601Page from "./Inconel601Page";
+import Inconel625Page from "./Inconel625Page";
+import Inconel800Page from "./Inconel800Page";
+import Inconel825Page from "./Inconel825Page";
+
+// Alloy 20 & Hastelloy
 import Alloy20Page from "./Alloy20Page";
+import HastelloyC276Page from "./HastelloyC276Page";
+
+// Copper Nickel
+import CuNi70Page from "./CuNi70Page";
+import CuNi90Page from "./CuNi90Page";
+
+// Stainless Steel
+import Stainless304Page from "./Stainless304Page";
+import Stainless304LPage from "./Stainless304LPage";
+import Stainless304HPage from "./Stainless304HPage";
+import Stainless309SPage from "./Stainless309SPage";
+import Stainless309HPage from "./Stainless309HPage";
+import Stainless310SPage from "./Stainless310SPage";
+import Stainless310HPage from "./Stainless310HPage";
+import Stainless316Page from "./Stainless316Page";
+import Stainless316TiPage from "./Stainless316TiPage";
+import Stainless316HPage from "./Stainless316HPage";
+import Stainless316LNPage from "./Stainless316LNPage";
+import Stainless317Page from "./Stainless317Page";
+import Stainless317LPage from "./Stainless317LPage";
+import Stainless321Page from "./Stainless321Page";
+import Stainless321HPage from "./Stainless321HPage";
+import Stainless347Page from "./Stainless347Page";
+import Stainless347HPage from "./Stainless347HPage";
+import Stainless904LPage from "./Stainless904LPage";
+
+// Duplex Steel
+import DuplexS31803Page from "./DuplexS31803Page";
+import SuperDuplexS32760Page from "./SuperDuplexS32760Page";
+
+// Carbon Steel
+import CarbonSteelA53Page from "./CarbonSteelA53Page";
+import CarbonSteelA106Page from "./CarbonSteelA106Page";
+
+// API Line Pipes
 import APISLGrBPage from "./APISLGrBPage";
 import APIX42Page from "./APIX42Page";
 import APIX46Page from "./APIX46Page";
@@ -7,9 +63,14 @@ import APIX52Page from "./APIX52Page";
 import APIX60Page from "./APIX60Page";
 import APIX65Page from "./APIX65Page";
 import APIX70Page from "./APIX70Page";
-import ASTMA333Page from "./ASTMA333Page"; // Fixed: removed space
-import ASTMA335P1Page from "./ASTMA335P1Page "; // Fixed: removed space
+
+// ASTM A333 Low Temperature
+import ASTMA333Page from "./ASTMA333Page";
+
+// ASTM A335 Alloy Steel
+import ASTMA335P1Page from "./ASTMA335P1Page ";
 import ASTMA335P2Page from "./ASTMA335P2Page";
+import ASTMA335P5Page from "./ASTMA335P5Page";
 import ASTMA335P9Page from "./ASTMA335P9Page";
 import ASTMA335P11Page from "./ASTMA335P11Page";
 import ASTMA335P12Page from "./ASTMA335P12Page";
@@ -17,62 +78,50 @@ import ASTMA335P22Page from "./ASTMA335P22Page";
 import ASTMA335P23Page from "./ASTMA335P23Page";
 import ASTMA335P91Page from "./ASTMA335P91Page";
 import ASTMA335P92Page from "./ASTMA335P92Page";
-import ASTMA6911_14CRPage from "./ASTMA6911_14CRPage";
+
+// ASTM A691 Alloy Steel
 import ASTMA6911CRPage from "./ASTMA6911CRPage";
-import ASTMA6912_14CRPage from "./ASTMA6912_14CRPage "; // Fixed: removed space
-import CarbonSteelA106Page from "./CarbonSteelA106Page";
-import CarbonSteelA53Page from "./CarbonSteelA53Page";
-import CuNi70Page from "./CuNi70Page";
-import CuNi90Page from "./CuNi90Page"; // Fixed: removed space
-import DuplexS31803Page from "./DuplexS31803Page";
-import HastelloyC276Page from "./HastelloyC276Page";
-import Inconel600Page from "./Inconel600Page";
-import Inconel601Page from "./Inconel601Page";
-import Inconel625Page from "./Inconel625Page";
-import Inconel800Page from "./Inconel800Page";
-import Inconel825Page from "./Inconel825Page";
-import Monel400Page from "./Monel400Page";
-import MonelK500Page from "./MonelK500Page";
-import NickelAlloy200Page from "./NickelAlloy200PipesTubes";
-import NickelAlloy201Page from "./NickelAlloy201Page";
-import NickelAlloySheetsPage from "./NickelAlloySheetsPageNickelAlloySheetsPage"; // Fixed: removed duplicate
-import Stainless304HPage from "./Stainless304HPage";
-import Stainless304LPage from "./Stainless304LPage";
-import Stainless304Page from "./Stainless304Page";
-import Stainless309HPage from "./Stainless309HPage";
-import Stainless309SPage from "./Stainless309SPage";
-import Stainless310HPage from "./Stainless310HPage";
-import Stainless310SPage from "./Stainless310SPage";
-import Stainless316HPage from "./Stainless316HPage";
-import Stainless316LNPage from "./Stainless316LNPage"; // Fixed: removed space
-import Stainless316Page from "./Stainless316Page";
-import Stainless316TiPage from "./Stainless316TiPage";
-import Stainless317LPage from "./Stainless317LPage";
-import Stainless317Page from "./Stainless317Page";
-import Stainless321HPage from "./Stainless321HPage";
-import Stainless321Page from "./Stainless321Page";
-import Stainless347HPage from "./Stainless347HPage";
-import Stainless347Page from "./Stainless347Page";
-import Stainless904LPage from "./Stainless904LPage";
+import ASTMA6911_14CRPage from "./ASTMA6911_14CRPage";
+import ASTMA6912_14CRPage from "./ASTMA6912_14CRPage ";
+
+// ============================================
+// SHEETS & PLATES
+// ============================================
+import NickelAlloySheetsPage from "./NickelAlloySheetsPageNickelAlloySheetsPage";
 import StainlessSteelSheetsPage from "./StainlessSteelSheetsPage";
-import SuperDuplexS32760Page from "./SuperDuplexS32760Page"; // Fixed: removed space
 import CarbonSteelSheetsPage from "./CarbonSteelSheetsPage";
 import AlloySteelSheetsPage from "./AlloySteelSheetsPage";
+
+// ============================================
+// ROUND BARS
+// ============================================
+
+// Nickel Alloy
 import NickelAlloy200RoundBarsPage from "./NickelAlloy200RoundBarsPage";
 import NickelAlloy201RoundBarsPage from "./NickelAlloy201RoundBarsPage";
-import Monel400RoundBarsPage from "./Monel400RoundBarsPage";
 
+// Monel
+import Monel400RoundBarsPage from "./Monel400RoundBarsPage";
+import MonelK500RoundbarsPage from "./MonelK500RoundbarsPage";
+
+// Inconel
 import Inconel600RoundBarsPage from "./Inconel600RoundBarsPage";
 import Inconel601RoundBarsPage from "./Inconel601RoundBarsPage";
 import Inconel625RoundBarsPage from "./Inconel625RoundBarsPage";
 import Inconel800RoundBarsPage from "./Inconel800RoundBarsPage";
 import Inconel825RoundBarsPage from "./Inconel825RoundBarsPage";
+
+// Alloy 20 & Hastelloy
 import Alloy20RoundBarsPage from "./Alloy20RoundBarsPage";
 import HastelloyC276RoundBarsPage from "./HastelloyC276RoundBarsPage";
 import HastelloyC22RoundBarsPage from "./HastelloyC22RoundBarsPage";
 import HastelloyB2RoundBarsPage from "./HastelloyB2RoundBarsPage";
+
+// Titanium & Brass/Bronze
 import TitaniumRoundBarsPage from "./TitaniumRoundBarsPage";
 import BrassBronzeRoundBarsPage from "./BrassBronzeRoundBarsPage";
+
+// Stainless Steel Round Bars
 import Stainless304RoundBarsPage from "./Stainless304RoundBarsPage";
 import Stainless304LRoundBarsPage from "./Stainless304LRoundBarsPage";
 import Stainless304LNRoundBarsPage from "./Stainless304LNRoundBarsPage";
@@ -92,22 +141,33 @@ import Stainless317LRoundBarsPage from "./Stainless317LRoundBarsPage";
 import Stainless321RoundBarsPage from "./Stainless321RoundBarsPage";
 import Stainless321HRoundBarsPage from "./Stainless321HRoundBarsPage";
 import Stainless347RoundBarsPage from "./Stainless347RoundBarsPage";
-import Stainless409RoundBarsPage from "./Stainless409RoundBarsPage";
 import Stainless347HRoundBarsPage from "./Stainless347HRoundBarsPage";
+import Stainless409RoundBarsPage from "./Stainless409RoundBarsPage";
 import Stainless410RoundBarsPage from "./Stainless410RoundBarsPage";
 import Stainless420RoundBarsPage from "./Stainless420RoundBarsPage";
 import Stainless430RoundBarsPage from "./Stainless430RoundBarsPage";
 import Stainless174PHRoundBarsPage from "./Stainless174PHRoundBarsPage";
 import Stainless177PHRoundBarsPage from "./Stainless177PHRoundBarsPage";
+
+// Carbon & Alloy Steel Round Bars
 import CarbonSteelRoundBarsPage from "./CarbonSteelRoundBarsPage";
 import AlloySteelRoundBarsPage from "./AlloySteelRoundBarsPage";
+
+// Aluminium Round Bars
 import Aluminium2014RoundBarsPage from "./Aluminium2014RoundBarsPage";
 import Aluminium5083RouundBarsPage from "./Aluminium5083RouundBarsPage";
 import Aluminium6061RoundBarsPage from "./Aluminium6061RoundBarsPage";
 import Aluminium6082RoundBarsPage from "./Aluminium6082RoundBarsPage";
 import Aluminium7075RoundBarsPage from "./Aluminium7075RoundBarsPage";
+
+// Cupro Nickel Round Bars
 import CuproNickel7030RoundBarsPage from "./CuproNickel7030RoundBarsPage";
 import CuproNickel9010RoundBarsPage from "./CuproNickel9010RoundBarsPage";
+
+// ============================================
+// FLANGES
+// ============================================
+
 import NickelAlloy200FlangesPage from "./NickelAlloy200FlangesPage";
 import NickelAlloy201FlangesPage from "./NickelAlloy201FlangesPage";
 import MonelAlloy400FlangesPage from "./MonelAlloy400FlangesPage";
@@ -137,6 +197,11 @@ import CarbonSteelASTMA105FlangesPage from "./CarbonSteelASTMA105FlangesPage";
 import CarbonSteelASTMA694FlangesPage from "./CarbonSteelASTMA694FlangesPage";
 import ASTMA350LF2LF3FlangesPage from "./ASTMA350F2LF3FlangesPage";
 import AlloySteelFlangesPage from "./AlloySteelFlangesPage";
+
+// ============================================
+// BUTTWELD FITTINGS
+// ============================================
+
 import NickelAlloy200ButtweldFittingsPage from "./NickelAlloy200ButtweldFittingsPage";
 import NickelAlloy201ButtweldFittingsPage from "./NickelAlloy201ButtweldFittingsPage";
 import Monel400ButtweldFittingsPage from "./Monel400ButtweldFittingsPage";
@@ -170,57 +235,102 @@ import AlloySteelWP9ButtweldFittingsPage from "./AlloySteelWP9ButtweldFittingsPa
 import AlloySteelWP12ButtweldFittingsPage from "./AlloySteelWP12ButtweldFittingsPage";
 import AlloySteelWP22ButtweldFittingsPage from "./AlloySteelWP22ButtweldFittingsPage";
 import AlloySteelWP91ButtweldFittingsPage from "./AlloySteelWP91ButtweldFittingsPage";
+
+// ============================================
+// SOCKETWELD FITTINGS
+// ============================================
+
 import HighNickelAlloySocketweldFittingsPage from "./HighNickelAlloySocketweldFittingsPage";
 import StainlessSteelSocketweldFittingsPage from "./StainlessSteelSocketweldFittingsPage";
 import CarbonSteelSocketweldFittingsPage from "./CarbonSteelSocketweldFittingsPage";
 import AlloySteelSocketweldFittingsPage from "./AlloySteelSocketweldFittingsPage";
+
+// ============================================
+// FASTENERS
+// ============================================
+
 import HighNickelAlloyFastenersPage from "./HighNickelAlloyFastenersPage";
 import StainlessSteelFastenersPage from "./StainlessSteelFastenersPage";
 import CarbonSteelFastenersPage from "./CarbonSteelFastenersPage";
 import AlloySteelFastenersPage from "./AlloySteelFastenersPage";
 import NonFerrousMetalFastenersPage from "./NonFerrousMetalFastenersPage";
+
+// ============================================
+// REFRACTORY FIXINGS & ANCHORS
+// ============================================
+
 import RefractoryFixingsAnchorsPage from "./RefractoryFixingsAnchorsPage";
+
+// ============================================
+// ANGLES & CHANNELS
+// ============================================
+
 import AnglesChannelsPage from "./AnglesChannelsPage";
+
+// ============================================
+// TUBE SHEETS
+// ============================================
+
 import TubeSheetsPage from "./TubeSheetsPage";
+
+// ============================================
+// FERRULE FITTINGS
+// ============================================
+
 import FerruleFittingsPage from "./FerruleFittingsPage";
+
+// ============================================
+// CLADDED PLATES
+// ============================================
+
 import CladdedPlatesPage from "./CladdedPlatesPage";
+
+// ============================================
+// OLETS
+// ============================================
+
 import OletsPage from "./OletsPage";
+
+// ============================================
+// VALVES
+// ============================================
+
 import ValvesPage from "./ValvesPage";
+
+// ============================================
+// GRAPHITE FILLED BRONZE BUSH
+// ============================================
+
+import BronzeBushesPage from "./BronzeBushesPage";
+
+// ============================================
+// BILLETS
+// ============================================
 
 import LCCLCBBilletsPage from "./LCCLCBBilletsPage";
 import FourAFiveASixABilletsPage from "./FourAFiveASixABilletsPage";
 import C12ABilletsPage from "./C12ABilletsPage";
 import Grade900BilletsPage from "./Grade900BilletsPage";
-import BronzeBushesPage from "./BronzeBushesPage";
-import ASTMA335P5Page from "./ASTMA335P5Page";
-import MonelK500RoundbarsPage from "./MonelK500RoundbarsPage";
 
-// Map product slugs to their respective components
+// ============================================
+// EXPORT MAP WITH SLUG KEYS
+// ============================================
+
 const productDetailsMap = {
-  // Nickel Alloy
+  // Pipes & Tubes
   "nickel-alloy-200-pipestubes": NickelAlloy200Page,
   "nickel-alloy-201-pipestubes": NickelAlloy201Page,
-
-  // Monel
   "monel-400-pipestubes": Monel400Page,
   "monel-k500-pipestubes": MonelK500Page,
-
-  // Inconel
   "inconel-600-pipestubes": Inconel600Page,
   "inconel-601-pipestubes": Inconel601Page,
   "inconel-625-pipestubes": Inconel625Page,
   "inconel-800-pipestubes": Inconel800Page,
   "inconel-825-pipestubes": Inconel825Page,
-
-  // Alloy 20 & Hastelloy
   "alloy-20-pipestubes": Alloy20Page,
   "hastelloy-c276-pipestubes": HastelloyC276Page,
-
-  // Copper Nickel
-  "cu-ni-90-pipestubes": CuNi90Page,
   "cu-ni-70-pipestubes": CuNi70Page,
-
-  // Stainless Steel Pipes & Tubes
+  "cu-ni-90-pipestubes": CuNi90Page,
   "304-stainless-steel-pipestubes": Stainless304Page,
   "304l-stainless-steel-pipestubes": Stainless304LPage,
   "304h-stainless-steel-pipestubes": Stainless304HPage,
@@ -239,16 +349,10 @@ const productDetailsMap = {
   "347-stainless-steel-pipestubes": Stainless347Page,
   "347h-stainless-steel-pipestubes": Stainless347HPage,
   "904l-stainless-steel-pipestubes": Stainless904LPage,
-
-  // Duplex Steel
   "duplex-s31803-pipestubes": DuplexS31803Page,
-  "duplex-s32760-pipestubes": SuperDuplexS32760Page,
-
-  // Carbon Steel
+  "super-duplex-s32760-pipestubes": SuperDuplexS32760Page,
   "carbon-steel-a53-pipestubes": CarbonSteelA53Page,
   "carbon-steel-a106-pipestubes": CarbonSteelA106Page,
-
-  // API Line Pipes
   "api-5l-linepipe": APISLGrBPage,
   "api-x42-linepipe": APIX42Page,
   "api-x46-linepipe": APIX46Page,
@@ -256,11 +360,7 @@ const productDetailsMap = {
   "api-x60-linepipe": APIX60Page,
   "api-x65-linepipe": APIX65Page,
   "api-x70-linepipe": APIX70Page,
-
-  // ASTM A333 Low Temperature
   "astm-a333-pipestubes": ASTMA333Page,
-
-  // ASTM A335 Alloy Steel
   "astm-a335-p1-pipes": ASTMA335P1Page,
   "astm-a335-p2-pipes": ASTMA335P2Page,
   "astm-a335-p5-pipes": ASTMA335P5Page,
@@ -271,8 +371,6 @@ const productDetailsMap = {
   "astm-a335-p23-pipes": ASTMA335P23Page,
   "astm-a335-p91-pipes": ASTMA335P91Page,
   "astm-a335-p92-pipes": ASTMA335P92Page,
-
-  // ASTM A691 Alloy Steel
   "astm-a691-1cr-pipes": ASTMA6911CRPage,
   "astm-a691-1-1-4cr-pipes": ASTMA6911_14CRPage,
   "astm-a691-2-1-4cr-pipes": ASTMA6912_14CRPage,
@@ -283,8 +381,7 @@ const productDetailsMap = {
   "carbon-steel-sheetsplates": CarbonSteelSheetsPage,
   "alloy-steel-sheetsplates": AlloySteelSheetsPage,
 
-  // round-bars
-
+  // Round Bars
   "nickel-alloy-200-roundbars": NickelAlloy200RoundBarsPage,
   "nickel-alloy-201-roundbars": NickelAlloy201RoundBarsPage,
   "monel-400-roundbars": Monel400RoundBarsPage,
@@ -317,8 +414,8 @@ const productDetailsMap = {
   "317-stainless-steel-roundbars": Stainless317RoundBarsPage,
   "317l-stainless-steel-roundbars": Stainless317LRoundBarsPage,
   "321-stainless-steel-roundbars": Stainless321RoundBarsPage,
-  "347-stainless-steel-roundbars": Stainless347RoundBarsPage,
   "321h-stainless-steel-roundbars": Stainless321HRoundBarsPage,
+  "347-stainless-steel-roundbars": Stainless347RoundBarsPage,
   "347h-stainless-steel-roundbars": Stainless347HRoundBarsPage,
   "409-stainless-steel-roundbars": Stainless409RoundBarsPage,
   "410-stainless-steel-roundbars": Stainless410RoundBarsPage,
@@ -336,7 +433,7 @@ const productDetailsMap = {
   "cupro-nickel-70-roundbars": CuproNickel7030RoundBarsPage,
   "cupro-nickel-90-roundbars": CuproNickel9010RoundBarsPage,
 
-  // flanges
+  // Flanges
   "nickel-alloy-200-flanges": NickelAlloy200FlangesPage,
   "nickel-alloy-201-flanges": NickelAlloy201FlangesPage,
   "monel-400-flanges": MonelAlloy400FlangesPage,
@@ -367,21 +464,21 @@ const productDetailsMap = {
   "a350-carbon-steel-flanges": ASTMA350LF2LF3FlangesPage,
   "alloy-steel-flanges": AlloySteelFlangesPage,
 
-  // buttweld-fittings
-  "alloy-200-buttweld-pipe-fittings": NickelAlloy200ButtweldFittingsPage,
-  "alloy-201-buttweld-pipe-fittings": NickelAlloy201ButtweldFittingsPage,
-  "monel-400-buttweld-pipe-fittings": Monel400ButtweldFittingsPage,
-  "monel-k500-buttweld-pipe-fittings": MonelK500ButtweldFittingsPage,
-  "inconel-600-buttweld-pipe-fitings": Inconel600ButtweldFittingsPage,
-  "inconel-601-buttweld-pipe-fitings": Inconel601ButtweldFittingsPage,
-  "inconel-625-buttweld-pipe-fitings": Inconel625ButtweldFittingsPage,
-  "inconel-800-buttweld-pipe-fitings": Inconel800ButtweldFittingsPage,
-  "inconel-825-buttweld-pipe-fitings": Inconel825ButtweldFittingsPage,
-  "alloy-20-buttweld-pipe-fittings": Alloy20ButtweldFittingsPage,
-  "hastelloy-buttweld-pipe-fittings": HastelloyButtweldFittingsPage,
-  "titanium-buttweld-pipe-fittings": TitaniumButtweldFittingsPage,
-  "aluminium-buttweld-pipe-fittings": AluminiumButtweldFittingsPage,
-  "copper-nickel-buttweld-pipe-fittings": CopperNickelButtweldFittingsPage,
+  // Buttweld Fittings
+  "nickel-alloy-200-buttweld-fittings": NickelAlloy200ButtweldFittingsPage,
+  "nickel-alloy-201-buttweld-fittings": NickelAlloy201ButtweldFittingsPage,
+  "monel-400-buttweld-fittings": Monel400ButtweldFittingsPage,
+  "monel-k500-buttweld-fittings": MonelK500ButtweldFittingsPage,
+  "inconel-600-buttweld-fittings": Inconel600ButtweldFittingsPage,
+  "inconel-601-buttweld-fittings": Inconel601ButtweldFittingsPage,
+  "inconel-625-buttweld-fittings": Inconel625ButtweldFittingsPage,
+  "inconel-800-buttweld-fittings": Inconel800ButtweldFittingsPage,
+  "inconel-825-buttweld-fittings": Inconel825ButtweldFittingsPage,
+  "alloy-20-buttweld-fittings": Alloy20ButtweldFittingsPage,
+  "hastelloy-buttweld-fittings": HastelloyButtweldFittingsPage,
+  "titanium-buttweld-fittings": TitaniumButtweldFittingsPage,
+  "aluminium-buttweld-fittings": AluminiumButtweldFittingsPage,
+  "copper-nickel-buttweld-fittings": CopperNickelButtweldFittingsPage,
   "brass-bronze-buttweld-fittings": BrassBronzeButtweldFittingsPage,
   "304-stainless-steel-buttweld-fittings": SS304ButtweldFittingsPage,
   "304l-stainless-steel-buttweld-fittings": SS304LButtweldFittingsPage,
@@ -402,44 +499,45 @@ const productDetailsMap = {
   "wp22-buttweld-fittings": AlloySteelWP22ButtweldFittingsPage,
   "wp91-buttweld-fittings": AlloySteelWP91ButtweldFittingsPage,
 
-  // socket-fittings
+  // Socketweld Fittings
   "high-nickel-alloy-socketweld-fittings":
     HighNickelAlloySocketweldFittingsPage,
   "stainless-steel-socketweld-fittings": StainlessSteelSocketweldFittingsPage,
   "carbon-steel-socketweld-fittings": CarbonSteelSocketweldFittingsPage,
   "alloy-steel-socketweld-fittings": AlloySteelSocketweldFittingsPage,
 
-  // fasteners
+  // Fasteners
   "high-nickel-alloy-fasteners": HighNickelAlloyFastenersPage,
   "stainless-steel-fasteners": StainlessSteelFastenersPage,
   "carbon-steel-fasteners": CarbonSteelFastenersPage,
   "alloy-steel-fasteners": AlloySteelFastenersPage,
   "non-ferrous-metal-fasteners": NonFerrousMetalFastenersPage,
 
-  // refactory-anchors
+  // Refractory Fixings & Anchors
   "refractory-fixings": RefractoryFixingsAnchorsPage,
 
-  // angle-channels
+  // Angles & Channels
   "angles-channels": AnglesChannelsPage,
 
-  // tube-sheets
+  // Tube Sheets
   "tube-sheets": TubeSheetsPage,
-  // ferrule-fittings
+
+  // Ferrule Fittings
   "ferrule-fittings": FerruleFittingsPage,
 
-  // cladded-plates
+  // Cladded Plates
   "cladded-plates": CladdedPlatesPage,
 
-  // olets
+  // Olets
   olets: OletsPage,
 
-  // valves
+  // Valves
   valves: ValvesPage,
 
-  // graphite-filled-bronze-bush
+  // Graphite Filled Bronze Bush
   "graphite-filled-bronze-bush": BronzeBushesPage,
 
-  //billets
+  // Billets
   "lcc-lcb-billets": LCCLCBBilletsPage,
   "4-5-6-billets": FourAFiveASixABilletsPage,
   "c12a-billets": C12ABilletsPage,
