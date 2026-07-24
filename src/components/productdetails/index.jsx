@@ -61,7 +61,7 @@ import AlloySteelSheetsPage from "./AlloySteelSheetsPage";
 import NickelAlloy200RoundBarsPage from "./NickelAlloy200RoundBarsPage";
 import NickelAlloy201RoundBarsPage from "./NickelAlloy201RoundBarsPage";
 import Monel400RoundBarsPage from "./Monel400RoundBarsPage";
-import MonelK500RoundBarsPage from "./MonelK500RoundBarsPage";
+
 import Inconel600RoundBarsPage from "./Inconel600RoundBarsPage";
 import Inconel601RoundBarsPage from "./Inconel601RoundBarsPage";
 import Inconel625RoundBarsPage from "./Inconel625RoundBarsPage";
@@ -193,6 +193,7 @@ import C12ABilletsPage from "./C12ABilletsPage";
 import Grade900BilletsPage from "./Grade900BilletsPage";
 import BronzeBushesPage from "./BronzeBushesPage";
 import ASTMA335P5Page from "./ASTMA335P5Page";
+import MonelK500RoundBarsPage from "./MonelK500RoundbarsPage";
 
 // Map product slugs to their respective components
 const productDetailsMap = {
